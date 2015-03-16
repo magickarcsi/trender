@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      >
     <link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
 
 
@@ -37,8 +39,25 @@
                 <div id="content">
                     <ui:insert name="content">
                         <div id="left">
-                            <h2 align="center">KVS leaderboard</h2>
-                            <strong>Name: </strong>
+                            <h:panelGrid columns="1" cellpadding="5">
+    <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />
+ 
+    <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
+ 
+    <p:commandButton value="Effects" type="button" onclick="PF('dlg3').show();" /> 
+</h:panelGrid>
+ 
+<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+    <h:outputText value="Resistance to PrimeFaces is futile!" />
+</p:dialog>
+ 
+<p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+    <h:outputText value="This is a Modal Dialog." />
+</p:dialog>   
+ 
+<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+    <h:outputText value="This dialog has nice effects." />
+</p:dialog>
                         </div>
                         <div id="right">
                             <h2 align="center">KVS leaderboard</h2>
@@ -50,18 +69,7 @@
                 <div id="footer">(c) 2015 Marton Koran</div>
             </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
-        <br />
-        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
-        <br />
-        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
-        <br />
-        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        
     </h:body>
 </html>
 
