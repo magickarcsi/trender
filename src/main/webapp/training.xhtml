@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
+      
+<h:head>
+    <title>OPST - Training</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+ 
+<h:body>
+
+<div id="page">
+<div id="header">
+<h2>Online Post-Shift Tool</h2>
+<h3>Training</h3>
+</div>
+<div id="buttons">
+<h:button value="Index" outcome="index" class="button" />
+<h:button value="Service" outcome="service" class="button" />
+<h:button value="Production" outcome="production" class="button" />
+<h:button value="Training" outcome="training" class="button" />
+<h:button value="Admin" outcome="admin" class="button" />
+
+    </div>
+<div id="sidebar">
+    <br/>
+<h1>Sidebar</h1>
+
+</div>
+<div id="container">
+<h1><ui:insert name="title">Default Page Title</ui:insert></h1>
+
+<div id="content">
+<ui:insert name="content">
+<h:panelGroup layout="block" id="left">
+    <h:form>
+        <h:selectOneMenu value="#{adminbean.role}">
+   	<f:selectItem itemValue="1" itemLabel="Crew Member" />
+   	<f:selectItem itemValue="2" itemLabel="Lobby Hostess" />
+   	<f:selectItem itemValue="3" itemLabel="Delivery" />
+        <f:selectItem itemValue="4" itemLabel="Crew Trainer" />
+        <f:selectItem itemValue="5" itemLabel="Floor Manager" />
+        <f:selectItem itemValue="6" itemLabel="Shift Runner" />
+        <f:selectItem itemValue="7" itemLabel="Salaried Manager" />
+        <f:selectItem itemValue="8" itemLabel="Business Manager" />
+</h:selectOneMenu>
+        <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
+    </h:form>
+    <h3 align="center">People <p/></h3>
+    <f:view>
+        <h:form>
+            <h:dataTable value="#{adminbean.p}" var="item"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputLabel value="#{item.id}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Store</f:facet>
+                    <h:outputLabel value="#{item.store}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Lastname</f:facet>
+                    <h:outputLabel value="#{item.surname}"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Firstname</f:facet>
+                    <h:outputLabel value="#{item.firstname}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Bonus</f:facet>
+                    <h:outputLabel value="#{item.bonus}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Details</f:facet>
+                    <h:commandButton value="Details" id="button" action="#{adminbean.getDetailsById(item.id)}">
+                        <f:ajax execute="button" render="right"/>
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
+
+</h:panelGroup>
+<h:panelGroup layout="block" id="right">
+    <p/><p/>
+    <h3 align="center">Details <p/></h3>
+    <strong><h:outputLabel value="ID: "/></strong><h:outputLabel value="#{adminbean.person.id}"/><p/>
+    <strong><h:outputLabel value="Store: "/></strong><h:outputLabel value="#{adminbean.person.store}"/><p/>
+    <strong><h:outputLabel value="Surname: "/></strong><h:outputLabel value="#{adminbean.person.surname}"/><p/>
+    <strong><h:outputLabel value="First name: "/></strong><h:outputLabel value="#{adminbean.person.firstname}"/><p/>
+    <strong><h:outputLabel value="Role: "/></strong><h:outputLabel value="#{adminbean.personrole}"/><p/>
+    <strong><h:outputLabel value="Monthly SOCs: "/></strong><p/>
+    <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
+    <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
+</h:panelGroup>
+</ui:insert>
+    <div id="sidebar">
+<h3>Enter Post-Shift</h3>
+    
+<p style="clear: both">Hello there. Welcome to my lair.</p>
+<h:outputLabel value="#{datebean.woy}"/><br/>
+<h:outputLabel value="#{datebean.fdow}"/><br/>
+<h:outputLabel value="#{datebean.ldow}"/><br/>
+    
+</div>
+</div>
+<div id="footer">(c) 2015 Marton Koran</div>
+</div>
+</div>
+</h:body>
+</html>
+

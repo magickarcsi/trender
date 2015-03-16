@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
+      
+<h:head>
+    <title>OPST - Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+    
+<h:body>
+
+<div id="page">
+<div id="header">
+<h2>Online Post-Shift Tool</h2>
+<h3>Service</h3>
+</div>
+<div id="buttons">
+<h:button value="Index" outcome="index" class="button" />
+<h:button value="Service" outcome="service" class="button" />
+<h:button value="Production" outcome="production" class="button" />
+<h:button value="Training" outcome="training" class="button" />
+<h:button value="Admin" outcome="admin" class="button" />
+
+    </div>
+
+<div id="container">
+<h1><ui:insert name="title">Default Page Title</ui:insert></h1>
+
+<div id="content">
+<ui:insert name="content">
+    
+<div id="left">
+    <h:form>
+    <h3 align="center">CTP leaderboard <p/>
+        
+        <h:selectOneMenu value="#{adminbean.week}">
+   			<f:selectItems value="#{adminbean.favWeek2Value}" />
+        </h:selectOneMenu>
+        <h:selectOneMenu value="#{adminbean.year}">
+   	<f:selectItem itemValue="2015" itemLabel="2015" />
+</h:selectOneMenu>
+        <h:commandButton value="Details" id="button" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
+        </h3>
+        <h5 align="center">
+            <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+        <h:outputLabel value="#{adminbean.firstandlast}"/>
+        <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
+        </h5>
+        
+    
+        </h:form>
+    <h:panelGroup layout="block" id="ctplist">
+        <h:form>
+            <h:dataTable value="#{adminbean.c}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputLabel value="#{item2.id}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputLabel value="#{item2.name}"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">CTP</f:facet>
+                    <h:outputLabel value="#{item2.ctp}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <h:outputLabel value="#{item2.dev}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <h:outputLabel value="#{item2.target}"/>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+        </h:panelGroup>
+</div>
+<div id="right">
+    <h3 align="center">CTP leaderboard <p/>YTD</h3>
+    
+  </div>
+    
+    <div id="sidebar">
+<h3>Enter Post-Shift</h3>
+    
+<p style="clear: both">Hello there. Welcome to my lair.</p>
+  
+<h:outputLabel value="#{datebean.woy}"/><br/>
+<h:outputLabel value="#{datebean.fdow}"/><br/>
+<h:outputLabel value="#{datebean.ldow}"/><br/>
+    
+</div>
+<div id="left">
+</div>
+<div id="right">
+    <p/>
+    <h:form>
+        <h:inputText value="#{datebean.ymd}" onclick="this.value=''"/><br/>
+        <h:commandButton value="Test" action="#{datebean.getadate()}"/><br/><br/>
+    </h:form>
+</div>
+<div id="left">
+    
+</div>
+</ui:insert>
+</div>
+<div id="footer">(c) 2015 Marton Koran</div>
+</div>
+</div>
+</h:body>
+</html>
+

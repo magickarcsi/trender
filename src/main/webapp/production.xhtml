@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
+      
+<h:head>
+    <title>OPST - Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+    
+<h:body>
+
+<div id="page">
+<div id="header">
+<h2>Online Post-Shift Tool</h2>
+<h3>Service</h3>
+</div>
+<div id="buttons">
+<h:button value="Index" outcome="index" class="button" />
+<h:button value="Service" outcome="service" class="button" />
+<h:button value="Production" outcome="production" class="button" />
+<h:button value="Training" outcome="training" class="button" />
+<h:button value="Admin" outcome="admin" class="button" />
+
+    </div>
+
+<div id="container">
+<h1><ui:insert name="title">Default Page Title</ui:insert></h1>
+
+<div id="content">
+<ui:insert name="content">
+    
+<div id="left">
+    <h3 align="center">KVS leaderboard <p/>Last week</h3>
+        <h:form>
+            <h:dataTable value="#{kvsbean.getKvsList()}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item2.place}" size="2"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">KVS</f:facet>
+                    <input type="text" value="#{item2.kvs}" size="6"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item2.dev}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item2.target}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item2)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+</div>
+<div id="right">
+    <h3 align="center">KVS leaderboard <p/>YTD</h3>
+        <h:form>
+            <h:dataTable value="#{kvsbean.getKvsList()}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item2.place}" size="2"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">KVS</f:facet>
+                    <input type="text" value="#{item2.kvs}" size="6"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item2.dev}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item2.target}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item2)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+  </div>
+    
+    <div id="sidebar">
+<h3>Enter Post-Shift</h3>
+    <h:form>
+    		<table>
+    		<tr>
+    			<td>Name</td>
+                        <td><h:inputText id="name" size="10" value="#{adminbean.name}" /></td>
+                        
+    		</tr>
+    		<tr>
+    			<td>KVS</td>
+                        <td><h:inputText id="kvs" size="5" value="#{adminbean.kvs}" /></td>
+    		</tr>
+    		<tr>
+    			<td>CTP</td>
+    			<td><h:inputText id="ctp" size="5" value="#{adminbean.ctp}" /></td>
+    		</tr>
+    		<tr>
+    			<td>Date</td>
+    			<td><h:inputText id="date" size="10" value="#{adminbean.date}" /></td>
+    		</tr>
+    		</table>
+        <h:commandButton value="Test" action="#{adminbean.postshift()}" />
+    </h:form>
+<p style="clear: both">Hello there. Welcome to my lair.</p>
+    
+    <h:outputLabel value="#{adminbean.name}"/><br/>
+    <h:outputLabel value="#{adminbean.kvs}"/><br/>
+    <h:outputLabel value="#{adminbean.ctp}"/><br/>
+    <h:outputLabel value="#{adminbean.date}"/><br/>
+</div>
+<div id="left">
+
+</div>
+<div id="right">
+<p/>
+<h:form>
+    <h:inputHidden value="#{xmlbean.kvsnodes('3')}"/>
+</h:form>
+
+    <h:form>
+            <h:dataTable value="#{xmlbean.getKvsList()}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item2.place}" size="2"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">KVS</f:facet>
+                    <input type="text" value="#{item2.kvs}" size="6"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item2.dev}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item2.target}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+</div>
+</ui:insert>
+</div>
+<div id="footer">(c) 2015 Marton Koran</div>
+</div>
+</div>
+</h:body>
+</html>
+

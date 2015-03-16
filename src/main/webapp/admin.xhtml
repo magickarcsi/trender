@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="x-iso-8859-11"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
+      
+
+<h:head>
+        <title>OPST - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+    
+<h:body>
+<datalist id="names">
+                        <option value="Debbie"/>
+                        <option value="Jason"/>
+                        <option value="Jimmy"/>
+                        <option value="Jackie"/>
+                        <option value="Brandon"/>
+                        <option value="DJ"/>
+                        <option value="Nigel"/>
+                        <option value="Norbi"/>
+                        <option value="Judit"/>
+                        <option value="James"/>
+                        <option value="Mike"/>
+                        <option value="Luis"/>
+                        <option value="Chelsea"/>
+                        <option value="Beth"/>
+                        <option value="Marton"/>
+                    </datalist>
+    
+<div id="page">
+<div id="header">
+<h2>Online Post-Shift Tool</h2>
+<h3>Admin</h3>
+</div>
+    <div id="buttons">
+<h:button value="Index" outcome="index" class="button" />
+<h:button value="Service" outcome="service" class="button" />
+<h:button value="Production" outcome="production" class="button" />
+<h:button value="Training" outcome="training" class="button" />
+<h:button value="Admin" outcome="admin" class="button" />
+
+    </div>
+
+<div id="container">
+<h1><ui:insert name="title">Default Page Title</ui:insert></h1>
+
+<div id="content">
+<ui:insert name="content">
+    
+<div id="left">
+      <h2 align="center">KVS leaderboard</h2>
+        <h:form>
+            <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item.place}" size="2" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item.name}" size="10" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">KVS</f:facet>
+                    <input type="text" value="#{item.kvs}" size="6" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item.dev}" size="4" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item.target}" size="4" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+</div>
+<div id="right">
+      <h2 align="center">CTP leaderboard</h2>
+        <h:form>
+            <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item2.place}" size="2"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">CTP</f:facet>
+                    <input type="text" value="#{item2.ctp}" size="6"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item2.dev}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item2.target}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+      
+
+  </div>
+    
+    <div id="sidebar">
+<h3>Enter Post-Shift</h3>
+    
+<p style="clear: both">Hello there. Welcome to my lair.</p>
+    
+    
+    
+</div>
+    <div id="left">
+      <h2 align="center">KVS leaderboard</h2>
+        <h:form>
+            <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item.place}" size="2" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item.name}" size="10" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">KVS</f:facet>
+                    <input type="text" value="#{item.kvs}" size="6" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item.dev}" size="4" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item.target}" size="4" readonly="1"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+</div>
+<div id="right">
+      <h2 align="center">CTP leaderboard</h2>
+        <h:form>
+            <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+                
+                <h:column>
+                    <f:facet name="header">Place</f:facet>
+                    <input type="text" value="#{item2.place}" size="2"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">CTP</f:facet>
+                    <input type="text" value="#{item2.ctp}" size="6"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Deviation</f:facet>
+                    <input type="text" value="#{item2.dev}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Target</f:facet>
+                    <input type="text" value="#{item2.target}" size="4"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+      
+
+  </div>
+</ui:insert>
+</div>
+
+
+</div>
+</div><div id="footer">(c) 2015 Marton Koran</div>
+</h:body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
+
+
+    <h:head>
+        <title>OPST - Index</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="page">
+            <div id="header">
+                <h2>Online Post-Shift Tool</h2>
+                <h3>Index</h3>
+            </div>
+            <div id="buttons">
+                <h:button value="Index" outcome="index" class="button" />
+                <h:button value="Service" outcome="service" class="button" />
+                <h:button value="Production" outcome="production" class="button" />
+                <h:button value="Training" outcome="training" class="button" />
+                <h:button value="Admin" outcome="admin" class="button" />
+
+            </div>
+            <div id="sidebar">
+                <br/>
+                <h1>Sidebar</h1>
+
+            </div>
+            <div id="container">
+                <h1><ui:insert name="title">Point Breaker</ui:insert></h1>
+                <h2 align="center">Meal - Point Menu</h2>      
+                <div id="content">
+                    <ui:insert name="content">
+                        <div id="left">
+                            <h2 align="center">KVS leaderboard</h2>
+                            <strong>Name: </strong>
+                        </div>
+                        <div id="right">
+                            <h2 align="center">KVS leaderboard</h2>
+                            <strong>Name: </strong>
+                        </div>
+
+                    </ui:insert>
+                </div>
+                <div id="footer">(c) 2015 Marton Koran</div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
+        <br />
+        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
+        <br />
+        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
+        <br />
+        <h:link outcome="welcomeRichfaces" value="Richfaces welcome page" />
+    </h:body>
+</html>
+
