@@ -47,10 +47,7 @@
 <ui:insert name="content">
     <div id="left">
     <p:panel id="toggleable3" header="People" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
- 
- 
-         <h:panelGrid>
-<h:panelGroup layout="block" id="left">
+ <h:panelGrid>
     <h:form>
         <h:selectOneMenu value="#{adminbean.role}">
    	<f:selectItem itemValue="1" itemLabel="Crew Member" />
@@ -63,18 +60,16 @@
         <f:selectItem itemValue="8" itemLabel="Business Manager" />
 </h:selectOneMenu>
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
-    </h:form>
-        <h:form>
             <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                 paginator="true" rows="20">
+                         paginator="true" rows="20" style="width: 320px">
                 
                 <p:column width="30">
                     <f:facet name="header">ID</f:facet>
                     <h:outputLabel value="#{item.id}"/>
                 </p:column>
                 
-                <p:column width="40">
+                <p:column width="30">
                     <f:facet name="header">Store</f:facet>
                     <h:outputLabel value="#{item.store}"/>
                 </p:column>
@@ -89,7 +84,7 @@
                     <h:outputLabel value="#{item.firstname}"/>
                 </p:column>
                 
-                <p:column width="40">
+                <p:column width="30">
                     <f:facet name="header">Bonus</f:facet>
                     <h:outputLabel value="#{item.bonus}"/>
                 </p:column>
@@ -101,8 +96,6 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-
-</h:panelGroup>
              </h:panelGrid>
  
     </p:panel>
