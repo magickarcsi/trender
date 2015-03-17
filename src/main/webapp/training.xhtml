@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
 <link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
       
 <h:head>
@@ -19,14 +20,22 @@ xmlns:p="http://primefaces.org/ui">
 <h2>Online Post-Shift Tool</h2>
 <h3>Training</h3>
 </div>
-<div id="buttons">
-<h:button value="Index" outcome="index" class="button" />
-<h:button value="Service" outcome="service" class="button" />
-<h:button value="Production" outcome="production" class="button" />
-<h:button value="Training" outcome="training" class="button" />
-<h:button value="Admin" outcome="admin" class="button" />
-
-    </div>
+<p:toolbar id="tb">
+                <f:facet name="left">
+                    <p:button outcome="index" value="Dashboard"  icon="ui-icon-monitor" />
+                    <p:button outcome="service" value="Service" icon="ui-icon-folder-open"/>
+                    <p:button outcome="service" value="Service" icon="ui-icon-bell-2"/>
+                    <p:button outcome="production" value="Production" icon="ui-icon-food" disabled="true"/>
+                    <p:button outcome="training" value="Training" icon="ui-icon-graduation-cap"/>
+                    <p:button value="Admin" outcome="admin" icon="ui-icon-book" />
+                </f:facet>
+                <f:facet name="right">
+                    <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                    <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                    <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+                </f:facet>
+            </p:toolbar>
+    <p:sticky target="tb" />
 <div id="sidebar">
     <br/>
 <h1>Sidebar</h1>
