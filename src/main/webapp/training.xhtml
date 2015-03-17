@@ -45,6 +45,10 @@
 
 <div id="content">
 <ui:insert name="content">
+    <p:panel id="toggleable3" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
+ 
+ 
+         <h:panelGrid>
 <h:panelGroup layout="block" id="left">
     <h:form>
         <h:selectOneMenu value="#{adminbean.role}">
@@ -104,7 +108,15 @@
     </f:view>
 
 </h:panelGroup>
-    <p:dialog header="Basic Dialog" widgetVar="dlg1">
+             </h:panelGrid>
+ 
+    </p:panel>
+    <p:panel id="toggleable4" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
+ 
+        <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
+        <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
+ 
+         <h:panelGrid columns="2" cellpadding="10">
         <h:panelGroup layout="block" id="right">
         <p/>
         <h3 align="center">Details <p/></h3>
@@ -117,7 +129,9 @@
         <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
         <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
         </h:panelGroup>
-    </p:dialog>
+    </h:panelGrid>
+
+    </p:panel>
 
 </ui:insert>
     <div id="sidebar">
@@ -127,7 +141,6 @@
 <h:outputLabel value="#{datebean.woy}"/><br/>
 <h:outputLabel value="#{datebean.fdow}"/><br/>
 <h:outputLabel value="#{datebean.ldow}"/><br/>
- <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />   
 </div>
 </div>
 <div id="footer">(c) 2015 Marton Koran</div>
