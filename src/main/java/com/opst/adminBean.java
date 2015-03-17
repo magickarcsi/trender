@@ -83,12 +83,12 @@ public class adminBean implements Serializable{
     //public Person p = null;
     Connection conn = null;
     Statement stmt = null;
-    //Person LD = new Person(0, "Lusta", "Diszno", 6, 0);
+    Person LD = new Person(0, 0, "Lusta", "Diszno", 6, 0);
     private Person person = null;
     private Ctp ctp = null;
     private ArrayList<Ctp> c = new ArrayList<Ctp>();
     //private ArrayList<Person> lis = new ArrayList<Person>(Arrays.asList(LD));
-    private ArrayList<Person> p = new ArrayList<Person>();
+    private ArrayList<Person> p = new ArrayList<Person>(Arrays.asList(LD));
     private String personrole = null;
 
     /**
