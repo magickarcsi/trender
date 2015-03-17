@@ -66,16 +66,16 @@
     </h:form>
     <f:view>
         <h:form>
-            <p:dataTable value="#{adminbean.p}" var="item"
+            <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                  paginator="true" rows="20" style="margin-bottom:20px" >
                 
-                <p:column width="50">
+                <p:column width="30">
                     <f:facet name="header">ID</f:facet>
                     <h:outputLabel value="#{item.id}"/>
                 </p:column>
                 
-                <p:column width="50">
+                <p:column width="40">
                     <f:facet name="header">Store</f:facet>
                     <h:outputLabel value="#{item.store}"/>
                 </p:column>
@@ -90,7 +90,7 @@
                     <h:outputLabel value="#{item.firstname}"/>
                 </p:column>
                 
-                <p:column width="50">
+                <p:column width="40">
                     <f:facet name="header">Bonus</f:facet>
                     <h:outputLabel value="#{item.bonus}"/>
                 </p:column>
