@@ -50,29 +50,29 @@
         <p:dashboard id="board" model="#{dashboardView.model}">
             <p:ajax event="reorder" listener="#{dashboardView.handleReorder}" update="msgs" />
  
-            <p:panel id="sports" header="Sports">
+            <p:panel id="sports" header="Sports" toggleable="true">
                 <h:outputText value="Sports Content" />
             </p:panel>
  
-            <p:panel id="finance" header="Finance">
+            <p:panel id="finance" header="Finance" toggleable="true">
                 <h:outputText value="Finance Content" />
             </p:panel>
  
-            <p:panel id="lifestyle" header="Lifestyle">
+            <p:panel id="lifestyle" header="Lifestyle" toggleable="true">
                 <h:outputText value="Lifestyle Content"  />
             </p:panel>
  
-            <p:panel id="weather" header="Weather">
+            <p:panel id="weather" header="Weather" toggleable="true">
                 <h:outputText value="Weather Content" />
             </p:panel>
  
-            <p:panel id="politics" header="Politics">
+            <p:panel id="politics" header="Politics" toggleable="true">
                 <h:outputText value="Politics Content" />
             </p:panel>
         </p:dashboard>
- 
+        </h:form>
         <div style="clear:both" />
-    </h:form>
+    
 </div>
                 </div>
                 <div id="footer">(c) 2015 Marton Koran</div>

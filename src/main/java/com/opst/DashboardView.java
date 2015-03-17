@@ -27,6 +27,7 @@ public class DashboardView implements Serializable {
         DashboardColumn column1 = new DefaultDashboardColumn();
         DashboardColumn column2 = new DefaultDashboardColumn();
         DashboardColumn column3 = new DefaultDashboardColumn();
+        DashboardColumn column4 = new DefaultDashboardColumn();
          
         column1.addWidget("sports");
         column1.addWidget("finance");
@@ -39,21 +40,22 @@ public class DashboardView implements Serializable {
         model.addColumn(column1);
         model.addColumn(column2);
         model.addColumn(column3);
+        model.addColumn(column4);
     }
      
     public void handleReorder(DashboardReorderEvent event) {
-        FacesMessage message = new FacesMessage();
+        /*FacesMessage message = new FacesMessage();
         message.setSeverity(FacesMessage.SEVERITY_INFO);
         message.setSummary("Reordered: " + event.getWidgetId());
         message.setDetail("Item index: " + event.getItemIndex() + ", Column index: " + event.getColumnIndex() + ", Sender index: " + event.getSenderColumnIndex());
          
-        addMessage(message);
+        addMessage(message);*/
     }
      
     public void handleClose(CloseEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
+        /*FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
          
-        addMessage(message);
+        addMessage(message);*/
     }
      
     public void handleToggle(ToggleEvent event) {
