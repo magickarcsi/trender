@@ -116,23 +116,22 @@
         <h:panelGroup layout="block" id="right">
     <p:panel id="toggleable4" header="Details" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
  
-         <h:panelGrid columns="2">
-        <p/>
-        <strong><h:outputLabel for="id" value="ID: "/></strong><h:outputText id="id" value="#{adminbean.person.id}"/>
+         <h:panelGrid columns="2" columnClasses="label,value">
+         <h:outputLabel for="id" value="ID: " style="font-weight:bold"/> <h:outputText id="id" value="#{adminbean.person.id}"/>
         
-        <strong><h:outputLabel for="store" value="Store: "/></strong><h:outputText id="store" value="#{adminbean.person.store}"/>
+         <h:outputLabel for="store" value="Store: " style="font-weight:bold"/> <h:outputText id="store" value="#{adminbean.person.store}"/>
         
-        <strong><h:outputLabel for="surname" value="Surname: "/></strong><h:outputText id="surname" value="#{adminbean.person.surname}"/>
+         <h:outputLabel for="surname" value="Surname: " style="font-weight:bold"/> <h:outputText id="surname" value="#{adminbean.person.surname}"/>
         
-        <strong><h:outputLabel for="firstname" value="First name: "/></strong><h:outputText id="firstname" value="#{adminbean.person.firstname}"/>
+         <h:outputLabel for="firstname" value="First name: " style="font-weight:bold"/> <h:outputText id="firstname" value="#{adminbean.person.firstname}"/>
         
-        <strong><h:outputLabel for="role" value="Role: "/></strong><h:outputText id="role" value="#{adminbean.personrole}"/>
+         <h:outputLabel for="role" value="Role: " style="font-weight:bold"/> <h:outputText id="role" value="#{adminbean.personrole}"/>
         
-        <strong><h:outputLabel for="msocs" value="Monthly SOCs: "/></strong><h:outputText id="msocs" value="None"/>
+         <h:outputLabel for="msocs" value="Monthly SOCs: " style="font-weight:bold"/> <h:outputText id="msocs" value="None"/>
         
-        <strong><h:outputLabel for="mlbrd" value="Monthly Leaderboard: "/></strong><h:outputText id="mlbrd" value="None"/>
+         <h:outputLabel for="mlbrd" value="Monthly Leaderboard: " style="font-weight:bold"/> <h:outputText id="mlbrd" value="None"/>
         
-        <strong><h:outputLabel for="olbrd" value="Overall Leaderboard: "/></strong><h:outputText id="olbrd" value="None"/>
+         <h:outputLabel for="olbrd" value="Overall Leaderboard: " style="font-weight:bold"/> <h:outputText id="olbrd" value="None"/>
         
     </h:panelGrid>
 
