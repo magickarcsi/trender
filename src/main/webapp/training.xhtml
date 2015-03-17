@@ -62,7 +62,7 @@
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
             <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                         paginator="true" rows="20" style="width: 320px">
+                         paginator="true" rows="20" style="width: auto">
                 
                 <p:column width="30">
                     <f:facet name="header">ID</f:facet>
@@ -84,7 +84,7 @@
                     <h:outputLabel value="#{item.firstname}"/>
                 </p:column>
                 
-                <p:column width="30">
+                <p:column width="40">
                     <f:facet name="header">Bonus</f:facet>
                     <h:outputLabel value="#{item.bonus}"/>
                 </p:column>
