@@ -62,6 +62,7 @@
         <f:selectItem itemValue="7" itemLabel="Salaried Manager" />
         <f:selectItem itemValue="8" itemLabel="Business Manager" />
 </h:selectOneMenu>
+        <h:inputHidden value="#{adminbean.getNamesByRole(1)}"
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
     </h:form>
     <f:view>
