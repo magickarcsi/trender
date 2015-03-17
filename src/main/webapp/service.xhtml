@@ -72,37 +72,39 @@
          <h:panelGrid columns="2" cellpadding="10">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
-            <p:dataTable value="#{adminbean.c}" var="item2"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                 paginator="true" rows="10" style="margin-bottom:20px">
+            <h:dataTable value="#{adminbean.c}" var="item2"
+                         styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+                         >
                 
-                <p:column>
+                <h:column>
                     <f:facet name="header">ID</f:facet>
                     <h:outputLabel value="#{item2.id}"/>
-                </p:column>
+                </h:column>
                 
-                <p:column>
+                <h:column>
                     <f:facet name="header">Name</f:facet>
                     <h:outputLabel value="#{item2.name}"/>
                     
-                </p:column>
+                </h:column>
                 
-                <p:column>
+                <h:column>
                     <f:facet name="header">CTP</f:facet>
                     <h:outputLabel value="#{item2.ctp}"/>
-                </p:column>
+                </h:column>
                 
-                <p:column>
+                <h:column>
                     <f:facet name="header">Deviation</f:facet>
                     <h:outputLabel value="#{item2.dev}"/>
-                </p:column>
+                </h:column>
                 
-                <p:column>
+                <h:column>
                     <f:facet name="header">Target</f:facet>
                     <h:outputLabel value="#{item2.target}"/>
-                </p:column>
+                </h:column>
                 
-            </p:dataTable>
+            </h:dataTable>
         </h:form>
         </h:panelGroup>
              </h:panelGrid>

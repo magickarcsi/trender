@@ -66,44 +66,42 @@
     </h:form>
     <f:view>
         <h:form>
-            <h:dataTable value="#{adminbean.p}" var="item"
-                         styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-                         >
+            <p:dataTable value="#{adminbean.p}" var="item"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 paginator="true" rows="20" style="margin-bottom:20px">
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">ID</f:facet>
                     <h:outputLabel value="#{item.id}"/>
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Store</f:facet>
                     <h:outputLabel value="#{item.store}"/>
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Lastname</f:facet>
                     <h:outputLabel value="#{item.surname}"/>
                     
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Firstname</f:facet>
                     <h:outputLabel value="#{item.firstname}"/>
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Bonus</f:facet>
                     <h:outputLabel value="#{item.bonus}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header">Details</f:facet>
                     <h:commandButton value="Details" id="button" action="#{adminbean.getDetailsById(item.id)}">
                         <f:ajax execute="button" render="right"/>
                     </h:commandButton>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </f:view>
 
