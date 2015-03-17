@@ -45,24 +45,38 @@
     
 <div id="left">
     <h:form>
-    <h3 align="center">CTP leaderboard <p/>
+    
         
-        <h:selectOneMenu value="#{adminbean.week}">
-   			<f:selectItems value="#{adminbean.favWeek2Value}" />
-        </h:selectOneMenu>
-        <h:selectOneMenu value="#{adminbean.year}">
-   	<f:selectItem itemValue="2015" itemLabel="2015" />
-</h:selectOneMenu>
-        <h:commandButton value="Details" id="button" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
-        </h3>
-        <h5 align="center">
-            <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
-        <h:outputLabel value="#{adminbean.firstandlast}"/>
-        <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
-        </h5>
         
     
+        <p:panel id="toggleable" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+ 
+         <h:panelGrid columns="1" cellpadding="10">
+             
+             <h3 align="center">CTP leaderboard <p/> 
+            <h:selectOneMenu value="#{adminbean.week}">
+   			<f:selectItems value="#{adminbean.favWeek2Value}" />
+            </h:selectOneMenu>
+            <h:selectOneMenu value="#{adminbean.year}">
+            <f:selectItem itemValue="2015" itemLabel="2015" />
+            </h:selectOneMenu>
+            <h:commandButton value="Details" id="button" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
+            </h3>
+            <h5 align="center">
+                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+            <h:outputLabel value="#{adminbean.firstandlast}"/>
+            <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
+            </h5>
+             
+        </h:panelGrid>
+ 
+    </p:panel>
+    
         </h:form>
+    
+    <p:panel id="toggleable" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+ 
+         <h:panelGrid columns="2" cellpadding="10">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
             <h:dataTable value="#{adminbean.c}" var="item2"
@@ -100,6 +114,17 @@
             </h:dataTable>
         </h:form>
         </h:panelGroup>
+             </h:panelGrid>
+ 
+        <f:facet name="options">
+            <p:menu>
+                <p:submenu label="Settings">
+                    <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                    <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
+                </p:submenu>
+            </p:menu>
+        </f:facet>
+    </p:panel>
 </div>
 <div id="right">
     <h3 align="center">CTP leaderboard <p/>YTD</h3>
