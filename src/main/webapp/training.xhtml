@@ -64,7 +64,6 @@
 </h:selectOneMenu>
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
     </h:form>
-    <f:view>
         <h:form>
             <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
@@ -102,7 +101,6 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-    </f:view>
 
 </h:panelGroup>
              </h:panelGrid>
