@@ -116,17 +116,31 @@
         <h:panelGroup layout="block" id="right">
     <p:panel id="toggleable4" header="Details" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
  
-         <h:panelGrid columns="2" cellpadding="10">
-        
+         <h:panelGrid columns="2">
         <p/>
-        <strong><h:outputLabel value="ID: "/></strong><h:outputLabel value="#{adminbean.person.id}"/><p/>
-        <strong><h:outputLabel value="Store: "/></strong><h:outputLabel value="#{adminbean.person.store}"/><p/>
-        <strong><h:outputLabel value="Surname: "/></strong><h:outputLabel value="#{adminbean.person.surname}"/><p/>
-        <strong><h:outputLabel value="First name: "/></strong><h:outputLabel value="#{adminbean.person.firstname}"/><p/>
-        <strong><h:outputLabel value="Role: "/></strong><h:outputLabel value="#{adminbean.personrole}"/><p/>
-        <strong><h:outputLabel value="Monthly SOCs: "/></strong><p/>
-        <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
+        <strong><h:outputLabel value="ID: "/></strong>
+        <h:outputLabel value="#{adminbean.person.id}"/>
+        
+        <strong><h:outputLabel value="Store: "/></strong>
+        <h:outputLabel value="#{adminbean.person.store}"/>
+        
+        <strong><h:outputLabel value="Surname: "/></strong>
+        <h:outputLabel value="#{adminbean.person.surname}"/>
+        
+        <strong><h:outputLabel value="First name: "/></strong>
+        <h:outputLabel value="#{adminbean.person.firstname}"/>
+        
+        <strong><h:outputLabel value="Role: "/></strong>
+        <h:outputLabel value="#{adminbean.personrole}"/>
+        
+        <strong><h:outputLabel value="Monthly SOCs: "/></strong>
+        <h:outputLabel value="None"/>
+        
+        <strong><h:outputLabel value="Monthly Leaderboard: "/></strong>
+        <h:outputLabel value="None"/>
+        
         <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
+        <h:outputLabel value="None"/>
         
     </h:panelGrid>
 
