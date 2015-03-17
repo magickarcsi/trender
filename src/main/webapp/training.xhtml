@@ -46,7 +46,7 @@
 <div id="content">
 <ui:insert name="content">
     <div id="left">
-    <p:panel id="toggleable3" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
+    <p:panel id="toggleable3" header="People" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
  
  
          <h:panelGrid>
@@ -64,7 +64,6 @@
 </h:selectOneMenu>
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
     </h:form>
-    <h3 align="center">People <p/></h3>
     <f:view>
         <h:form>
             <h:dataTable value="#{adminbean.p}" var="item"
@@ -114,12 +113,12 @@
     </p:panel>
         </div>
     <div id="right">
-    <p:panel id="toggleable4" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
+        <h:panelGroup layout="block" id="right">
+    <p:panel id="toggleable4" header="Details" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
  
          <h:panelGrid columns="2" cellpadding="10">
-        <h:panelGroup layout="block" id="right">
+        
         <p/>
-        <h3 align="center">Details <p/></h3>
         <strong><h:outputLabel value="ID: "/></strong><h:outputLabel value="#{adminbean.person.id}"/><p/>
         <strong><h:outputLabel value="Store: "/></strong><h:outputLabel value="#{adminbean.person.store}"/><p/>
         <strong><h:outputLabel value="Surname: "/></strong><h:outputLabel value="#{adminbean.person.surname}"/><p/>
@@ -128,10 +127,11 @@
         <strong><h:outputLabel value="Monthly SOCs: "/></strong><p/>
         <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
         <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
-        </h:panelGroup>
+        
     </h:panelGrid>
 
     </p:panel>
+            </h:panelGroup>
 </div>
 </ui:insert>
     <div id="sidebar">
