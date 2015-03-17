@@ -45,6 +45,7 @@
 
 <div id="content">
 <ui:insert name="content">
+    <div id="left">
     <p:panel id="toggleable3" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
  
  
@@ -111,6 +112,8 @@
              </h:panelGrid>
  
     </p:panel>
+        </div>
+    <div id="right">
     <p:panel id="toggleable4" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4" style="margin-bottom:20px">
  
          <h:panelGrid columns="2" cellpadding="10">
@@ -129,7 +132,7 @@
     </h:panelGrid>
 
     </p:panel>
-
+</div>
 </ui:insert>
     <div id="sidebar">
 <h3>Enter Post-Shift</h3>
