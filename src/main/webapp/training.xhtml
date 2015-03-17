@@ -97,20 +97,19 @@ xmlns:p="http://primefaces.org/ui">
 
 </h:panelGroup>
     <p:dialog header="Basic Dialog" widgetVar="dlg1">
-    <h:outputText value="Resistance to PrimeFaces is futile!" />
-    <h:panelGroup layout="block" id="right">
-    <p/>
-    <h3 align="center">Details <p/></h3>
-    <strong><h:outputLabel value="ID: "/></strong><h:outputLabel value="#{adminbean.person.id}"/><p/>
-    <strong><h:outputLabel value="Store: "/></strong><h:outputLabel value="#{adminbean.person.store}"/><p/>
-    <strong><h:outputLabel value="Surname: "/></strong><h:outputLabel value="#{adminbean.person.surname}"/><p/>
-    <strong><h:outputLabel value="First name: "/></strong><h:outputLabel value="#{adminbean.person.firstname}"/><p/>
-    <strong><h:outputLabel value="Role: "/></strong><h:outputLabel value="#{adminbean.personrole}"/><p/>
-    <strong><h:outputLabel value="Monthly SOCs: "/></strong><p/>
-    <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
-    <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
-</h:panelGroup>
-</p:dialog>
+        <h:panelGroup layout="block" id="right">
+        <p/>
+        <h3 align="center">Details <p/></h3>
+        <strong><h:outputLabel value="ID: "/></strong><h:outputLabel value="#{adminbean.person.id}"/><p/>
+        <strong><h:outputLabel value="Store: "/></strong><h:outputLabel value="#{adminbean.person.store}"/><p/>
+        <strong><h:outputLabel value="Surname: "/></strong><h:outputLabel value="#{adminbean.person.surname}"/><p/>
+        <strong><h:outputLabel value="First name: "/></strong><h:outputLabel value="#{adminbean.person.firstname}"/><p/>
+        <strong><h:outputLabel value="Role: "/></strong><h:outputLabel value="#{adminbean.personrole}"/><p/>
+        <strong><h:outputLabel value="Monthly SOCs: "/></strong><p/>
+        <strong><h:outputLabel value="Monthly Leaderboard: "/></strong><p/>
+        <strong><h:outputLabel value="Overall Leaderboard: "/></strong>
+        </h:panelGroup>
+    </p:dialog>
 
 </ui:insert>
     <div id="sidebar">

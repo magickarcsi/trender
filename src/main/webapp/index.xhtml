@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       >
     <link type="text/css" rel="stylesheet" href="http://break-mcdst.rhcloud.com/style.css" />
@@ -20,6 +21,19 @@
                 <h2>Online Post-Shift Tool</h2>
                 <h3>Index</h3>
             </div>
+            <p:toolbar id="tb">
+                <f:facet name="left">
+                    <p:commandButton type="button" value="New" icon="ui-icon-document" />
+                    <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                    <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                    <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+                </f:facet>
+            </p:toolbar>
+    <div style="height:800px"></div>
+    <p:sticky target="tb" />
             <div id="buttons">
                 <h:button value="Index" outcome="index" class="button" />
                 <h:button value="Service" outcome="service" class="button" />
