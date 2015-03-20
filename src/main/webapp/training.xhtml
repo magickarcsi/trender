@@ -24,7 +24,7 @@
                 <f:facet name="left">
                     <p:button outcome="index" value="Dashboard"  icon="ui-icon-monitor" />
                     <p:button outcome="service" value="Service" icon="ui-icon-bell-2"/>
-                    <p:button outcome="production" value="Production" icon="ui-icon-food" disabled="true"/>
+                    <p:button outcome="production" value="Production" icon="ui-icon-food"/>
                     <p:button outcome="training" value="Training" icon="ui-icon-graduation-cap"/>
                     <p:button value="Admin" outcome="admin" icon="ui-icon-book" />
                 </f:facet>
@@ -46,7 +46,7 @@
 <div id="content">
 <ui:insert name="content">
     <div id="left">
-    <p:panel id="toggleable3" header="People" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
+    <p:panel id="toggleable3" header="People" toggleable="true" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
  <h:panelGrid>
     <h:form>
         <h:selectOneMenu value="#{adminbean.role}">
@@ -59,10 +59,10 @@
         <f:selectItem itemValue="7" itemLabel="Salaried Manager" />
         <f:selectItem itemValue="8" itemLabel="Business Manager" />
 </h:selectOneMenu>
-        <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p/>
+        <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p:outputLabel value="Search: "/><p:inputText value="#{adminbean.searchfield}"/><p/>
             <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                         paginator="true" rows="20" style="width: auto">
+                         paginator="true" rows="20" style="width: auto; margin: 5px;">
                 
                 <p:column width="30">
                     <f:facet name="header">ID</f:facet>
@@ -102,7 +102,7 @@
         </div>
     <div id="right">
         <h:panelGroup layout="block" id="right">
-            <p:panel id="toggleable4" header="Details" style="width: 200px" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
+            <p:panel id="toggleable4" header="Details" style="width: 200px" toggleable="true" closable="false" collapsed="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
  
          <h:panelGrid columns="2" columnClasses="label,value">
          <h:outputLabel for="id" value="ID: " style="font-weight:bold"/> <h:outputText id="id" value="#{adminbean.person.id}"/>

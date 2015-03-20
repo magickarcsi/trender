@@ -79,6 +79,7 @@ public class adminBean implements Serializable{
     private int week = 3;
     private int year = 2015;
     public int bonus;
+    private String searchfield;
     public static String db_table = "names";
     //public Person p = null;
     Connection conn = null;
@@ -257,6 +258,20 @@ public class adminBean implements Serializable{
      */
     public void setFirstandlast(String firstandlast) {
         this.firstandlast = firstandlast;
+    }
+
+    /**
+     * @return the searchfield
+     */
+    public String getSearchfield() {
+        return searchfield;
+    }
+
+    /**
+     * @param searchfield the searchfield to set
+     */
+    public void setSearchfield(String searchfield) {
+        this.searchfield = searchfield;
     }
     public static class Ctp{
         private int id;

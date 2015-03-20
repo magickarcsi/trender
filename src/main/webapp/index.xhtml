@@ -26,7 +26,7 @@
                 <f:facet name="left">
                     <p:button outcome="index" value="Dashboard"  icon="ui-icon-monitor" />
                     <p:button outcome="service" value="Service" icon="ui-umbrella"/>
-                    <p:button outcome="production" value="Production" icon="ui-icon-food" disabled="true"/>
+                    <p:button outcome="production" value="Production" icon="ui-icon-food"/>
                     <p:button outcome="training" value="Training" icon="ui-icon-graduation-cap"/>
                     <p:button value="Admin" outcome="admin" icon="ui-icon-book" />
                 </f:facet>
@@ -52,23 +52,23 @@
         <p:dashboard id="board" model="#{dashboardView.model}">
             <p:ajax event="reorder" listener="#{dashboardView.handleReorder}" update="msgs" />
  
-            <p:panel id="sports" header="Sports" toggleable="true">
+            <p:panel id="sports" header="Sports" toggleable="true" style="width: 100px;height: 100px;">
                 <h:outputText value="Sports Content" />
             </p:panel>
  
-            <p:panel id="finance" header="Finance" toggleable="true">
+            <p:panel id="finance" header="Finance" toggleable="true" style="width: 100px;height: 100px;">
                 <h:outputText value="Finance Content" />
             </p:panel>
  
-            <p:panel id="lifestyle" header="Lifestyle" toggleable="true">
+            <p:panel id="lifestyle" header="Lifestyle" toggleable="true" style="width: 100px;height: 100px;">
                 <h:outputText value="Lifestyle Content"  />
             </p:panel>
  
-            <p:panel id="weather" header="Weather" toggleable="true">
+            <p:panel id="weather" header="Weather" toggleable="true" style="width: 100px;height: 100px;">
                 <h:outputText value="Weather Content" />
             </p:panel>
  
-            <p:panel id="politics" header="Politics" toggleable="true">
+            <p:panel id="politics" header="Politics" toggleable="true" style="width: 100px;height: 100px;">
                 <h:outputText value="Politics Content" />
             </p:panel>
         </p:dashboard>
