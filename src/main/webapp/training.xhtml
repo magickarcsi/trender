@@ -42,7 +42,12 @@
 </div>
 <div id="container">
 <h1><ui:insert name="title">Default Page Title</ui:insert></h1>
-
+<script>
+    private void getDetails(){
+        var elem = document.getElementById("toggleable4");
+        elem.setAttribute("collapsed", "false");
+    }
+</script>
 <div id="content">
 <ui:insert name="content">
     <div id="left">
@@ -90,7 +95,8 @@
                 </p:column>
                 <p:column width="50">
                     <f:facet name="header">Details</f:facet>
-                    <h:commandButton value="Details" id="button" action="#{adminbean.getDetailsById(item.id)}">
+                    <h:commandButton value="Details" id="button" action="getDetails()">
+                        <f:actionListener binding="#{adminbean.getDetailsById(item.id)}" />
                         <f:ajax execute="button" render="right"/>
                     </h:commandButton>
                 </p:column>
