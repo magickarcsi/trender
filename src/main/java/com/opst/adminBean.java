@@ -92,6 +92,7 @@ public class adminBean implements Serializable{
     //private ArrayList<Person> lis = new ArrayList<Person>(Arrays.asList(LD));
     private ArrayList<Person> p = new ArrayList<Person>(Arrays.asList(LD));
     private String personrole = null;
+    private Boolean detailsCollapsed = true;
 
     /**
      * @return the role
@@ -273,6 +274,20 @@ public class adminBean implements Serializable{
      */
     public void setSearchfield(String searchfield) {
         this.searchfield = searchfield;
+    }
+
+    /**
+     * @return the detailsCollapsed
+     */
+    public Boolean getDetailsCollapsed() {
+        return detailsCollapsed;
+    }
+
+    /**
+     * @param detailsCollapsed the detailsCollapsed to set
+     */
+    public void setDetailsCollapsed(Boolean detailsCollapsed) {
+        this.detailsCollapsed = detailsCollapsed;
     }
     public static class Ctp{
         private int id;
@@ -571,6 +586,7 @@ public class adminBean implements Serializable{
     }
     public void getDetailsById(int id) throws Exception {
         int detailsId = id;
+        setDetailsCollapsed(false);
         setPerson(null);
         Connection conn = com.opst.MySqlDAOFactory.createConnection();
         Statement stmt = null;
