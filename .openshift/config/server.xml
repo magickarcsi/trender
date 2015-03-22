@@ -121,7 +121,7 @@
              available for use by the Realm.  -->
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
                resourceName="UserDatabase"
-               driverName="com.mysql.jdbc.Driver"
+               driverName="com.opst.Driver"
                 connectionURL="jdbc:mysql://localhost:3306/trender"
                 connectionName="adminH56f3Il"
                 connectionPassword="DlDsAKIQEQ5l"
@@ -134,7 +134,7 @@
       </Realm>
 	
 <Realm  className="org.apache.catalina.realm.JDBCRealm"
-driverName="com.mysql.jdbc.Driver"
+driverName="com.opst.Driver"
 connectionURL="jdbc:mysql://localhost:3306/trender"
 connectionName="adminH56f3Il"
 connectionPassword="DlDsAKIQEQ5l"
