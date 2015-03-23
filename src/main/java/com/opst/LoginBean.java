@@ -60,7 +60,9 @@ public class LoginBean {
     if (request.getRemoteUser() != null){
         setIsLoggedInRev(true);
     }
-    return "index";
+    HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
+    String original = origRequest.getPathInfo();
+    return original;
   }
 
     /**
