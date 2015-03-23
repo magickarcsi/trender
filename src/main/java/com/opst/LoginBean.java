@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author karci
  */
-@ManagedBean
+@ManagedBean(name="loginbean")
 @NoneScoped
 public class LoginBean {
   private String username;
@@ -25,9 +25,7 @@ public class LoginBean {
  
 
 
-  public String login (String uname, String pword) {
-    setUsername(uname);
-    setPassword(pword);
+  public String login () {
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest)
         context.getExternalContext().getRequest();

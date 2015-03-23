@@ -40,22 +40,20 @@ and open the template in the editor.
                 </f:facet>
             </p:toolbar>
     <p:sticky target="tb" />
-    <h:form>
     <p style="margin-left: auto;
     margin-right: auto;
     width: 70%;
     background-color: #b0e0e6;" >
                         
-                            <h:outputLabel for="usernameInput">Username: </h:outputLabel>
-                            <h:inputText id="usernameInput" value="#{loginBean.username}" required="true" />
-                                <br />
-                            <h:outputLabel for="passwordInput">Password: </h:outputLabel>
-                            <h:inputSecret id="passwordInput" value="#{loginBean.password}" required="true" />
-                            <br />
-                            <h:commandButton value="Submit" type="submit" action="#{loginBean.login(loginBean.username, loginBean.password)}" />
+        <h:form>
+            <h:outputLabel for="uname" value="Username: "/>
+            <h:inputText id="uname" value="#{loginbean.username}"/><br/>
+            <h:outputLabel for="pword" value="Password: "/>
+            <h:inputSecret id="pword" value="#{loginbean.password}"/><br>
+            <h:commandButton value="Login" action="#{loginbean.login()}"/>
+        </h:form>
                         
         </p>
-        </h:form>
 </div>
     </h:body>
 </html>
