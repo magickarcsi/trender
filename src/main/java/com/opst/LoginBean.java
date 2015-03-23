@@ -22,6 +22,7 @@ public class LoginBean {
   private String username;
   private String password;
   private Boolean isLoggedInRev = true;
+  private String curruser = null;
 
 
   public String login () {
@@ -38,6 +39,7 @@ public class LoginBean {
     }
     HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
     String original = origRequest.getPathInfo();
+        setCurruser(request.getRemoteUser());
     if (request.getRemoteUser() != null){
         setIsLoggedInRev(false);
     }
@@ -57,7 +59,8 @@ public class LoginBean {
       //...
       context.addMessage(null, new FacesMessage("Logout failed."));
     }
-    if (request.getRemoteUser() != null){
+    setCurruser(null);
+    if (request.getRemoteUser() == null){
         setIsLoggedInRev(true);
     }
     return "index?faces-redirect=true";
@@ -103,5 +106,19 @@ public class LoginBean {
      */
     public void setIsLoggedInRev(Boolean isLoggedInRev) {
         this.isLoggedInRev = isLoggedInRev;
+    }
+
+    /**
+     * @return the curruser
+     */
+    public String getCurruser() {
+        return curruser;
+    }
+
+    /**
+     * @param curruser the curruser to set
+     */
+    public void setCurruser(String curruser) {
+        this.curruser = curruser;
     }
 }
