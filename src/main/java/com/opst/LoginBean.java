@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginBean {
   private String username;
   private String password;
-  private Boolean isLoggedInRev;
+  private Boolean isLoggedInRev = true;
 
 
   public String login () {
