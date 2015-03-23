@@ -29,7 +29,7 @@ public class LoginBean {
     HttpServletRequest request = (HttpServletRequest)
         context.getExternalContext().getRequest();
     try {
-        System.out.println("[INFO]"+getUsername()+" "+getPassword());
+        System.out.println("[INFO] - LOGINBEAN: Logging "+getUsername()+" in.");
       request.login(getUsername(), getPassword());
     } catch (ServletException e) {
       //...
@@ -43,7 +43,7 @@ public class LoginBean {
     }
     setUsername(null);
     setPassword(null);
-    return "index";
+    return "index?faces-redirect=true";
   }
 
   public String logout() {
@@ -51,7 +51,7 @@ public class LoginBean {
     HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
     try {
-        System.out.println("Logging "+request.getRemoteUser());
+        System.out.println("[INFO] - LOGINBEAN: Logging "+request.getRemoteUser()+" out.");
       request.logout();
     } catch (ServletException e) {
       //...
@@ -60,9 +60,7 @@ public class LoginBean {
     if (request.getRemoteUser() != null){
         setIsLoggedInRev(true);
     }
-    HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
-    String original = origRequest.getPathInfo();
-    return original;
+    return "index?faces-redirect=true";
   }
 
     /**
