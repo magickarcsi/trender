@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginBean {
   private String username;
   private String password;
+  private Boolean isLoggedInRev;
 
 
   public String login () {
@@ -36,7 +37,13 @@ public class LoginBean {
       return "error";
     }
     HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
-    return origRequest.getPathInfo();
+    String original = origRequest.getPathInfo();
+    if (request.getRemoteUser() != null){
+        setIsLoggedInRev(false);
+    }
+    setUsername(null);
+    setPassword(null);
+    return "index";
   }
 
   public void logout() {
@@ -48,6 +55,9 @@ public class LoginBean {
     } catch (ServletException e) {
       //...
       context.addMessage(null, new FacesMessage("Logout failed."));
+    }
+    if (request.getRemoteUser() != null){
+        setIsLoggedInRev(true);
     }
   }
 
@@ -77,5 +87,19 @@ public class LoginBean {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the isLoggedIn
+     */
+    public Boolean getIsLoggedInRev() {
+        return isLoggedInRev;
+    }
+
+    /**
+     * @param isLoggedInRev the isLoggedInRev to set
+     */
+    public void setIsLoggedInRev(Boolean isLoggedInRev) {
+        this.isLoggedInRev = isLoggedInRev;
     }
 }
