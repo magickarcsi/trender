@@ -7,7 +7,7 @@ package com.opst;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.NoneScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +17,10 @@ import javax.servlet.http.HttpServletRequest;
  * @author karci
  */
 @ManagedBean(name="loginbean")
-@NoneScoped
+@SessionScoped
 public class LoginBean {
   private String username;
   private String password;
-
- 
 
 
   public String login () {
