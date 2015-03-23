@@ -16,5 +16,4 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-    <display-name>Tomcat7FormBasedJAAS</display-name>
 </web-app>
