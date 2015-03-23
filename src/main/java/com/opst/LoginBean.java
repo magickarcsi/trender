@@ -34,7 +34,7 @@ public class LoginBean {
       request.login(getUsername(), getPassword());
     } catch (ServletException e) {
       //...
-      context.addMessage(null, new FacesMessage("Login failed."));
+      context.addMessage(null, new FacesMessage("Login failed. "+e.getMessage()));
       return "error";
     }
     return "admin/index";
