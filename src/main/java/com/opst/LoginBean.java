@@ -31,10 +31,10 @@ public class LoginBean {
     HttpServletRequest request = (HttpServletRequest)
         context.getExternalContext().getRequest();
     try {
-      request.login(getUsername(), getPassword());
+      request.login(this.username, this.password);
     } catch (ServletException e) {
       //...
-      context.addMessage(null, new FacesMessage("Login failed. "+e.getRootCause()));
+      context.addMessage(null, new FacesMessage("Login failed. "+e.getCause()));
       return "error";
     }
     return "admin/index";
