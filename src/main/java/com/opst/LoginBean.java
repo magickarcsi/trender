@@ -31,7 +31,8 @@ public class LoginBean {
     HttpServletRequest request = (HttpServletRequest)
         context.getExternalContext().getRequest();
     try {
-      request.login(this.username, this.password);
+        System.out.println("[INFO]"+getUsername()+" "+getPassword());
+      request.login(getUsername(), getPassword());
     } catch (ServletException e) {
       //...
       context.addMessage(null, new FacesMessage("Login failed. "+e.getCause()));
