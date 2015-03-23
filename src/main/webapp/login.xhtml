@@ -41,13 +41,13 @@ and open the template in the editor.
             </p:toolbar>
     <p:sticky target="tb" />
         <h:form>
-    <h:outputLabel for="usernameInput">#{bundle['login.username']}:</h:outputLabel>
+    <h:outputLabel for="usernameInput">#{bundle['login.username']}</h:outputLabel>
     <h:inputText id="usernameInput" value="#{loginBean.username}" required="true" />
         <br />
-    <h:outputLabel for="passwordInput">#{bundle['login.password']}:</h:outputLabel>
+    <h:outputLabel for="passwordInput">#{bundle['login.password']}</h:outputLabel>
     <h:inputSecret id="passwordInput" value="#{loginBean.password}" required="true" />
     <br />
-    <h:commandButton value="$ {bundle['login.submit']}" action="#{loginBean.login}" />
+    <h:commandButton value="${bundle['login.submit']}" action="#{loginBean.login}" />
     </h:form>
 </div>
     </h:body>

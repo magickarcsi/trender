@@ -40,11 +40,12 @@ public class LoginBean {
 
 
   public String login () {
+      
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
     try {
-      request.login(this.username, this.password);
+      request.login(username, password);
     } catch (ServletException e) {
       //...
       context.addMessage(null, new FacesMessage("Login failed."));
