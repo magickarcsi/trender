@@ -46,11 +46,12 @@ public class LoginBean {
     return "index";
   }
 
-  public void logout() {
+  public String logout() {
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
     try {
+        System.out.println("Logging "+request.getRemoteUser());
       request.logout();
     } catch (ServletException e) {
       //...
@@ -59,6 +60,7 @@ public class LoginBean {
     if (request.getRemoteUser() != null){
         setIsLoggedInRev(true);
     }
+    return "index";
   }
 
     /**
