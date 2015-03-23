@@ -35,7 +35,8 @@ public class LoginBean {
       context.addMessage(null, new FacesMessage("Login failed. "+e.getCause()));
       return "error";
     }
-    return "admin/index";
+    HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
+    return origRequest.getPathInfo();
   }
 
   public void logout() {
