@@ -22,21 +22,7 @@ public class LoginBean {
   private String username;
   private String password;
 
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUserName(String username) {
-    this.username = username;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
+ 
 
 
   public String login () {
@@ -45,7 +31,7 @@ public class LoginBean {
     HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
     try {
-      request.login(username, password);
+      request.login(getUsername(), getPassword());
     } catch (ServletException e) {
       //...
       context.addMessage(null, new FacesMessage("Login failed."));
@@ -65,4 +51,32 @@ public class LoginBean {
       context.addMessage(null, new FacesMessage("Logout failed."));
     }
   }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
