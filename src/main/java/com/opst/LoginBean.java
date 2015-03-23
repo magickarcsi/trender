@@ -28,7 +28,7 @@ public class LoginBean {
   public String login () {
       
     FacesContext context = FacesContext.getCurrentInstance();
-    HttpServletRequest request = (HttpServletRequest) 
+    HttpServletRequest request = (HttpServletRequest)
         context.getExternalContext().getRequest();
     try {
       request.login(getUsername(), getPassword());
