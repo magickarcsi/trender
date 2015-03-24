@@ -41,6 +41,8 @@ class MySqlDAOFactory {
             conn =
         DriverManager.getConnection("jdbc:mysql://"+dbaddress+"/trender?" +
                                    "user="+dbuser+"&password="+dbpw);
+            System.out.println("jdbc:mysql://"+dbaddress+"/trender?" +
+                                   "user="+dbuser+"&password="+dbpw);
         }
             catch (SQLException ex) {}
         return conn;

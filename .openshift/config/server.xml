@@ -119,9 +119,14 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-               resourceName="UserDatabase"/>
+        <Realm className="org.apache.catalina.realm.JDBCRealm"
+               resourceName="UserDatabase"
+               driverName="com.mysql.jdbc.Driver"
+               connectionURL="jdbc:mysql://
+               userTable="users" userNameCol="user_name" userCredCol="user_pass"
+               userRoleTable="user_roles" roleNameCol="role_name"/>
       </Realm>
+      
 
       <Host name="localhost"  appBase="webapps"
             unpackWARs="false" autoDeploy="true">
