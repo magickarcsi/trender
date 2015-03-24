@@ -118,13 +118,6 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-        <Realm className="org.apache.catalina.realm.JDBCRealm"
-               driverName="com.mysql.jdbc.Driver"
-               connectionURL="jdbc:mysql://127.11.117.2:3306/trender"
-               connectionName="adminH56f3Il"
-               connectionPassword="DlDsAKIQEQ5l"
-               userTable="users" userNameCol="username" userCredCol="password"
-               userRoleTable="users" roleNameCol="role"/>
       </Realm>
       
 

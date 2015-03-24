@@ -26,21 +26,15 @@ public class LoginBean {
 
 
   public String login () {
-    FacesContext context = FacesContext.getCurrentInstance();
-    HttpServletRequest request = (HttpServletRequest)
+        FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getRequest();
-    try {
         System.out.println("[INFO] - LOGINBEAN: Logging "+getUsername()+" in.");
-      request.login(getUsername(), getPassword());
-    } catch (ServletException e) {
-      //...
-      context.addMessage(null, new FacesMessage("Login failed. "+e.getCause()));
-      return "error";
-    }
+        doLogin(getUsername(), getPassword());
+      
     HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
     String original = origRequest.getPathInfo();
-        setCurruser(request.getRemoteUser());
-    if (request.getRemoteUser() != null){
+        setCurruser(getRemoteUser());
+    if (getRemoteUser() != null){
         setIsLoggedInRev(false);
     }
     setUsername(null);
@@ -52,20 +46,26 @@ public class LoginBean {
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
-    try {
-        System.out.println("[INFO] - LOGINBEAN: Logging "+request.getRemoteUser()+" out.");
-      request.logout();
-    } catch (ServletException e) {
-      //...
-      context.addMessage(null, new FacesMessage("Logout failed."));
-    }
+    System.out.println("[INFO] - LOGINBEAN: Logging "+request.getRemoteUser()+" out.");
+    doLogout();
     setCurruser(null);
     if (request.getRemoteUser() == null){
         setIsLoggedInRev(true);
     }
     return "index?faces-redirect=true";
   }
+    public String getRemoteUser(){
+       String ruser = null;
+        
+       return ruser; 
+    }
 
+    public void doLogin(String uname, String pword) {
+        
+    }
+    public void doLogout(){
+        
+    }
     /**
      * @return the username
      */

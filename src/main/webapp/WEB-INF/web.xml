@@ -16,37 +16,4 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-    <security-constraint>
-        <display-name>Constraint1</display-name>
-        <web-resource-collection>
-            <web-resource-name>service</web-resource-name>
-            <description/>
-            <url-pattern>/faces/service.xhtml</url-pattern>
-        </web-resource-collection>
-        <web-resource-collection>
-            <web-resource-name>training</web-resource-name>
-            <description/>
-            <url-pattern>/faces/training.xhtml</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>tomcat</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>UserDatabase</realm-name>
-        <form-login-config>
-            <form-login-page>/faces/login.xhtml</form-login-page>
-            <form-error-page>/faces/error.xhtml</form-error-page>
-        </form-login-config>
-    </login-config>
-    <security-role>
-        <description/>
-        <role-name>tomcat</role-name>
-    </security-role>
-    <security-role>
-        <description/>
-        <role-name>role1</role-name>
-    </security-role>
 </web-app>
