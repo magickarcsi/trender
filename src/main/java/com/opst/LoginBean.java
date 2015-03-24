@@ -26,13 +26,10 @@ public class LoginBean {
 
 
   public String login () {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getExternalContext().getRequest();
-        System.out.println("[INFO] - LOGINBEAN: Logging "+getUsername()+" in.");
+    FacesContext context = FacesContext.getCurrentInstance();
+    context.getExternalContext().getRequest();
+    System.out.println("[INFO] - LOGINBEAN: Logging "+getUsername()+" in.");
         doLogin(getUsername(), getPassword());
-      
-    HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRe‌​quest();
-    String original = origRequest.getPathInfo();
         setCurruser(getRemoteUser());
     if (getRemoteUser() != null){
         setIsLoggedInRev(false);
@@ -44,12 +41,12 @@ public class LoginBean {
 
   public String logout() {
     FacesContext context = FacesContext.getCurrentInstance();
-    HttpServletRequest request = (HttpServletRequest) 
         context.getExternalContext().getRequest();
-    System.out.println("[INFO] - LOGINBEAN: Logging "+request.getRemoteUser()+" out.");
+    HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
+    System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
     doLogout();
     setCurruser(null);
-    if (request.getRemoteUser() == null){
+    if (getRemoteUser() == null){
         setIsLoggedInRev(true);
     }
     return "index?faces-redirect=true";

@@ -53,8 +53,8 @@
  
          <h:panelGrid>
              <p> 
-                 <h:selectOneMenu value="#{adminbean.week}" onchange="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}">
-                     <f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu><h:selectOneMenu value="#{adminbean.year}" onchange="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"><f:selectItem itemValue="2015" itemLabel="2015" />
+                 <h:selectOneMenu value="#{adminbean.week}">
+                     <f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu><h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" />
             </h:selectOneMenu>
             </p> 
         </h:panelGrid>
