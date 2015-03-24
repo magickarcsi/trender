@@ -122,9 +122,9 @@
         <Realm className="org.apache.catalina.realm.JDBCRealm"
                resourceName="UserDatabase"
                driverName="com.mysql.jdbc.Driver"
-               connectionURL="jdbc:mysql://
-               userTable="users" userNameCol="user_name" userCredCol="user_pass"
-               userRoleTable="user_roles" roleNameCol="role_name"/>
+               connectionURL="jdbc:mysql://127.11.117.2:3306/trender"
+               userTable="users" userNameCol="username" userCredCol="password"
+               userRoleTable="users" roleNameCol="role"/>
       </Realm>
       
 
