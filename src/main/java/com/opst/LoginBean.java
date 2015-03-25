@@ -5,6 +5,7 @@
  */
 package com.opst;
 
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ManagedBean(name="loginbean")
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
+  private static final long serialVersionUID = 1L;
   private String username;
   private String password;
   private Boolean isLoggedInRev = true;

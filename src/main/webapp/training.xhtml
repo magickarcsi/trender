@@ -61,33 +61,33 @@
         <h:commandButton value="List" action="#{adminbean.getNamesByRole(adminbean.role)}"/><p:outputLabel value="Search: "/><p:inputText value="#{adminbean.searchfield}"/><p/>
             <p:dataTable  value="#{adminbean.p}" var="item" styleClass="order-table"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                         paginator="true" rows="20" style="width: auto; margin: 5px;">
+                         paginator="true" rows="20" style="width: auto; margin: auto;">
                 
-                <p:column width="30">
+                <p:column style="width:auto">
                     <f:facet name="header">ID</f:facet>
                     <h:outputLabel value="#{item.id}"/>
                 </p:column>
                 
-                <p:column width="30">
+                <p:column style="width:auto">
                     <f:facet name="header">Store</f:facet>
                     <h:outputLabel value="#{item.store}"/>
                 </p:column>
                 
-                <p:column width="90">
+                <p:column style="width:auto">
                     <f:facet name="header">Lastname</f:facet>
                     <h:outputLabel value="#{item.surname}"/>    
                 </p:column>
                 
-                <p:column width="90">
+                <p:column style="width:auto">
                     <f:facet name="header">Firstname</f:facet>
                     <h:outputLabel value="#{item.firstname}"/>
                 </p:column>
                 
-                <p:column width="40">
+                <p:column style="width:auto">
                     <f:facet name="header">Bonus</f:facet>
                     <h:outputLabel value="#{item.bonus}"/>
                 </p:column>
-                <p:column width="50">
+                <p:column style="width:auto">
                     <f:facet name="header">Details</f:facet>
                     <h:commandButton value="Details" id="button" action="#{adminbean.getDetailsById(item.id)}">
                         <f:ajax execute="button" render="right"/>

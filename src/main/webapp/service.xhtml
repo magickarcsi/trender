@@ -45,21 +45,16 @@
     
 <div id="left">
     <h:form>
-    
-        
-        
-    
-        <p:panel id="toggleable1" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
+<p:panel id="toggleable1" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
  
          <h:panelGrid>
              <p> 
-                 <h:selectOneMenu value="#{adminbean.week}">
-                     <f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu><h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" />
+                 <h:selectOneMenu value="#{adminbean.week}"><f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu><h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" />
             </h:selectOneMenu>
-            </p> 
+                 <h:commandButton value="Next" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
+             </p> 
         </h:panelGrid>
- 
-    </p:panel>
+</p:panel>
     
         </h:form>
     
