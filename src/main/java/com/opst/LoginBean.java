@@ -24,7 +24,7 @@ public class LoginBean implements Serializable{
   private static final long serialVersionUID = 1L;
   private String username;
   private String password;
-  private Boolean isLoggedIn = false;
+  private Boolean isLoggedIn;
   private Boolean isLoggedInRev = true;
   private String curruser = null;
   
@@ -47,6 +47,7 @@ public class LoginBean implements Serializable{
             // Successful login
             if (dbUsername.equals(username) && dbPassword.equals(password)) {
                 setIsLoggedIn(true);
+                System.out.println("[INFO] - LOGINBEAN: Login successful.");
                 setCurruser(username);
                 return "/mcdst/index?faces-redirect=true";
             }
