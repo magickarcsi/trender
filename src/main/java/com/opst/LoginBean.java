@@ -46,7 +46,7 @@ public class LoginBean implements Serializable{
              
             // Successful login
             if (dbUsername.equals(username) && dbPassword.equals(password)) {
-                isLoggedIn = true;
+                setIsLoggedIn(true);
                 setCurruser(username);
                 return "/mcdst/index?faces-redirect=true";
             }
@@ -72,7 +72,7 @@ public class LoginBean implements Serializable{
     System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
     
     // Set the paremeter indicating that user is logged in to false
-        isLoggedIn = false;
+        setIsLoggedIn(false);
          
         // Set logout message
         FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
