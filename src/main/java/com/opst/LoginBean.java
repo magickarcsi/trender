@@ -6,6 +6,7 @@
 package com.opst;
 
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,22 +24,45 @@ public class LoginBean implements Serializable{
   private static final long serialVersionUID = 1L;
   private String username;
   private String password;
+  private Boolean isLoggedIn = false;
   private Boolean isLoggedInRev = true;
   private String curruser = null;
+  
+  private static final String[] users = {"mkoran:mkoran","admin:admin"};
+
+    @EJB
+    private UserService userService;
+    private User current;
 
 
   public String login () {
     FacesContext context = FacesContext.getCurrentInstance();
     context.getExternalContext().getRequest();
+    
     System.out.println("[INFO] - LOGINBEAN: Logging "+getUsername()+" in.");
-        doLogin(getUsername(), getPassword());
-        setCurruser(getRemoteUser());
-    if (getRemoteUser() != null){
+        for (String user: users) {
+            String dbUsername = user.split(":")[0];
+            String dbPassword = user.split(":")[1];
+             
+            // Successful login
+            if (dbUsername.equals(username) && dbPassword.equals(password)) {
+                isLoggedIn = true;
+                setCurruser(username);
+                return "/mcdst/index?faces-redirect=true";
+            }
+        }
+         
+        // Set login ERROR
+        FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        if (getCurruser() != null){
         setIsLoggedInRev(false);
     }
     setUsername(null);
-    setPassword(null);
-    return "index?faces-redirect=true";
+    setPassword(null); 
+        // To to login page
+        return "/login?faces-redirect=true";
   }
 
   public String logout() {
@@ -46,12 +70,20 @@ public class LoginBean implements Serializable{
         context.getExternalContext().getRequest();
     HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
     System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
-    doLogout();
+    
+    // Set the paremeter indicating that user is logged in to false
+        isLoggedIn = false;
+         
+        // Set logout message
+        FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+         
     setCurruser(null);
-    if (getRemoteUser() == null){
+    if (getCurruser() == null){
         setIsLoggedInRev(true);
     }
-    return "index?faces-redirect=true";
+    return "/login?faces-redirect=true";
   }
     public String getRemoteUser(){
        String ruser = null;
@@ -59,12 +91,6 @@ public class LoginBean implements Serializable{
        return ruser; 
     }
 
-    public void doLogin(String uname, String pword) {
-        
-    }
-    public void doLogout(){
-        
-    }
     /**
      * @return the username
      */
@@ -119,5 +145,19 @@ public class LoginBean implements Serializable{
      */
     public void setCurruser(String curruser) {
         this.curruser = curruser;
+    }
+
+    /**
+     * @return the isLoggedIn
+     */
+    public Boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    /**
+     * @param isLoggedIn the isLoggedIn to set
+     */
+    public void setIsLoggedIn(Boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
     }
 }
