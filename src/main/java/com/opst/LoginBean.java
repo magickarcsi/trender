@@ -49,6 +49,9 @@ public class LoginBean implements Serializable{
                 setIsLoggedIn(true);
                 System.out.println("[INFO] - LOGINBEAN: Login successful.");
                 setCurruser(username);
+                if (getCurruser() != null){
+                setIsLoggedInRev(false);
+                }
                 return "/mcdst/index?faces-redirect=true";
             }
         }
