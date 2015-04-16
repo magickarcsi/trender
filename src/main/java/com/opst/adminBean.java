@@ -594,14 +594,15 @@ public class adminBean implements Serializable{
         stmt = conn.createStatement();
         try {
         rs = stmt.executeQuery("select store, surname,firstname,role,bonus from `names` WHERE id in ("+(detailsId)+") ORDER BY surname ASC;");
-        }
-        catch(SQLException e) {
-            System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
-        }
         rs.first();
                 System.out.println("[INFO] - ADMINBEAN: View details: "+rs.getNString(2)+", "+rs.getNString(3)+" from "+rs.getInt(1));
                 
                 setPerson(new Person(detailsId,rs.getInt(1),rs.getNString(2),rs.getNString(3),rs.getInt(4),rs.getInt(5)));
+        
+        }
+        catch(SQLException e) {
+            System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
+        }
         
         switch(role) {
             case 1: setPersonrole("Crew Member"); break;
