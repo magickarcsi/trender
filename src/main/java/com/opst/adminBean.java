@@ -634,6 +634,7 @@ public class adminBean implements Serializable{
             case 7: roll = "Salaried Manager"; break;
             case 8: roll = "Business Manager"; break;
         }
+    try {    
         rs = stmt.executeQuery("select id,store,surname,firstname,bonus from `names` WHERE role in ("+(role)+") ORDER BY surname ASC;");
                 rs.first();
                 getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5)));
@@ -642,6 +643,10 @@ public class adminBean implements Serializable{
                 {
                     getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5)));
                 }
+    }
+        catch(SQLException e) {
+            System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
+        }
     }
     
     /**
