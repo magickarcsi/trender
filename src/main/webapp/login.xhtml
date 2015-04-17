@@ -34,19 +34,22 @@ and open the template in the editor.
                 </f:facet>
             </p:toolbar>
     <p:sticky target="tb"/>
+    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
     <p:panel id="toggleable3" header="Login" toggleable="false" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="loginpanel" style="margin-left: auto;
     margin-right: auto;
     width: 70%;">
+        <p style="margin-left: auto; margin-right: auto;">
     <h:form>
-            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-            <p style="margin-left: auto; margin-right: auto;">
+            
+            
             <h:outputLabel for="uname" value="Username: " />
             <h:inputText id="uname" value="#{loginbean.username}" /><br/>
             <h:outputLabel for="pword" value="Password: " />
             <h:inputSecret id="pword" value="#{loginbean.password}" /><br/>
             <h:commandButton value="Login" action="#{loginbean.login()}" />
-            </p>
+            
         </h:form>
+            </p>
     </p:panel>
 </div>
     </h:body>
