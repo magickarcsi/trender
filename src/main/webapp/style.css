@@ -61,6 +61,7 @@ and open the template in the editor.
 #container {
     float: left;
     width: 85%;
+    padding-top: 5px;
 }
   
   #header {
@@ -69,7 +70,7 @@ and open the template in the editor.
 	background:-webkit-linear-gradient(top, #4d3fe3 5%, #019ad2 100%);
 	background:-o-linear-gradient(top, #4d3fe3 5%, #019ad2 100%);
 	background:-ms-linear-gradient(top, #4d3fe3 5%, #019ad2 100%);
-	background:linear-gradient(to top, #4d3fe3 5%, #019ad2 100%);
+	//background:linear-gradient(to top, #4d3fe3 5%, #019ad2 100%);
     padding: 5px;
     color: white;
     width: 1264px;
@@ -103,7 +104,7 @@ and open the template in the editor.
     }
     
     #right2 {
-    width: 28%;
+    width: 30%;
     float: right;
     display: inline-block;
     }
