@@ -93,7 +93,7 @@ and open the template in the editor.
     
     #left1 {
     float: left;
-    width: 68%;
+    width: 65%;
     padding-right: 5px;
     }
     
@@ -103,7 +103,7 @@ and open the template in the editor.
     }
     
     #right2 {
-    width: 28%;
+    width: 25%;
     display: inline-block;
     }
   
