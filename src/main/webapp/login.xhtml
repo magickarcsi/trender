@@ -25,6 +25,7 @@ and open the template in the editor.
 <h2>Online Post-Shift Tool</h2>
 <h3>Login</h3>
 </div>
+    <h:form>
     <p:toolbar id="tb">
                 
                 <f:facet name="right">
@@ -35,20 +36,19 @@ and open the template in the editor.
             </p:toolbar>
     <p:sticky target="tb"/>
     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+    </h:form>
     <p:panel id="toggleable3" header="Login" toggleable="false" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="loginpanel" style="margin-left: auto;
     margin-right: auto;
     width: 70%;">
+    
         <p style="margin-left: auto; margin-right: auto;">
     <h:form>
-            
-            
             <h:outputLabel for="uname" value="Username: " />
             <h:inputText id="uname" value="#{loginbean.username}" /><br/>
             <h:outputLabel for="pword" value="Password: " />
             <h:inputSecret id="pword" value="#{loginbean.password}" /><br/>
             <h:commandButton value="Login" action="#{loginbean.login()}" />
-            
-        </h:form>
+    </h:form>
             </p>
     </p:panel>
 </div>
