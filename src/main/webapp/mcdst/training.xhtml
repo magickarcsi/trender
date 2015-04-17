@@ -101,7 +101,7 @@
         </div>
     <div id="right">
         <h:panelGroup layout="block" id="right">
-            <p:panel id="toggleable4" header="Details" style="width: 200px" toggleable="true" closable="false" collapsed="#{adminbean.detailsCollapsed}" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
+            <p:panel id="toggleable4" header="Details" style="width: 500px" toggleable="true" closable="false" collapsed="#{adminbean.detailsCollapsed}" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
  
          <h:panelGrid columns="2" columnClasses="label,value">
          <h:outputLabel for="id" value="ID: " style="font-weight:bold"/> <h:outputText id="id" value="#{adminbean.person.id}"/>
@@ -121,7 +121,14 @@
          <h:outputLabel for="olbrd" value="Overall Leaderboard: " style="font-weight:bold"/> <h:outputText id="olbrd" value="None"/>
         
     </h:panelGrid>
-
+                <f:facet name="options">
+            <p:menu>
+                <p:submenu label="Options">
+                    <p:menuitem value="Edit" url="#" icon="ui-icon-newwin" onclick="" />
+                    <p:menuitem value="Delete" url="#" icon="ui-icon-close" onclick="" />
+                </p:submenu>
+            </p:menu>
+        </f:facet>
     </p:panel>
             </h:panelGroup>
 </div>
