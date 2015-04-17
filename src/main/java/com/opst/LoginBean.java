@@ -57,9 +57,10 @@ public class LoginBean implements Serializable{
         }
          
         // Set login ERROR
-        FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
+        FacesMessage msg = new FacesMessage("Login error!", "Username and/or password is invalid.");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         if (getCurruser() != null){
         setIsLoggedInRev(false);
     }
