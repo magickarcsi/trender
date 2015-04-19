@@ -100,8 +100,20 @@ and open the template in the editor.
     padding-right: 5px;
     }
     
+    #left2 {
+    float: left;
+    width: 50%;
+    padding-right: 5px;
+    }
+    
     #right {
     width: 38%;
+    display: inline-block;
+    }
+    
+    #right1 {
+    width: 30%;
+    float: right;
     display: inline-block;
     }
     
