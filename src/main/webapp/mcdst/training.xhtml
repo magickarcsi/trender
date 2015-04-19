@@ -20,6 +20,7 @@
 <h2>Online Post-Shift Tool</h2>
 <h3>Training</h3>
 </div>
+    <h:form>
     <p:toolbar id="tb" style="min-width: 1000px;">
                 <f:facet name="left">
                     <p:button outcome="/mcdst/index" value="Dashboard"  icon="ui-icon-monitor" />
@@ -35,6 +36,8 @@
                 </f:facet>
             </p:toolbar>
     <p:sticky target="tb" />
+    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+    </h:form>
 <div id="sidebar">
     <br/>
 <h1>Sidebar</h1>

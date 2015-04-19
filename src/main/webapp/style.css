@@ -116,6 +116,12 @@ and open the template in the editor.
     min-width: 1000px;
     width: 100%;
     }
+    
+    #container {
+    margin-right: 5%;
+    min-width: 1000px;
+    width: 100%;
+    }
   
   #footer {
     clear: right;
