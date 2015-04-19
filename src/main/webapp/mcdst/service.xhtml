@@ -50,24 +50,23 @@
     <h:form>
 <p:panel id="toggleable1" header="Toggleable" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
  
-         <h:panelGrid>
-             <p> 
-                 <h:selectOneMenu value="#{adminbean.week}"><f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu><h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" />
-            </h:selectOneMenu>
-                 <h:commandButton value="Next" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
-             </p> 
-        </h:panelGrid>
+    <h:panelGrid columns="3">
+                <h:selectOneMenu value="#{adminbean.week}"><f:selectItems value="#{adminbean.favWeek2Value}" /></h:selectOneMenu>
+                 
+                <h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" /></h:selectOneMenu>
+                 
+                <h:commandButton value="Show" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
+    </h:panelGrid>
 </p:panel>
     
         </h:form>
-    
     <p:panel id="toggleable2" header="Leaderboard" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel2" style="margin-bottom:20px">
         <h:form><h5 align="center">
-                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+            <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
             <h:outputLabel value="#{adminbean.firstandlast}"/>
             <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
         </h5></h:form>
-         <h:panelGrid columns="2" cellpadding="10">
+         <h:panelGrid columns="1">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
             <h:dataTable value="#{adminbean.c}" var="item2"
