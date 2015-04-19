@@ -114,6 +114,7 @@ and open the template in the editor.
   #content {
     margin-right: 5%;
     min-width: 1000px;
+    width: 100%;
     }
   
   #footer {
