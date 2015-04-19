@@ -42,7 +42,7 @@
 <h1><ui:insert name="title">Default Page Title</ui:insert></h1>
 <div id="content">
 <ui:insert name="content">
-    <div id="left2">
+    <div id="left">
     <p:panel id="toggleable3" header="People" toggleable="true" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="panel3" style="margin-bottom:20px">
  <h:panelGrid>
     <h:form>
@@ -97,15 +97,12 @@
  
     </p:panel>
         </div>
-    <div id="right2">
-        <h:panelGroup layout="block" id="right2">
+    <div id="right">
+        <h:panelGroup layout="block" id="right">
             <p:panel id="toggleable4" header="Details" style="width: 400px" toggleable="true" closable="false" collapsed="#{adminbean.detailsCollapsed}" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
  
          <h:panelGrid columns="2" columnClasses="label,value">
-         <h:outputLabel for="id" value="ID: " style="font-weight:bold"/> <h:outputText id="id" value="#{adminbean.person.id}"/>
-        
-         <h:outputLabel for="store" value="Store: " style="font-weight:bold"/> <h:outputText id="store" value="#{adminbean.person.store}"/>
-        
+         
          <h:outputLabel for="surname" value="Surname: " style="font-weight:bold"/> <h:outputText id="surname" value="#{adminbean.person.surname}"/>
         
          <h:outputLabel for="firstname" value="First name: " style="font-weight:bold"/> <h:outputText id="firstname" value="#{adminbean.person.firstname}"/>
