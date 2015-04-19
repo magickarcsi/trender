@@ -61,7 +61,7 @@ public class XMLHandler {
             //File fXmlFile = new File("http://breakme-mcdst.rhcloud.com/storekvs.xml");
              DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
              DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-             Document doc = dBuilder.parse(new URL("http://break-mcdst.rhcloud.com/storekvs.xml").openStream());
+             Document doc = dBuilder.parse(new URL("http://trender-mcdst.rhcloud.com/storekvs.xml").openStream());
              doc.getDocumentElement().normalize();
             NodeList leaderboarder = doc.getElementsByTagName("leaderboard");
             Element el = (Element)leaderboarder.item(0);
@@ -92,7 +92,7 @@ public class XMLHandler {
         public void ctpnodes(String w) throws ParserConfigurationException, SAXException, IOException{
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
              DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-             Document doc = dBuilder.parse(new URL("http://break-mcdst.rhcloud.com/storectp.xml").openStream());
+             Document doc = dBuilder.parse(new URL("http://trender-mcdst.rhcloud.com/storectp.xml").openStream());
              doc.getDocumentElement().normalize();
             NodeList leaderboarder = doc.getElementsByTagName("leaderboard");
             Element el = (Element)leaderboarder.item(0);
