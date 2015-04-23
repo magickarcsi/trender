@@ -68,7 +68,7 @@ and open the template in the editor.
         </div>
     <div id="leftandright">
 <ui:insert name="content">
-    <p:panelGrid columns="2" style="border: none;">
+    <p:panelGrid columns="2" style="border: none; vertical-align: top;">
         <h:form>
             <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
