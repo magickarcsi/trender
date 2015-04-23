@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="x-iso-8859-11"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<lists>
+    <leaderboard week="3" date1="12/1/2015" date2="18/1/2015">
+        <ctp place="1">
+            <name>Marton</name>
+            <time>36</time>
+            <dev>-4</dev>
+            <target>35</target>
+        </ctp>
+        <ctp place="2">
+            <name>Debbie</name>
+            <time>40</time>
+            <dev>0</dev>
+            <target>35</target>
+        </ctp>
+    </leaderboard>
+    <leaderboard week="4" date1="19/1/2015" date2="25/1/2015">
+        <ctp place="1">
+            <name>Beth</name>
+            <time>33</time>
+            <dev>-4</dev>
+            <target>35</target>
+        </ctp>
+        <ctp place="2">
+            <name>Debbie</name>
+            <time>40</time>
+            <dev>0</dev>
+            <target>35</target>
+        </ctp>
+    </leaderboard>
+</lists>
