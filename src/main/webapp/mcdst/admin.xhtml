@@ -68,9 +68,8 @@ and open the template in the editor.
         </div>
     <div id="leftandright">
 <ui:insert name="content">
-    <p:panelGrid columns="2" style="border: none; vertical-align: top;">
+    <p:panelGrid columns="2" style="vertical-align: top">
         <h:form>
-            <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -107,10 +106,8 @@ and open the template in the editor.
                     <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
                 </h:column>
             </h:dataTable>
-            </p:panel>
         </h:form>
         <h:form>
-            <p:panel id="ctp" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
         <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -147,11 +144,9 @@ and open the template in the editor.
                     <f:facet name="header">Action</f:facet>
                     <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
                 </h:column>
-            </h:dataTable>
-            </p:panel>
+        </h:dataTable>
         </h:form>
         <h:form>
-            <p:panel id="kvs2" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -188,10 +183,8 @@ and open the template in the editor.
                     <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
                 </h:column>
             </h:dataTable>
-            </p:panel>
         </h:form>
         <h:form>
-            <p:panel id="ctp2" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -229,7 +222,6 @@ and open the template in the editor.
                     <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
                 </h:column>
             </h:dataTable>
-            </p:panel>
         </h:form>
     </p:panelGrid>
 </ui:insert>
