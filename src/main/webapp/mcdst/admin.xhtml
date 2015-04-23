@@ -68,9 +68,9 @@ and open the template in the editor.
         </div>
     <div id="leftandright">
 <ui:insert name="content">
-    <p:panelGrid columns="2" style="border: none; margin-top: 5px;">
+    <p:panelGrid columns="2" style="border: none;">
         <h:form>
-            <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px">
+            <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -110,7 +110,7 @@ and open the template in the editor.
             </p:panel>
         </h:form>
         <h:form>
-            <p:panel id="ctp" header="CTP leaderboard" toggleable="false" style="margin-top: 5px">
+            <p:panel id="ctp" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
         <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -151,7 +151,7 @@ and open the template in the editor.
             </p:panel>
         </h:form>
         <h:form>
-            <p:panel id="kvs2" header="KVS leaderboard" toggleable="false" style="margin-top: 5px">
+            <p:panel id="kvs2" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
                          styleClass="order-table"
     			headerClass="order-table-header"
@@ -191,7 +191,7 @@ and open the template in the editor.
             </p:panel>
         </h:form>
         <h:form>
-            <p:panel id="ctp2" header="CTP leaderboard" toggleable="false" style="margin-top: 5px">
+            <p:panel id="ctp2" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
             <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
                          styleClass="order-table"
     			headerClass="order-table-header"
