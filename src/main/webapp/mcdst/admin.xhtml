@@ -61,9 +61,14 @@ and open the template in the editor.
 
 <div id="container">
 <div id="content">
+    <div id="sidebar">
+            <h3>Enter Post-Shift</h3>
+
+            <p style="clear: both">Hello there. Welcome to my lair.</p>   
+        </div>
     <div id="leftandright">
 <ui:insert name="content">
-    <p:panelGrid columns="2" style="width: 100%; border: none;">
+    <p:panelGrid columns="2" style="width: 100%; border: none; margin-top: 5px;">
         <h:form>
             <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px">
             <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
@@ -229,11 +234,7 @@ and open the template in the editor.
     </p:panelGrid>
 </ui:insert>
 </div>
-        <div id="sidebar">
-            <h3>Enter Post-Shift</h3>
-
-            <p style="clear: both">Hello there. Welcome to my lair.</p>   
-        </div>
+        
 </div>
 </div>
 </div>
