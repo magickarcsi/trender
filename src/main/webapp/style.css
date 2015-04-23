@@ -94,6 +94,12 @@ and open the template in the editor.
     padding-right: 5px;
     }
     
+    #leftandright {
+    float: left;
+    width: 76%;
+    padding-right: 5px;
+    }
+    
     #left1 {
     float: left;
     width: 68%;
