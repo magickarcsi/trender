@@ -26,6 +26,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.w3c.dom.Document;
 /**
  *
@@ -599,6 +601,10 @@ public class adminBean implements Serializable{
                 }
                 if (getC().isEmpty()){
                     setLeaderboardShouldBeCollapsed(true);
+                    FacesMessage msg = new FacesMessage("Error", "There is no leaderboard uploaded for Week "+getWeek()+".");
+                    msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+                    FacesContext.getCurrentInstance().addMessage(null, msg);
+                    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
                 } 
                 else {
                     setLeaderboardShouldBeCollapsed(false);
