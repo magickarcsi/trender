@@ -604,7 +604,7 @@ public class adminBean implements Serializable{
                     FacesMessage msg = new FacesMessage("Error", "There is no leaderboard uploaded for Week "+getWeek()+".");
                     msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                     FacesContext.getCurrentInstance().addMessage(null, msg);
-                    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+                    //FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
                 } 
                 else {
                     setLeaderboardShouldBeCollapsed(false);
