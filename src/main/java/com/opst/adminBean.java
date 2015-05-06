@@ -77,7 +77,7 @@ public class adminBean implements Serializable{
     private int role = 1;
     private static Calendar sDateCalendar = new GregorianCalendar();
     private static int currentweek = sDateCalendar.get(Calendar.WEEK_OF_YEAR);
-    private int week = 3;
+    private int week = currentweek;
     private int year = 2015;
     public int bonus;
     private String searchfield;

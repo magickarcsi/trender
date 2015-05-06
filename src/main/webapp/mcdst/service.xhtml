@@ -56,7 +56,9 @@
                 <h:commandButton value="Show" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
     </h:panelGrid>
 </p:panel>
-    
+    <script>
+        <#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}
+    </script>
         </h:form>
     <p:panel id="toggleable2" header="Leaderboard" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel2" style="margin-bottom:20px">
         <h:form><h5 align="center">
