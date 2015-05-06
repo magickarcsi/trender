@@ -60,7 +60,7 @@
         #{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}
     </script>
         </h:form>
-    <p:panel id="toggleable2" header="Leaderboard" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel2" style="margin-bottom:20px">
+    <p:panel id="toggleable2" header="Leaderboard" toggleable="true" closable="true" toggleSpeed="500" collapsed="#{adminbean.leaderboardShouldBeCollapsed}" closeSpeed="500" widgetVar="panel2" style="margin-bottom:20px">
         <h:form><h5 align="center">
             <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
             <h:outputLabel value="#{adminbean.firstandlast}"/>

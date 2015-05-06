@@ -77,7 +77,7 @@ public class adminBean implements Serializable{
     private int role = 1;
     private static Calendar sDateCalendar = new GregorianCalendar();
     private static int currentweek = sDateCalendar.get(Calendar.WEEK_OF_YEAR);
-    private int week = currentweek;
+    private int week = currentweek-1;
     private int year = 2015;
     public int bonus;
     private String searchfield;
@@ -93,6 +93,7 @@ public class adminBean implements Serializable{
     private ArrayList<Person> p = new ArrayList<Person>(Arrays.asList(LD));
     private String personrole = null;
     private Boolean detailsCollapsed = true;
+    private Boolean leaderboardShouldBeCollapsed = true;
 
     /**
      * @return the role
@@ -288,6 +289,20 @@ public class adminBean implements Serializable{
      */
     public void setDetailsCollapsed(Boolean detailsCollapsed) {
         this.detailsCollapsed = detailsCollapsed;
+    }
+
+    /**
+     * @return the leaderboardShouldBeCollapsed
+     */
+    public Boolean getLeaderboardShouldBeCollapsed() {
+        return leaderboardShouldBeCollapsed;
+    }
+
+    /**
+     * @param leaderboardShouldBeCollapsed the leaderboardShouldBeCollapsed to set
+     */
+    public void setLeaderboardShouldBeCollapsed(Boolean leaderboardShouldBeCollapsed) {
+        this.leaderboardShouldBeCollapsed = leaderboardShouldBeCollapsed;
     }
     public static class Ctp{
         private int id;
@@ -581,6 +596,12 @@ public class adminBean implements Serializable{
                     String lastname = rs1.getNString(1);
                     String name = firstname + " " + lastname.substring(0, 1);
                     getC().add(new Ctp(rs.getInt(1),name,rs.getInt(3),rs.getInt(4),rs.getInt(5),getWeek(),getYear()));
+                }
+                if (getC().isEmpty()){
+                    setLeaderboardShouldBeCollapsed(true);
+                } 
+                else {
+                    setLeaderboardShouldBeCollapsed(false);
                 }
         
     }
