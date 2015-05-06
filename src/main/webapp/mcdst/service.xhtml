@@ -54,6 +54,13 @@
                 <h:selectOneMenu value="#{adminbean.year}"><f:selectItem itemValue="2015" itemLabel="2015" /></h:selectOneMenu>
                  
                 <h:commandButton value="Show" action="#{adminbean.getCtpByWeek(adminbean.week, adminbean.year)}"/>
+                
+                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+                
+                <h:outputLabel value="#{adminbean.firstandlast}"/>
+            
+                <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
+            
     </h:panelGrid>
 </p:panel>
     <script>
@@ -61,11 +68,7 @@
     </script>
         </h:form>
     <p:panel id="toggleable2" header="Leaderboard" toggleable="true" closable="true" toggleSpeed="500" collapsed="#{adminbean.leaderboardShouldBeCollapsed}" closeSpeed="500" widgetVar="panel2" style="margin-bottom:20px">
-        <h:form><h5 align="center">
-            <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
-            <h:outputLabel value="#{adminbean.firstandlast}"/>
-            <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
-        </h5></h:form>
+        
          <h:panelGrid columns="1">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
