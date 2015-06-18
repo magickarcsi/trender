@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<xhtml xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -66,172 +66,33 @@ and open the template in the editor.
 
             <p style="clear: both">Hello there. Welcome to my lair.</p>   
         </div>
-    <div id="leftandright">
+    <div id="left1">
 <ui:insert name="content">
-    <p:panelGrid columns="2" style="border: none;">
-        <h:form>
-            <p:panel id="sports" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
-            <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
-                         styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-                         >
-                
-                <h:column>
-                    <f:facet name="header">Place</f:facet>
-                    <input type="text" value="#{item.place}" size="2" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Name</f:facet>
-                    <input type="text" list="names" value="#{item.name}" size="10" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">KVS</f:facet>
-                    <input type="text" value="#{item.kvs}" size="6" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Deviation</f:facet>
-                    <input type="text" value="#{item.dev}" size="4" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Target</f:facet>
-                    <input type="text" value="#{item.target}" size="4" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Action</f:facet>
-                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
-                </h:column>
-            </h:dataTable>
-            </p:panel>
-        </h:form>
-        <h:form>
-            <p:panel id="ctp" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
-        <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
-                         styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-                         >
-                
-                <h:column>
-                    <f:facet name="header">Place</f:facet>
-                    <input type="text" value="#{item2.place}" size="2"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Name</f:facet>
-                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+            <h:form>
+                <p:panel id="toggleable" header="Components" style="width: 400px" toggleable="true" closable="false" collapsed="false" toggleSpeed="500" closeSpeed="500" widgetVar="panel4">
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <h:outputText value="Service: " />
+                    <p:inputSwitch value="#{adminbean.serviceOn}">
+                        <p:ajax listener="#{adminbean.service}"/>
+                    </p:inputSwitch>
                     
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">CTP</f:facet>
-                    <input type="text" value="#{item2.ctp}" size="6"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Deviation</f:facet>
-                    <input type="text" value="#{item2.dev}" size="4"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Target</f:facet>
-                    <input type="text" value="#{item2.target}" size="4"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Action</f:facet>
-                    <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
-                </h:column>
-            </h:dataTable>
-            </p:panel>
-        </h:form>
-        <h:form>
-            <p:panel id="kvs2" header="KVS leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
-            <h:dataTable value="#{kvsbean.getKvsList()}" var="item"
-                         styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-                         >
-                
-                <h:column>
-                    <f:facet name="header">Place</f:facet>
-                    <input type="text" value="#{item.place}" size="2" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Name</f:facet>
-                    <input type="text" list="names" value="#{item.name}" size="10" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">KVS</f:facet>
-                    <input type="text" value="#{item.kvs}" size="6" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Deviation</f:facet>
-                    <input type="text" value="#{item.dev}" size="4" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Target</f:facet>
-                    <input type="text" value="#{item.target}" size="4" readonly="1"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Action</f:facet>
-                    <h:commandLink value="Delete" action="#{kvsbean.deleteAction(item)}"/>
-                </h:column>
-            </h:dataTable>
-            </p:panel>
-        </h:form>
-        <h:form>
-            <p:panel id="ctp2" header="CTP leaderboard" toggleable="false" style="margin-top: 5px; vertical-align: top;">
-            <h:dataTable value="#{ctpbean.getCtpList()}" var="item2"
-                         styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-                         >
-                
-                <h:column>
-                    <f:facet name="header">Place</f:facet>
-                    <input type="text" value="#{item2.place}" size="2"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Name</f:facet>
-                    <input type="text" list="names" value="#{item2.name}" size="10"/>
+                    <h:outputText value="Production: " />
+                    <p:inputSwitch value="#{adminbean.productionOn}">
+                        <p:ajax listener="#{adminbean.production}"/>
+                    </p:inputSwitch>
                     
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">CTP</f:facet>
-                    <input type="text" value="#{item2.ctp}" size="6"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Deviation</f:facet>
-                    <input type="text" value="#{item2.dev}" size="4"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Target</f:facet>
-                    <input type="text" value="#{item2.target}" size="4"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">Action</f:facet>
-                    <h:commandLink value="Delete" action="#{ctpbean.deleteAction(item2)}"/>
-                </h:column>
-            </h:dataTable>
-            </p:panel>
-        </h:form>
-    </p:panelGrid>
+                    <h:outputText value="Training: " />
+                    <p:inputSwitch value="#{adminbean.trainingOn}">
+                        <p:ajax listener="#{adminbean.training}"/>
+                    </p:inputSwitch>
+                    
+                    <h:outputText value="Messageboard: " />
+                    <p:inputSwitch value="#{adminbean.messageBoardOn}">
+                        <p:ajax listener="#{adminbean.messageboard}"/>
+                    </p:inputSwitch>
+                </h:panelGrid>
+                </p:panel>
+            </h:form>
 </ui:insert>
 </div>
         
@@ -240,4 +101,4 @@ and open the template in the editor.
 </div>
 <div id="footer">(c) 2015 Marton Koran</div>
 </h:body>
-</html>
+</xhtml>

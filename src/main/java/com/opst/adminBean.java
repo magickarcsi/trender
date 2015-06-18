@@ -96,7 +96,27 @@ public class adminBean implements Serializable{
     private String personrole = null;
     private Boolean detailsCollapsed = true;
     private Boolean leaderboardShouldBeCollapsed = true;
+    
+    private Boolean serviceOn = true;
+    private Boolean productionOn = true;
+    private Boolean trainingOn = true;
+    private Boolean messageBoardOn = false;
 
+    public void service() {
+    
+    }
+    
+    public void production() {
+        
+    }
+    
+    public void training() {
+        
+    }
+    
+    public void messageboard() {
+        
+    }
     /**
      * @return the role
      */
@@ -305,6 +325,62 @@ public class adminBean implements Serializable{
      */
     public void setLeaderboardShouldBeCollapsed(Boolean leaderboardShouldBeCollapsed) {
         this.leaderboardShouldBeCollapsed = leaderboardShouldBeCollapsed;
+    }
+
+    /**
+     * @return the serviceOn
+     */
+    public Boolean getServiceOn() {
+        return serviceOn;
+    }
+
+    /**
+     * @param serviceOn the serviceOn to set
+     */
+    public void setServiceOn(Boolean serviceOn) {
+        this.serviceOn = serviceOn;
+    }
+
+    /**
+     * @return the productionOn
+     */
+    public Boolean getProductionOn() {
+        return productionOn;
+    }
+
+    /**
+     * @param productionOn the productionOn to set
+     */
+    public void setProductionOn(Boolean productionOn) {
+        this.productionOn = productionOn;
+    }
+
+    /**
+     * @return the trainingOn
+     */
+    public Boolean getTrainingOn() {
+        return trainingOn;
+    }
+
+    /**
+     * @param trainingOn the trainingOn to set
+     */
+    public void setTrainingOn(Boolean trainingOn) {
+        this.trainingOn = trainingOn;
+    }
+
+    /**
+     * @return the messageBoardOn
+     */
+    public Boolean getMessageBoardOn() {
+        return messageBoardOn;
+    }
+
+    /**
+     * @param messageBoardOn the messageBoardOn to set
+     */
+    public void setMessageBoardOn(Boolean messageBoardOn) {
+        this.messageBoardOn = messageBoardOn;
     }
     public static class Ctp{
         private int id;
