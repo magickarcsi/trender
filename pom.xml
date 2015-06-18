@@ -76,8 +76,8 @@
 	  <type>jar</type>
 	 </dependency>
 	 <dependency>
-	  <groupId>primefaces</groupId>
-	  <artifactId>org.primefaces</artifactId>
+	  <groupId>org.primefaces</groupId>
+	  <artifactId>primefaces</artifactId>
 	  <version>5.1</version>
 	 </dependency>
 	</dependencies>
