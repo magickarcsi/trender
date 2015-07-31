@@ -39,7 +39,7 @@ class MySqlDAOFactory {
         
         try {
             conn =
-        DriverManager.getConnection("jdbc:mysql://"+dbaddress+"/trender?" +
+        DriverManager.getConnection("jdbc:mysql://"+dbaddress+"/00610?" +
                                    "user="+dbuser+"&password="+dbpw);
         }
             catch (SQLException ex) {}
