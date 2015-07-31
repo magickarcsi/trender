@@ -19,6 +19,10 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>com.opst.Upload</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -27,6 +31,10 @@
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
         <location>/login.xhtml</location>
     </error-page>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/upload/*</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>mcdst/index.xhtml</welcome-file>
     </welcome-file-list>
