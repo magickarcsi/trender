@@ -779,6 +779,15 @@ public class adminBean implements Serializable{
         }
     }
     
+    public static class uploadhandler{
+        
+        public void getUploadedTxt(String file){
+        String filename = file;
+        String envVar = System.getenv("OPENSHIFT_ENV_VAR");    
+        }
+        
+    }
+    
     public void getNamesByRole(int role) throws Exception{
         this.setRole(role);
         p.clear();

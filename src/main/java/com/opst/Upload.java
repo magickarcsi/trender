@@ -1,7 +1,10 @@
 package com.opst;
  
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +45,37 @@ public class Upload extends HttpServlet {
         is.close();
         os.close();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println();
+        File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
+        FileInputStream fis = null;
+    BufferedInputStream bis = null;
+    DataInputStream dis = null;
+ 
+    try {
+      fis = new FileInputStream(text);
+ 
+      // Here BufferedInputStream is added for fast reading.
+      bis = new BufferedInputStream(fis);
+      dis = new DataInputStream(bis);
+ 
+      // dis.available() returns 0 if the file does not have more lines.
+      while (dis.available() != 0) {
+ 
+      // this statement reads the line from the file and print it to
+        // the console.
+        out.println(dis.readLine());
+      }
+ 
+      // dispose all the resources after using them.
+      fis.close();
+      bis.close();
+      dis.close();
+ 
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     }
   }
  
@@ -50,7 +84,7 @@ public class Upload extends HttpServlet {
  
     String filePath = request.getRequestURI();
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/upload/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
