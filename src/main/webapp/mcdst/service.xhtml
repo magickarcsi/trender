@@ -115,8 +115,23 @@
     </p:panel>
 </div>
 <div id="right">
-    <h3 align="center">CTP leaderboard <p/>YTD</h3>
-    
+    <p:panel id="toggleable1" header="Uploads and data" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
+
+    <h:panelGrid columns="3">
+        <h:outputLabel value="Data for "/>
+        
+        <h:outputLabel value="Week: #{adminbean.week}"/>
+        
+        <h:outputLabel value ="Year: #{adminbean.year}"/> 
+        
+                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+                
+                <h:outputLabel value="#{adminbean.firstandlast}"/>
+            
+                <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
+            
+    </h:panelGrid>
+    </p:panel>
   </div>
     
     <div id="sidebar">
