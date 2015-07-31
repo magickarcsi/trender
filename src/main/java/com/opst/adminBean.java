@@ -799,11 +799,11 @@ public class adminBean implements Serializable{
     try {    
         rs = stmt.executeQuery("select id,store,surname,firstname,bonus,last_updated,updated_by from `names` WHERE role in ("+(role)+") ORDER BY surname ASC;");
                 rs.first();
-                getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getTimestamp(6).toString(),rs.getInt(7),rs.getNString(7)));
+                getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getTimestamp(6).toString(),rs.getInt(7),"mkoran"));
                 System.out.println("[INFO] - ADMINBEAN: Listing: "+roll+" from "+rs.getInt(2));
                 while (rs.next())
                 {
-                    getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getTimestamp(6).toString(),rs.getInt(7),rs.getNString(7)));
+                    getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getTimestamp(6).toString(),rs.getInt(7),"mkoran"));
                 }
     }
         catch(SQLException e) {
