@@ -87,7 +87,7 @@ public class adminBean implements Serializable{
     //public Person p = null;
     Connection conn = null;
     Statement stmt = null;
-    Person LD = new Person(0, 0, "Lusta", "Diszno", 6, 0);
+    Person LD = new Person(0, 0, "Lusta", "Diszno", 6, 0, "Now", 48, "mkoran");
     private Person person = null;
     private Ctp ctp = null;
     private ArrayList<Ctp> c = new ArrayList<Ctp>();
@@ -508,14 +508,20 @@ public class adminBean implements Serializable{
         private String firstname;
         private int role;
         private int bonus;
+        private String lastupdated;
+        private int updatedby;
+        private String updatedby_s;
         
-        public Person(int id, int store, String surname, String firstname, int role, int bonus) {
+        public Person(int id, int store, String surname, String firstname, int role, int bonus, String lastupdated, int updatedby, String updatedby_s) {
         this.id = id;
         this.store = store;
         this.surname = surname;
         this.firstname = firstname;
         this.role = role;
         this.bonus = bonus;
+        this.lastupdated = lastupdated;
+        this.updatedby = updatedby;
+        this.updatedby_s = updatedby_s;
     }
 
         /**
@@ -600,6 +606,48 @@ public class adminBean implements Serializable{
          */
         public void setStore(int store) {
             this.store = store;
+        }
+
+        /**
+         * @return the lastupdated
+         */
+        public String getLastupdated() {
+            return lastupdated;
+        }
+
+        /**
+         * @param lastupdated the lastupdated to set
+         */
+        public void setLastupdated(String lastupdated) {
+            this.lastupdated = lastupdated;
+        }
+
+        /**
+         * @return the updatedby
+         */
+        public int getUpdatedby() {
+            return updatedby;
+        }
+
+        /**
+         * @param updatedby the updatedby to set
+         */
+        public void setUpdatedby(int updatedby) {
+            this.updatedby = updatedby;
+        }
+
+        /**
+         * @return the updatedby_s
+         */
+        public String getUpdatedby_s() {
+            return updatedby_s;
+        }
+
+        /**
+         * @param updatedby_s the updatedby_s to set
+         */
+        public void setUpdatedby_s(String updatedby_s) {
+            this.updatedby_s = updatedby_s;
         }
         
     }
@@ -696,11 +744,22 @@ public class adminBean implements Serializable{
         ResultSet rs = null;
         stmt = conn.createStatement();
         try {
-        rs = stmt.executeQuery("select store, surname,firstname,role,bonus from `names` WHERE id in ("+(detailsId)+") ORDER BY surname ASC;");
+        rs = stmt.executeQuery("select store, surname,firstname,role,bonus,last_updated,updated_by from `names` WHERE id in ("+(detailsId)+") ORDER BY surname ASC;");
         rs.first();
                 System.out.println("[INFO] - ADMINBEAN: View details: "+rs.getNString(2)+", "+rs.getNString(3)+" from "+rs.getInt(1));
-                
-                setPerson(new Person(detailsId,rs.getInt(1),rs.getNString(2),rs.getNString(3),rs.getInt(4),rs.getInt(5)));
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+                stmt1 = conn.createStatement();
+                String luby = null;
+                try {
+                    rs1 = stmt.executeQuery("select surname,firstname from `names` WHERE id in ("+rs.getInt(7)+")");
+                    rs1.first();
+                    luby = rs1.getNString(1)+", "+rs1.getNString(2);
+                }
+                catch(SQLException e) {
+                System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
+                }
+                setPerson(new Person(detailsId,rs.getInt(1),rs.getNString(2),rs.getNString(3),rs.getInt(4),rs.getInt(5),rs.getNString(6),rs.getInt(7),luby));
         
         }
         catch(SQLException e) {
@@ -738,13 +797,13 @@ public class adminBean implements Serializable{
             case 8: roll = "Business Manager"; break;
         }
     try {    
-        rs = stmt.executeQuery("select id,store,surname,firstname,bonus from `names` WHERE role in ("+(role)+") ORDER BY surname ASC;");
+        rs = stmt.executeQuery("select id,store,surname,firstname,bonus,last_updated,updated_by from `names` WHERE role in ("+(role)+") ORDER BY surname ASC;");
                 rs.first();
-                getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5)));
+                getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getNString(6),rs.getInt(7),rs.getNString(7)));
                 System.out.println("[INFO] - ADMINBEAN: Listing: "+roll+" from "+rs.getInt(2));
                 while (rs.next())
                 {
-                    getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5)));
+                    getP().add(new Person(rs.getInt(1),rs.getInt(2),rs.getNString(3),rs.getNString(4),role,rs.getInt(5),rs.getNString(6),rs.getInt(7),rs.getNString(7)));
                 }
     }
         catch(SQLException e) {
