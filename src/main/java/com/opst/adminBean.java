@@ -740,6 +740,7 @@ public class adminBean implements Serializable{
         setDetailsCollapsed(false);
         setPerson(null);
         Connection conn = com.opst.MySqlDAOFactory.createConnection();
+        Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
         Statement stmt = null;
         ResultSet rs = null;
         stmt = conn.createStatement();
@@ -749,10 +750,10 @@ public class adminBean implements Serializable{
                 System.out.println("[INFO] - ADMINBEAN: View details: "+rs.getNString(2)+", "+rs.getNString(3)+" from "+rs.getInt(1));
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
-                stmt1 = conn.createStatement();
+                stmt1 = conn1.createStatement();
                 String luby = null;
                 try {
-                    rs1 = stmt.executeQuery("select surname,firstname from `names` WHERE id in ("+rs.getInt(7)+")");
+                    rs1 = stmt1.executeQuery("select surname,firstname from `names` WHERE id in ("+rs.getInt(7)+")");
                     rs1.first();
                     luby = rs1.getNString(1)+", "+rs1.getNString(2);
                 }
@@ -760,7 +761,7 @@ public class adminBean implements Serializable{
                 System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
                 }
                 setPerson(new Person(detailsId,rs.getInt(1),rs.getNString(2),rs.getNString(3),rs.getInt(4),rs.getInt(5),rs.getTimestamp(6).toString(),rs.getInt(7),luby));
-        
+                
         }
         catch(SQLException e) {
             System.out.println("[EXCEPTION] - ADMINBEAN: "+e.getMessage());
