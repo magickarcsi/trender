@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
  
-@WebServlet(name = "upload",urlPatterns = {"/upload/*"})
+@WebServlet(name = "Upload",urlPatterns = {"/upload/*"})
 @MultipartConfig
 public class Upload extends HttpServlet {
  
