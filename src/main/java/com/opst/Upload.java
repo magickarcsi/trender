@@ -70,7 +70,7 @@ public class Upload extends HttpServlet {
           if (i>10 && i<35) {
              
              //out.println(i+" "+line);
-             out.println(line.substring(1, 6)+"|"+line.substring(86, 92));
+             out.println(line.substring(1, 6)+"|"+line.substring(87, 92));
           }
           
       }
