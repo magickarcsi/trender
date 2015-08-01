@@ -69,7 +69,7 @@ public class Upload extends HttpServlet {
           i++;
           String line = dis.readLine();
           if (i == 6) {
-              out.print("    "+line.substring(61, 69));
+              out.println("    "+line.substring(61, 69));
               
           }
           if (i>10 && i<35) {
