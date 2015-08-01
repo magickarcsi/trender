@@ -66,10 +66,11 @@ public class Upload extends HttpServlet {
       // this statement reads the line from the file and print it to
         // the console.
           i++;
-          if (i>10) {
+          //if (i>10) {
              String line = dis.readLine();
-             out.println(line.substring(1, 6)+" "+line.substring(86, 91));
-          }
+             out.println(i+" "+line);
+             //out.println(line.substring(1, 6)+" "+line.substring(86, 91));
+          //}
           
       }
  
