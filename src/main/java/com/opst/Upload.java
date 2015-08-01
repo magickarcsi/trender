@@ -68,6 +68,10 @@ public class Upload extends HttpServlet {
         // the console.
           i++;
           String line = dis.readLine();
+          if (i == 6) {
+              out.print("    "+line.substring(62, 70));
+              
+          }
           if (i>10 && i<35) {
              
              //out.println(i+" "+line);
