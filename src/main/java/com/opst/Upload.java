@@ -35,8 +35,7 @@ public class Upload extends HttpServlet {
     for (Part part : request.getParts()) {
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
-        if (fileName != null){
-            FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
+        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         byte[] bytes = new byte[BUFFER_LENGTH];
         int read = 0;
         while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
@@ -81,13 +80,12 @@ public class Upload extends HttpServlet {
       bis.close();
       dis.close();
  
-        }
-       catch (FileNotFoundException e) {
-      e.printStackTrace();
+    } catch (FileNotFoundException e) {
+      //e.printStackTrace();
+      break;
     } catch (IOException e) {
       e.printStackTrace();
     }
-    }  
     }
   }
  
