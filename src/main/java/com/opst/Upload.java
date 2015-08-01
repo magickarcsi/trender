@@ -44,9 +44,10 @@ public class Upload extends HttpServlet {
         os.flush();
         is.close();
         os.close();
+        out.println();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
         out.println();
-        out.println("Time CTP");
+        out.println(" Time | CTP");
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         FileInputStream fis = null;
     BufferedInputStream bis = null;
@@ -81,8 +82,7 @@ public class Upload extends HttpServlet {
       dis.close();
  
     } catch (FileNotFoundException e) {
-      //e.printStackTrace();
-      break;
+      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
