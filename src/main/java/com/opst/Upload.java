@@ -46,6 +46,7 @@ public class Upload extends HttpServlet {
         os.close();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
         out.println();
+        out.println("Time CTP");
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         FileInputStream fis = null;
     BufferedInputStream bis = null;
@@ -59,11 +60,17 @@ public class Upload extends HttpServlet {
       dis = new DataInputStream(bis);
  
       // dis.available() returns 0 if the file does not have more lines.
+      int i = 0;
       while (dis.available() != 0) {
  
       // this statement reads the line from the file and print it to
         // the console.
-        out.println(dis.readLine());
+          i++;
+          if (i>10) {
+             String line = dis.readLine();
+             out.println(line.substring(1, 6)+" "+line.substring(86, 91));
+          }
+          
       }
  
       // dispose all the resources after using them.
