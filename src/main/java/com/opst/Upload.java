@@ -47,7 +47,7 @@ public class Upload extends HttpServlet {
         out.println();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
         out.println();
-        out.println(" Time | CTP");
+        out.print(" Time | CTP");
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         FileInputStream fis = null;
     BufferedInputStream bis = null;
@@ -69,7 +69,7 @@ public class Upload extends HttpServlet {
           i++;
           String line = dis.readLine();
           if (i == 6) {
-              out.print("    "+line.substring(62, 70));
+              out.print("    "+line.substring(61, 69));
               
           }
           if (i>10 && i<35) {
