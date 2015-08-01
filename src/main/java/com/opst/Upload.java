@@ -12,6 +12,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
  
 import javax.activation.MimetypesFileTypeMap;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -79,7 +81,10 @@ public class Upload extends HttpServlet {
           }
           
       }
-      out.println("<a href=\"/mcdst/service.xhtml\">Return to Service</a>");
+      out.println("<a href='/mcdst/service.xhtml'>Return to Service</a>");
+      FacesMessage msg = new FacesMessage("Upload success!", "INFO MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
       // dispose all the resources after using them.
       fis.close();
       bis.close();
