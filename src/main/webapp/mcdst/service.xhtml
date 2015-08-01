@@ -130,10 +130,10 @@
             
                 <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
                 <br/>
-        </h:panelGrid>
-        <h:form enctype="multipart/form-data">
-        <h:panelGrid columns="2">
-            
+    </h:panelGrid>
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <h:panelGrid columns="2">
+        
             <h:outputLabel value="Monday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Monday!"/>
             <h:outputLabel value="Tuesday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Tuesday!"/>
 <!--            <h:outputLabel value="Wednesday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
@@ -142,10 +142,10 @@
             <h:outputLabel value="Saturday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Saturday!"/>
             <h:outputLabel value="Sunday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>-->
             <br/>
-            <h:commandButton value="Upload" action="/upload"/>
+            <input type="submit" />
         
     </h:panelGrid>
-            </h:form>
+        </form>
     </p:panel>
   </div>
     
