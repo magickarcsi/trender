@@ -79,7 +79,7 @@ public class Upload extends HttpServlet {
           }
           
       }
- 
+      out.println("<a href=\"/mcdst/service.xhtml\">Return to Service</a>");
       // dispose all the resources after using them.
       fis.close();
       bis.close();
