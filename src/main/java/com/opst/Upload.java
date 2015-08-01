@@ -81,7 +81,9 @@ public class Upload extends HttpServlet {
           }
           
       }
+      out.println("<html><body>");
       out.println("<a href='/mcdst/service.xhtml'>Return to Service</a>");
+      out.println("</html></body>");
       FacesMessage msg = new FacesMessage("Upload success!", "INFO MSG");
 //        msg.setSeverity(FacesMessage.SEVERITY_INFO);
 //        FacesContext.getCurrentInstance().addMessage(null, msg);
