@@ -85,6 +85,8 @@ public class Upload extends HttpServlet {
       FacesMessage msg = new FacesMessage("Upload success!", "INFO MSG");
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        System.out.println("[INFO] - UPLOADER: Upload successful.");
       // dispose all the resources after using them.
       fis.close();
       bis.close();
