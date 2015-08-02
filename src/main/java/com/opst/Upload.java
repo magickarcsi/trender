@@ -72,7 +72,7 @@ public class Upload extends HttpServlet {
           i++;
           String line = dis.readLine();
           if (i == 6) {
-              String date = line.substring(60,70);
+              Date date = new Date(line.substring(61,70));
               out.println("    "+date);
               
           }
