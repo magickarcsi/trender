@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Date;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.faces.application.FacesMessage;
@@ -49,7 +50,7 @@ public class Upload extends HttpServlet {
         out.println();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
         out.println();
-        out.print(" Time | CTP");
+        out.print("Time | CTP");
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         FileInputStream fis = null;
     BufferedInputStream bis = null;
@@ -71,13 +72,15 @@ public class Upload extends HttpServlet {
           i++;
           String line = dis.readLine();
           if (i == 6) {
-              out.println("    "+line.substring(61, 69));
+              Date date = new Date(line.substring(60,70));
+              out.println("    "+date);
               
           }
           if (i>10 && i<35) {
              
              //out.println(i+" "+line);
-             out.println(line.substring(1, 6)+"|"+line.substring(87, 92));
+              int ctp = Integer.parseInt(line.substring(87, 92));
+             out.println(line.substring(1, 6)+"|"+ctp);
           }
           
       }
