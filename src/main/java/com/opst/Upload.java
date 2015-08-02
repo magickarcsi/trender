@@ -96,7 +96,7 @@ public class Upload extends HttpServlet {
                         if (!"dd".equals(d))
                             {
                             Float D = Float.parseFloat(d);
-                            int Dd = Integer.parseInt(D.toString());
+                            int Dd = Math.round(D);
                             int M =Integer.parseInt(m)-1;
                             int Y =Integer.parseInt(y);
                             showme = sdf.format(showme(Y, M, Dd).getTime());
