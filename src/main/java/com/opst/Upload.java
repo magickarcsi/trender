@@ -92,7 +92,7 @@ public class Upload extends HttpServlet {
                         String[] parts = ymd.split("/");
                         String d = parts[0]; // day
                         String m = parts[1]; //month
-                        String y = parts[2]; //year
+                        String y = "20"+parts[2]; //year
                         if (!"dd".equals(d))
                             {
                             Float D = Float.parseFloat(d);
