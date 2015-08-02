@@ -97,9 +97,11 @@ public class Upload extends HttpServlet {
                             {
                             Float D = Float.parseFloat(d);
                             int Dd = Math.round(D);
-                            int M =Integer.parseInt(m)-1;
-                            int Y =Integer.parseInt(y);
-                            showme = sdf.format(showme(Y, M, Dd).getTime());
+                            Float M =Float.parseFloat(m);
+                            int Mm = Math.round(M)-1;
+                            Float Y =Float.parseFloat(y);
+                            int Yy = Math.round(Y);
+                            showme = sdf.format(showme(Yy, Mm, Dd).getTime());
                             }}
               //Date date = new Date(line.substring(61,70));
               out.println("    "+showme);
