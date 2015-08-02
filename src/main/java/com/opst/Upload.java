@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.faces.application.FacesMessage;
@@ -30,7 +33,16 @@ public class Upload extends HttpServlet {
  
   private static final long serialVersionUID = 2857847752169838915L;
   int BUFFER_LENGTH = 4096;
- 
+  private Calendar sDateCalendar = new GregorianCalendar();
+  public Calendar showme(int y, int m, int d){
+        Calendar calorie = (Calendar) sDateCalendar.clone();
+        calorie.set(Calendar.YEAR, y);
+        calorie.set(Calendar.MONTH, m); // 11 = december
+        calorie.set(Calendar.DAY_OF_MONTH, d);
+        int Woy = calorie.get(Calendar.WEEK_OF_YEAR);
+        return calorie;
+    }
+  
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
@@ -65,15 +77,31 @@ public class Upload extends HttpServlet {
  
       // dis.available() returns 0 if the file does not have more lines.
       int i = 0;
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
       while (dis.available() != 0) {
  
       // this statement reads the line from the file and print it to
         // the console.
           i++;
           String line = dis.readLine();
+          String showme = null;
           if (i == 6) {
-              Date date = new Date(line.substring(61,70));
-              out.println("    "+date);
+              String ymd=line.substring(61, 70);
+                if (!"".equals(ymd))
+                    {
+                        String[] parts = ymd.split("/");
+                        String d = parts[0]; // day
+                        String m = parts[1]; //month
+                        String y = parts[2]; //year
+                        if (!"dd".equals(d))
+                            {
+                            int D = Integer.parseInt(d);
+                            int M =Integer.parseInt(m)-1;
+                            int Y =Integer.parseInt(y);
+                            showme = sdf.format(showme(Y, M, D).getTime());
+                            }}
+              //Date date = new Date(line.substring(61,70));
+              out.println("    "+showme);
               
           }
           if (i>10 && i<35) {
