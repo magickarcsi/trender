@@ -45,7 +45,7 @@
         <p:panelGrid columns="2" style="width: 100%; height: 700px; border: none;">
             
             <p:panel id="sports" header="Sports" toggleable="false" style="width: 100%; height: 350px;">
-                <h:outputText value="Sports Content" /><p/>
+                <h:outputText value="Sports Content" /><br/>
                 <shiro:authenticated>
                     Hello, #{loginbean.remoteUser}! Good to see you back! <p/>
                     Here are some roles you have:<br/>
@@ -57,14 +57,17 @@
             </p:panel>
  
             <p:panel id="finance" header="Finance" toggleable="false" style="width: 100%; height: 350px;">
-                <h:outputText value="Finance Content" /><p/>
+                <h:outputText value="Finance Content" /><br/>
                 <shiro:guest>
                     Hella stranger.
                 </shiro:guest>
             </p:panel>
  
             <p:panel id="lifestyle" header="Lifestyle" toggleable="false" style="width: 100%; height: 350px">
-                <h:outputText value="Lifestyle Content"  />
+                <h:outputText value="Lifestyle Content"  /><br/>
+                <shiro:remembered>
+                    Hella, you are remembered.
+                </shiro:remembered>
             </p:panel>
  
             <p:panel id="weather" header="Weather" toggleable="false" style="width: 100%; height: 350px;">
