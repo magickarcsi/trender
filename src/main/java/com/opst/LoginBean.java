@@ -37,7 +37,7 @@ public class LoginBean implements Serializable{
     return "/?faces-redirect=true";
   }
     public String getRemoteUser(){
-       if (currentUser != null){
+       if (currentUser.isAuthenticated()){
            String ruser = currentUser.getPrincipal().toString();
            return ruser;
        }
