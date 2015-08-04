@@ -65,6 +65,7 @@ public class Upload extends HttpServlet {
         out.print("Time | CTP");
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         FileInputStream fis = null;
+        
     BufferedInputStream bis = null;
     DataInputStream dis = null;
  
