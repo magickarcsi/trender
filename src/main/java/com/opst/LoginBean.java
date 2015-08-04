@@ -30,11 +30,8 @@ public class LoginBean implements Serializable{
   public String logout() {
       currentUser.logout();
     System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
-        FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
          
-    return "/?faces-redirect=true";
+    return "/mcdst/index?faces-redirect=true";
   }
     public String getRemoteUser(){
        if (currentUser.isAuthenticated()){
