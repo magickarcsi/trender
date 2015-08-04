@@ -28,15 +28,9 @@ public class LoginBean implements Serializable{
   
 
   public String logout() {
-      if (currentUser.isAuthenticated()){
-          currentUser.logout();
+    
     System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
     return "/mcdst/index?faces-redirect=true";
-      }
-      else {  
-         
-    return "/mcdst/index?faces-redirect=true";
-      }
   }
     public String getRemoteUser(){
        if (currentUser.isAuthenticated()){
