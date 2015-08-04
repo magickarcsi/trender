@@ -5,6 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:shiro="http://shiro.apache.org/tags"
       >
     <link type="text/css" rel="stylesheet" href="http://trender-mcdst.rhcloud.com/style.css" />
 
@@ -22,7 +23,7 @@
                 <h3>Index</h3>
             </div>
             <h:form>
-            <p:toolbar id="tb">
+            <p:toolbar id="tb" style="min-width: 1000px;">
                 <f:facet name="left">
                     <p:button outcome="/mcdst/index" value="Dashboard"  icon="ui-icon-monitor" />
                     <p:button outcome="/mcdst/service" value="Service" icon="ui-umbrella"/>
@@ -33,7 +34,7 @@
                 <f:facet name="right">
                     <p:commandButton type="button" title="Profile" value="#{loginbean.curruser}" icon="ui-icon-person"/>
                     <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
-                    <p:commandButton action="#{loginbean.logout()}" type="submit" value="Logout" icon="ui-icon-power" disabled="#{loginbean.isLoggedInRev}"/>
+                    <p:button outcome="/logout" value="Logout" icon="ui-icon-power"/>
                 </f:facet>
             </p:toolbar>
     <p:sticky target="tb" />

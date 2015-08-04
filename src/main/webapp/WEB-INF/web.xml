@@ -5,15 +5,7 @@
         <param-value>Production</param-value>
     </context-param>
     <!-- Login filter -->
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>com.opst.LoginFilter</filter-class>
-    </filter>
     <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/mcdst/*</url-pattern>
-    </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -35,7 +27,25 @@
         <servlet-name>Upload</servlet-name>
         <url-pattern>/upload/*</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
     <welcome-file-list>
         <welcome-file>mcdst/index.xhtml</welcome-file>
     </welcome-file-list>
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
 </web-app>
