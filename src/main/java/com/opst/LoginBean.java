@@ -34,10 +34,10 @@ public class LoginBean implements Serializable{
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
          
-    return "/login?faces-redirect=true";
+    return "/?faces-redirect=true";
   }
     public String getRemoteUser(){
-       String ruser = null;
+       String ruser = currentUser.getPrincipal().toString();
         
        return ruser; 
     }
