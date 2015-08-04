@@ -45,13 +45,13 @@ and open the template in the editor.
     <p:panel id="right1" header="Login" toggleable="false" closable="false" widgetVar="loginpanel">
     
         <p style="margin-bottom:10px; margin-left: auto; margin-right: auto;">
-    <form>
+    <form action="" id="loginForm" method="post">
             <h:outputLabel for="username" value="Username: " />
             <h:inputText id="username" value="" /><p/>
             <h:outputLabel for="passwordword" value="Password: " />
             <h:inputSecret id="passwordword" value="" /><p/>
             <h:selectBooleanCheckbox id="rememberMe"/>
-            <h:commandButton value="Login" action="" />
+            <input type="submit" value="Login"/>
     </form>
             </p>
     </p:panel>
