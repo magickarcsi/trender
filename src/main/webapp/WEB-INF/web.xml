@@ -15,10 +15,6 @@
         <servlet-name>Upload</servlet-name>
         <servlet-class>com.opst.Upload</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>logout</servlet-name>
-        <servlet-class>com.opst.logout</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -26,10 +22,6 @@
     <servlet-mapping>
         <servlet-name>Upload</servlet-name>
         <url-pattern>/upload/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>logout</servlet-name>
-        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>15</session-timeout>

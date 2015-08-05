@@ -5,7 +5,6 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:shiro="http://shiro.apache.org/tags"
       >
     <link type="text/css" rel="stylesheet" href="http://trender-mcdst.rhcloud.com/style.css" />
 
@@ -46,28 +45,17 @@
             
             <p:panel id="sports" header="Sports" toggleable="false" style="width: 100%; height: 350px;">
                 <h:outputText value="Sports Content" /><br/>
-                <shiro:authenticated>
-                    Hello, #{loginbean.remoteUser}! Good to see you back! <p/>
-                    Here are some roles you have:<br/>
-                    <shiro:hasRole name="admin">admin<br/></shiro:hasRole>
-                    <shiro:hasRole name="supervisor">supervisor<br/></shiro:hasRole>
-                    <shiro:hasRole name="larifari">larifari</shiro:hasRole>
-                    
-                </shiro:authenticated>
+                
             </p:panel>
  
             <p:panel id="finance" header="Finance" toggleable="false" style="width: 100%; height: 350px;">
                 <h:outputText value="Finance Content" /><br/>
-                <shiro:guest>
-                    Hellao stranger.
-                </shiro:guest>
+                
             </p:panel>
  
             <p:panel id="lifestyle" header="Lifestyle" toggleable="false" style="width: 100%; height: 350px">
                 <h:outputText value="Lifestyle Content"  /><br/>
-                <shiro:remembered>
-                    Hellao, you are remembered.
-                </shiro:remembered>
+                
             </p:panel>
  
             <p:panel id="weather" header="Weather" toggleable="false" style="width: 100%; height: 350px;">

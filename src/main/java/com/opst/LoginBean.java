@@ -13,8 +13,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 
 /**
  *
@@ -24,7 +22,7 @@ import org.apache.shiro.subject.Subject;
 @SessionScoped
 public class LoginBean implements Serializable{
   private static final long serialVersionUID = 1L;
-  Subject currentUser = SecurityUtils.getSubject();
+ 
   
 
   public String logout() {
@@ -33,10 +31,10 @@ public class LoginBean implements Serializable{
     return "/mcdst/index?faces-redirect=true";
   }
     public String getRemoteUser(){
-       if (currentUser.isAuthenticated()){
-           String ruser = currentUser.getPrincipal().toString();
-           return ruser;
-       }
-       else return null; 
+//       if (currentUser.isAuthenticated()){
+//           String ruser = currentUser.getPrincipal().toString();
+//           return ruser;
+//       }
+       return null; 
     }
 }
