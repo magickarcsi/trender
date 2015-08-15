@@ -49,7 +49,7 @@ public class Upload extends HttpServlet {
         int Woy = calorie.get(Calendar.WEEK_OF_YEAR);
         return calorie;
     }
-  public Double[] ctparray = new Double[23];
+  public Double[] ctparray = new Double[24];
   public Date ctpdate = new Date();
   
   @Override
