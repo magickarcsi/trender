@@ -158,14 +158,14 @@ public class Upload extends HttpServlet {
       PreparedStatement preparedStmt = conn.prepareStatement(query);
       preparedStmt.setDate (1, sqlDate);
       Double sum = 0.0;
-      for (int i=0;i<24;i++)
+      for (int i=0;i<25;i++)
         {
           preparedStmt.setDouble (i+2, ctparray[i]);
           sum = sum+ctparray[i];
         }
       
       Double avg = sum/24;
-      preparedStmt.setDouble(25, avg);
+      preparedStmt.setDouble(26, avg);
       // execute the preparedstatement
       preparedStmt.execute();
        
