@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -695,6 +696,8 @@ public class adminBean implements Serializable{
      }
         return cal;
     }
+    
+    
     
     public void getCtpByWeek(int week,int year) throws Exception {
         this.setWeek(week);

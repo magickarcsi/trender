@@ -25,6 +25,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import com.opst.adminBean;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
  
 @WebServlet(name = "Upload")
 @MultipartConfig
@@ -42,6 +49,8 @@ public class Upload extends HttpServlet {
         int Woy = calorie.get(Calendar.WEEK_OF_YEAR);
         return calorie;
     }
+  public Double[] ctparray = new Double[23];
+  public Date ctpdate = new Date();
   
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,6 +88,7 @@ public class Upload extends HttpServlet {
       // dis.available() returns 0 if the file does not have more lines.
       int i = 0;
       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+      SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
       while (dis.available() != 0) {
  
       // this statement reads the line from the file and print it to
@@ -103,6 +113,7 @@ public class Upload extends HttpServlet {
                             Float Y =Float.parseFloat(y);
                             int Yy = Math.round(Y);
                             showme = sdf.format(showme(Yy, Mm, Dd).getTime());
+                            ctpdate = showme(Yy, Mm, Dd).getTime();
                             }}
               //Date date = new Date(line.substring(61,70));
               out.println("    "+showme);
@@ -113,14 +124,11 @@ public class Upload extends HttpServlet {
              //out.println(i+" "+line);
               Double ctp = Double.parseDouble(line.substring(87, 92));
              out.println(line.substring(1, 6)+"|"+ctp);
+             ctparray[i-11] = ctp;
           }
           
       }
-      
-      FacesMessage msg = new FacesMessage("Upload success!", "INFO MSG");
-//        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-//        FacesContext.getCurrentInstance().addMessage(null, msg);
-//        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+      updateCtp( ctparray, ctpdate);
         System.out.println("[INFO] - UPLOADER: Upload successful.");
       // dispose all the resources after using them.
       fis.close();
@@ -131,10 +139,39 @@ public class Upload extends HttpServlet {
       e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
-    }
+    }   catch (Exception ex) {
+            Logger.getLogger(Upload.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
   }
+  public void updateCtp(Double[] ctparray, Date date) throws Exception{
+        Connection conn = com.opst.MySqlDAOFactory.createConnection();
+        Statement stmt = null;
+        ResultSet rs = null;
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        stmt = conn.createStatement();
+        // the mysql insert statement
+      String query = " insert into ctp_daily (date, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, avg)"
+        + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?)";
  
+      // create the mysql insert preparedstatement
+      PreparedStatement preparedStmt = conn.prepareStatement(query);
+      preparedStmt.setDate (1, sqlDate);
+      Double sum = 0.0;
+      for (int i=0;i<24;i++)
+        {
+          preparedStmt.setDouble (i+2, ctparray[i]);
+          sum = sum+ctparray[i];
+        }
+      
+      Double avg = sum/24;
+      preparedStmt.setDouble(25, avg);
+      // execute the preparedstatement
+      preparedStmt.execute();
+       
+      conn.close();
+        
+    }
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
@@ -167,4 +204,11 @@ public class Upload extends HttpServlet {
         }
         return null;
       }
+
+    /**
+     * @return the ctparray
+     */
+    public Double[] getCtparray() {
+        return ctparray;
+    }
 }

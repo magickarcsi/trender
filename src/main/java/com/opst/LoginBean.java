@@ -13,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import org.owasp.esapi.ESAPI;
 
 /**
  *
@@ -23,8 +24,12 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginBean implements Serializable{
   private static final long serialVersionUID = 1L;
  
-  
+  public String login() {
+      return "/mcdst/index?faces-redirect=true";
+  }
 
+  
+  
   public String logout() {
     
     System.out.println("[INFO] - LOGINBEAN: Logging "+getRemoteUser()+" out.");
