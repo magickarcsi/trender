@@ -50,6 +50,7 @@ public class Upload extends HttpServlet {
         return calorie;
     }
   public Double[] ctparray = new Double[24];
+  public Double[] ctp_pod = new Double[4];
   public Date ctpdate = new Date();
   
   @Override
@@ -145,10 +146,11 @@ public class Upload extends HttpServlet {
     }
   }
   public void updateCtp(Double[] ctparray, Date date) throws Exception{
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         Connection conn = com.opst.MySqlDAOFactory.createConnection();
         Statement stmt = null;
         ResultSet rs = null;
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        
         stmt = conn.createStatement();
         // the mysql insert statement
       String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
@@ -158,10 +160,30 @@ public class Upload extends HttpServlet {
       PreparedStatement preparedStmt = conn.prepareStatement(query);
       preparedStmt.setDate (1, sqlDate);
       Double sum = 0.0;
+      Double overnight = 0.0;
+      Double open = 0.0;
+      Double day = 0.0;
+      Double evening = 0.0;
       for (int i=0;i<24;i++)
         {
           preparedStmt.setDouble (i+2, ctparray[i]);
           sum = sum+ctparray[i];
+          while (i<5)
+          {
+              overnight = overnight+ctparray[i];
+          }
+          while (i>4 && i<8)
+          {
+              open = open+ctparray[i];
+          }
+          while (i>7 && i<16)
+          {
+              day = day+ctparray[i];
+          }
+          while (i>15)
+          {
+              evening = evening+ctparray[i];
+          }
         }
       
       Double avg = sum/24;
@@ -169,8 +191,28 @@ public class Upload extends HttpServlet {
       preparedStmt.setInt(27, 31);
       // execute the preparedstatement
       preparedStmt.execute();
-       
       conn.close();
+      
+      //PoD CTP
+      Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+        Statement stmt1 = null;
+        ResultSet rs1 = null;
+        
+        stmt1 = conn1.createStatement();
+        // the mysql insert statement
+      String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+        + " values (?, ?, ?, ?, ?, ?)";
+ 
+      // create the mysql insert preparedstatement1
+      PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
+      preparedStmt1.setDate (1, sqlDate);
+      preparedStmt1.setDouble(2, overnight);
+      preparedStmt1.setDouble(3, open);
+      preparedStmt1.setDouble(4, day);
+      preparedStmt1.setDouble(5, evening);
+      preparedStmt1.setInt(6, 31);
+      preparedStmt1.execute();
+      conn1.close();
         
     }
   @Override
