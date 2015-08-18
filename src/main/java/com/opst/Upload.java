@@ -204,7 +204,7 @@ public class Upload extends HttpServlet {
         + " values (?, ?, ?, ?, ?, ?)";
  
       // create the mysql insert preparedstatement1
-      PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
+      PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
       preparedStmt1.setDate (1, sqlDate);
       preparedStmt1.setDouble(2, overnight);
       preparedStmt1.setDouble(3, open);
