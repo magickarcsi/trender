@@ -202,14 +202,14 @@ public class Upload extends HttpServlet {
         // the mysql insert statement
       String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
         + " values (?, ?, ?, ?, ?, ?)";
- 
+      
       // create the mysql insert preparedstatement1
       PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
       preparedStmt1.setDate (1, sqlDate);
-      preparedStmt1.setDouble(2, overnight);
-      preparedStmt1.setDouble(3, open);
-      preparedStmt1.setDouble(4, day);
-      preparedStmt1.setDouble(5, evening);
+      preparedStmt1.setDouble(2, overnight/5);
+      preparedStmt1.setDouble(3, open/3);
+      preparedStmt1.setDouble(4, day/8);
+      preparedStmt1.setDouble(5, evening/8);
       preparedStmt1.setInt(6, 31);
       preparedStmt1.execute();
       conn1.close();
