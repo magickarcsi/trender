@@ -168,19 +168,19 @@ public class Upload extends HttpServlet {
         {
           preparedStmt.setDouble (i+2, ctparray[i]);
           sum = sum+ctparray[i];
-          while (i<5)
+          if (i<5)
           {
               overnight = overnight+ctparray[i];
           }
-          while (i>4 && i<8)
+          else if (i>4 && i<8)
           {
               open = open+ctparray[i];
           }
-          while (i>7 && i<16)
+          else if (i>7 && i<16)
           {
               day = day+ctparray[i];
           }
-          while (i>15)
+          else if (i>15)
           {
               evening = evening+ctparray[i];
           }
