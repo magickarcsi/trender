@@ -130,7 +130,7 @@ public class Upload extends HttpServlet {
           
       }
       updateCtp( ctparray, ctpdate);
-        System.out.println("[INFO] - UPLOADER: Upload successful.");
+        System.out.println("[INFO] - UPLOADER: Upload successful for "+ctpdate+".");
       // dispose all the resources after using them.
       fis.close();
       bis.close();
@@ -146,73 +146,90 @@ public class Upload extends HttpServlet {
     }
   }
   public void updateCtp(Double[] ctparray, Date date) throws Exception{
+        int count = 0;
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        Connection conn = com.opst.MySqlDAOFactory.createConnection();
-        Statement stmt = null;
-        ResultSet rs = null;
         
-        stmt = conn.createStatement();
-        // the mysql insert statement
-      String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
-        + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
- 
-      // create the mysql insert preparedstatement
-      PreparedStatement preparedStmt = conn.prepareStatement(query);
-      preparedStmt.setDate (1, sqlDate);
-      Double sum = 0.0;
-      Double overnight = 0.0;
-      Double open = 0.0;
-      Double day = 0.0;
-      Double evening = 0.0;
-      for (int i=0;i<24;i++)
-        {
-          preparedStmt.setDouble (i+2, ctparray[i]);
-          sum = sum+ctparray[i];
-          if (i<5)
-          {
-              overnight = overnight+ctparray[i];
-          }
-          else if (i>4 && i<8)
-          {
-              open = open+ctparray[i];
-          }
-          else if (i>7 && i<16)
-          {
-              day = day+ctparray[i];
-          }
-          else if (i>15)
-          {
-              evening = evening+ctparray[i];
-          }
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        final String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        final PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        final ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
         }
-      
-      Double avg = sum/24;
-      preparedStmt.setDouble(26, avg);
-      preparedStmt.setInt(27, 31);
-      // execute the preparedstatement
-      preparedStmt.execute();
-      conn.close();
-      
-      //PoD CTP
-      Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
-        Statement stmt1 = null;
-        ResultSet rs1 = null;
-        
-        stmt1 = conn1.createStatement();
-        // the mysql insert statement
-      String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
-        + " values (?, ?, ?, ?, ?, ?)";
-      
-      // create the mysql insert preparedstatement1
-      PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
-      preparedStmt1.setDate (1, sqlDate);
-      preparedStmt1.setDouble(2, overnight/5);
-      preparedStmt1.setDouble(3, open/3);
-      preparedStmt1.setDouble(4, day/8);
-      preparedStmt1.setDouble(5, evening/8);
-      preparedStmt1.setInt(6, 31);
-      preparedStmt1.execute();
-      conn1.close();
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              Double sum = 0.0;
+              Double overnight = 0.0;
+              Double open = 0.0;
+              Double day = 0.0;
+              Double evening = 0.0;
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, ctparray[i]);
+                  sum = sum+ctparray[i];
+                  if (i<5)
+                  {
+                      overnight = overnight+ctparray[i];
+                  }
+                  else if (i>4 && i<8)
+                  {
+                      open = open+ctparray[i];
+                  }
+                  else if (i>7 && i<16)
+                  {
+                      day = day+ctparray[i];
+                  }
+                  else if (i>15)
+                  {
+                      evening = evening+ctparray[i];
+                  }
+                }
+
+              Double avg = sum/24;
+              preparedStmt.setDouble(26, avg);
+              preparedStmt.setInt(27, 31);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, overnight/5);
+              preparedStmt1.setDouble(3, open/3);
+              preparedStmt1.setDouble(4, day/8);
+              preparedStmt1.setDouble(5, evening/8);
+              preparedStmt1.setInt(6, 31);
+              preparedStmt1.execute();
+              conn1.close();
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+ctpdate+".");
+        }
         
     }
   @Override
