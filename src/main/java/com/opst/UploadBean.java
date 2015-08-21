@@ -106,6 +106,7 @@ public class UploadBean {
           String showme = null;
           if (i == 6) {
               String ymd=line.substring(61, 70);
+              System.out.println("[INFO] - UploadBean: "+ymd);
                 /*if (!"".equals(ymd))
                     {
                         String[] parts = ymd.split("/");
