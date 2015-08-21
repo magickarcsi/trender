@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import com.opst.CtpBean;
 import com.opst.KvsBean;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -697,8 +698,8 @@ public class adminBean implements Serializable{
         return cal;
     }
     
-    
-    
+   
+     
     public void getCtpByWeek(int week,int year) throws Exception {
         this.setWeek(week);
         this.setYear(year);
