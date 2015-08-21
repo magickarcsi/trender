@@ -66,15 +66,17 @@
         <h:form id="form" enctype="multipart/form-data">
             <h:panelGrid columns="2">
         
-                <h:outputLabel value="Monday: "/> <h:inputFile required="true" value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
-                <h:outputLabel value="Tuesday: "/> <h:inputFile required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
+                <h:outputLabel value="Monday: "/> <h:inputFile id="monday" required="true" value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
+                <h:outputLabel value="Tuesday: "/> <h:inputFile id="tuesday" required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
 <!--            <h:outputLabel value="Wednesday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
             <h:outputLabel value="Thursday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Thursday!"/>
             <h:outputLabel value="Friday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Friday!"/>
             <h:outputLabel value="Saturday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Saturday!"/>
             <h:outputLabel value="Sunday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>-->
             <br/>
-            <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload"/>
+            <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload">
+                <f:ajax execute="monday" render="@form"/>
+            </h:commandButton>
         
     </h:panelGrid>
         </h:form>
