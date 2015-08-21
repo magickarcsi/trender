@@ -129,19 +129,15 @@ public class UploadBean {
           }
           if (i>10 && i<35) {
              
-             System.out.println(i+" "+line);
+             //System.out.println(i+" "+line);
               Double ctp = Double.parseDouble(line.substring(87, 92));
              ctparray[i-11] = ctp;
              
           }
           
       }
-            for (Double ctparray1 : ctparray) {
-                if (ctparray1 !=null){
-                    System.out.println(ctparray1);
-                }
-            }
-            //updateCtp( ctparray, ctpdate);
+            
+            updateCtp( ctparray, ctpdate);
         
       // dispose all the resources after using them.
         fileReader.close();
