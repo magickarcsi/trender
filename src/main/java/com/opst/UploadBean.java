@@ -57,6 +57,35 @@ public class UploadBean {
     public Double[] ctp_pod = new Double[4];
     public Date ctpdate = new Date();
   
+    public void anyad() throws Exception, IOException {
+        InputStream is = getMonday().getInputStream();
+        byte[] b = new byte[1024];
+        is.read(b);
+        String filename = getMonday().getName();
+        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + filename);
+        byte[] bytes = new byte[BUFFER_LENGTH];
+        int read = 0;
+        while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
+            os.write(bytes, 0, read);
+        }
+        os.flush();
+        is.close();
+        os.close();
+        //read file
+        File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + filename);
+        FileReader fileReader = new FileReader(text);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			StringBuffer stringBuffer = new StringBuffer();
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				stringBuffer.append(line);
+				stringBuffer.append("\n");
+			}
+			fileReader.close();
+			System.out.println("Contents of file:");
+			System.out.println(stringBuffer.toString());
+    }
+    
     public void uploadFile() throws IOException, Exception {
         int j = 0;
         if (getMonday() !=null)
