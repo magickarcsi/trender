@@ -59,11 +59,26 @@ public class UploadBean {
 
   
     public void anyad() throws Exception, IOException {
-        String filename = getMonday().getName();
+        }
+    
+    public void uploadFile() throws IOException, Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
+        int j = 0;
+        if (getMonday() !=null)
+        {
+            file[0] = getMonday();
+        }
+        if (getTuesday() !=null)
+        {
+            file[1] = getTuesday();
+        }
+        for (j=0;j<file.length;j++) {
+        String filename = getFile()[j].getName();
         try {
             
-            byte[] results=new byte[(int)monday.getSize()];
-            InputStream in=monday.getInputStream();
+            byte[] results=new byte[(int)getFile()[j].getSize()];
+            InputStream in=getFile()[j].getInputStream();
             in.read(results);
             FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + filename);
             os.write(results);
@@ -82,53 +97,13 @@ public class UploadBean {
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			StringBuffer stringBuffer = new StringBuffer();
 			String line;
-			while ((line = bufferedReader.readLine()) != null) {
-				stringBuffer.append(line);
-				stringBuffer.append("\n");
-			}
-			fileReader.close();
-			System.out.println("Contents of file:");
-			System.out.println(stringBuffer.toString());
-    }
-    
-    public void uploadFile() throws IOException, Exception {
-        int j = 0;
-        if (getMonday() !=null)
-        {
-            file[0] = getMonday();
-        }
-        if (getTuesday() !=null)
-        {
-            file[1] = getTuesday();
-        }
-        for (j=0;j<file.length;j++) {
-        InputStream is = getFile()[j].getInputStream();
-        byte[] b = new byte[1024];
-        is.read(b);
-        String filename = getFile()[j].getName();
-        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + filename);
-        byte[] bytes = new byte[BUFFER_LENGTH];
-        int read = 0;
-        while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
-            os.write(bytes, 0, read);
-        }
-        os.flush();
-        is.close();
-        os.close();
-        //read file
-        File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + filename);
-        FileReader fileReader = new FileReader(text);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String line;
-        int i =0;
-        while ((line = bufferedReader.readLine()) != null) {   
-            //do stuff with lines
-          System.out.println(line);
-          String showme = null;
-          if (i == 6) {
+                        int i =0;
+        while ((line = bufferedReader.readLine()) != null) {
+            String showme = null;
+            if (i == 6) {
               String ymd=line.substring(61, 70);
               System.out.println("[INFO] - UploadBean: "+ymd);
-                /*if (!"".equals(ymd))
+                if (!"".equals(ymd))
                     {
                         String[] parts = ymd.split("/");
                         String d = parts[0]; // day
@@ -145,8 +120,8 @@ public class UploadBean {
                             showme = sdf.format(showme(Yy, Mm, Dd).getTime());
                             ctpdate = showme(Yy, Mm, Dd).getTime();
                             }
-                    }*/
-              ctpdate = showme(2015,8,20).getTime();
+                    }
+              //ctpdate = showme(2015,8,20).getTime();
               //Date date = new Date(line.substring(61,70));
               
           }
@@ -162,9 +137,9 @@ public class UploadBean {
         
       // dispose all the resources after using them.
         fileReader.close();
-
-          
-    }
+        }
+			
+    
     }
     
     public void updateCtp(Double[] ctparray, Date date) throws Exception{
