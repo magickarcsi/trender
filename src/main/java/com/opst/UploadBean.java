@@ -233,8 +233,7 @@ public class UploadBean {
         }
         else {
             System.out.println("[INFO] - Entry already exists for "+ctpdate+".");
-        }
-        
+        }   
     }
     
     public UploadBean() {
