@@ -103,6 +103,7 @@ public class UploadBean {
         // the console.
           i++;
           String line = dis.readLine();
+          System.out.println(line);
           String showme = null;
           if (i == 6) {
               String ymd=line.substring(61, 70);
