@@ -56,9 +56,10 @@ public class UploadBean {
     public Double[] ctparray = new Double[24];
     public Double[] ctp_pod = new Double[4];
     public Date ctpdate = new Date();
-    public String filename = getMonday().getName();
+
   
     public void anyad() throws Exception, IOException {
+        String filename = getMonday().getName();
         try {
             
             byte[] results=new byte[(int)monday.getSize()];
