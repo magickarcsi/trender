@@ -99,40 +99,41 @@ public class UploadBean {
 			String line;
                         int i =0;
         while ((line = bufferedReader.readLine()) != null) {
-            System.out.println(line);
-//            String showme = null;
-//            if (i == 6) {
-//              String ymd=line.substring(61, 70);
-//              System.out.println("[INFO] - UploadBean: "+ymd);
-//                if (!"".equals(ymd))
-//                    {
-//                        String[] parts = ymd.split("/");
-//                        String d = parts[0]; // day
-//                        String m = parts[1]; //month
-//                        String y = "20"+parts[2]; //year
-//                        if (!"dd".equals(d))
-//                            {
-//                            Float D = Float.parseFloat(d);
-//                            int Dd = Math.round(D);
-//                            Float M =Float.parseFloat(m);
-//                            int Mm = Math.round(M)-1;
-//                            Float Y =Float.parseFloat(y);
-//                            int Yy = Math.round(Y);
-//                            showme = sdf.format(showme(Yy, Mm, Dd).getTime());
-//                            ctpdate = showme(Yy, Mm, Dd).getTime();
-//                            }
-//                    }
-//              //ctpdate = showme(2015,8,20).getTime();
-//              //Date date = new Date(line.substring(61,70));
-//              
-//          }
-//          if (i>10 && i<35) {
-//             
-//             System.out.println(i+" "+line);
-//              Double ctp = Double.parseDouble(line.substring(87, 92));
-//             ctparray[i-11] = ctp;
-//             
-//          }
+            //System.out.println(line);
+            i++;
+            String showme = null;
+            if (i == 6) {
+              String ymd=line.substring(61, 70);
+              System.out.println("[INFO] - UploadBean: "+ymd);
+                if (!"".equals(ymd))
+                    {
+                        String[] parts = ymd.split("/");
+                        String d = parts[0]; // day
+                        String m = parts[1]; //month
+                        String y = "20"+parts[2]; //year
+                        if (!"dd".equals(d))
+                            {
+                            Float D = Float.parseFloat(d);
+                            int Dd = Math.round(D);
+                            Float M =Float.parseFloat(m);
+                            int Mm = Math.round(M)-1;
+                            Float Y =Float.parseFloat(y);
+                            int Yy = Math.round(Y);
+                            showme = sdf.format(showme(Yy, Mm, Dd).getTime());
+                            ctpdate = showme(Yy, Mm, Dd).getTime();
+                            }
+                    }
+              //ctpdate = showme(2015,8,20).getTime();
+              //Date date = new Date(line.substring(61,70));
+              
+          }
+          if (i>10 && i<35) {
+             
+             System.out.println(i+" "+line);
+              Double ctp = Double.parseDouble(line.substring(87, 92));
+             ctparray[i-11] = ctp;
+             
+          }
           
       }
             for (Double ctparray1 : ctparray) {
