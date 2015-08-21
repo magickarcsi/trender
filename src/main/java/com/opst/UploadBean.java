@@ -130,6 +130,7 @@ public class UploadBean {
              System.out.println(i+" "+line);
               Double ctp = Double.parseDouble(line.substring(87, 92));
              ctparray[i-11] = ctp;
+             
           }
           
       }
