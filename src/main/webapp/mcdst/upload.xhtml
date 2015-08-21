@@ -75,7 +75,7 @@
             <h:outputLabel value="Sunday: "/> <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>-->
             <br/>
             <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload">
-                <f:ajax execute="monday" render="@form"/>
+                <f:ajax execute="monday" render="@all"/>
             </h:commandButton>
         
     </h:panelGrid>
