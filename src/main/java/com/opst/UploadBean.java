@@ -6,11 +6,13 @@
 package com.opst;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -55,7 +57,7 @@ public class UploadBean {
     public Double[] ctp_pod = new Double[4];
     public Date ctpdate = new Date();
   
-    public void uploadFile() throws IOException {
+    public void uploadFile() throws IOException, Exception {
         int j = 0;
         if (getMonday() !=null)
         {
@@ -79,30 +81,14 @@ public class UploadBean {
         os.flush();
         is.close();
         os.close();
-        
-        //reading the file
+        //read file
         File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + filename);
-        FileInputStream fis = null;
-    BufferedInputStream bis = null;
-    DataInputStream dis = null;
- 
-    try {
-      fis = new FileInputStream(text);
- 
-      // Here BufferedInputStream is added for fast reading.
-      bis = new BufferedInputStream(fis);
-      dis = new DataInputStream(bis);
- 
-      // dis.available() returns 0 if the file does not have more lines.
-      int i = 0;
-      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-      SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
-      while (dis.available() != 0) {
- 
-      // this statement reads the line from the file and print it to
-        // the console.
-          i++;
-          String line = dis.readLine();
+        FileReader fileReader = new FileReader(text);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+        int i =0;
+        while ((line = bufferedReader.readLine()) != null) {   
+            //do stuff with lines
           System.out.println(line);
           String showme = null;
           if (i == 6) {
@@ -141,17 +127,9 @@ public class UploadBean {
       updateCtp( ctparray, ctpdate);
         
       // dispose all the resources after using them.
-      fis.close();
-      bis.close();
-      dis.close();
-      } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }   catch (Exception ex) {
-            Logger.getLogger(Upload.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        fileReader.close();
+
+          
     }
     }
     
