@@ -106,7 +106,7 @@ public class UploadBean {
           String showme = null;
           if (i == 6) {
               String ymd=line.substring(61, 70);
-                if (!"".equals(ymd))
+                /*if (!"".equals(ymd))
                     {
                         String[] parts = ymd.split("/");
                         String d = parts[0]; // day
@@ -122,7 +122,9 @@ public class UploadBean {
                             int Yy = Math.round(Y);
                             showme = sdf.format(showme(Yy, Mm, Dd).getTime());
                             ctpdate = showme(Yy, Mm, Dd).getTime();
-                            }}
+                            }
+                    }*/
+              ctpdate = showme(2015,8,20).getTime();
               //Date date = new Date(line.substring(61,70));
               
           }
