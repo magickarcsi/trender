@@ -133,7 +133,10 @@ public class UploadBean {
           }
           
       }
-      updateCtp( ctparray, ctpdate);
+            for (Double ctparray1 : ctparray) {
+                System.out.println(ctparray1);
+            }
+            //updateCtp( ctparray, ctpdate);
         
       // dispose all the resources after using them.
         fileReader.close();
