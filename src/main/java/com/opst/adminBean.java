@@ -698,7 +698,11 @@ public class adminBean implements Serializable{
         return cal;
     }
     
-   
+    public void getFandL() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        setFirst(sdf.format(firstDayOfWeekByWN(week).getTime()));
+        setLast(sdf.format(lastDayOfWeekByWN(week).getTime()));
+    }
      
     public void getCtpByWeek(int week,int year) throws Exception {
         this.setWeek(week);
