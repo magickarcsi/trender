@@ -703,6 +703,7 @@ public class adminBean implements Serializable{
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         setFirst(sdf.format(firstDayOfWeekByWN(week).getTime()));
         setLast(sdf.format(lastDayOfWeekByWN(week).getTime()));
+        setFirstandlast(getFirst()+" - "+getLast());
     }
      
     public void getCtpByWeek(int week,int year) throws Exception {
