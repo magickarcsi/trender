@@ -70,14 +70,15 @@
                 <p:messages />
                     <h:panelGrid columns="2">
         
-                        <h:selectOneMenu value="#{adminbean.week}">
+                        <h:selectOneMenu id="select" value="#{adminbean.week}">
                             <f:selectItems value="#{adminbean.favWeek2Value}"/>
                             <f:valueChangeListener type="com.opst.WeekValueListener" />
+                            <f:ajax execute="select" render=":firstandlast" />
                         </h:selectOneMenu>
                         <h:selectOneMenu value="#{adminbean.year}">
                             <f:selectItem itemValue="2015" itemLabel="2015" />
                         </h:selectOneMenu>
-                        
+                        <h:outputLabel id="firstandlast" value="#{adminbean.firstandlast}"/>
                         
                 </h:panelGrid>
             </p:panel>
