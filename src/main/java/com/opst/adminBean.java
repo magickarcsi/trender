@@ -660,7 +660,7 @@ public class adminBean implements Serializable{
 		setWeek2Value(new LinkedHashMap<String,Object>());
                 for (int i=1; i<=getCurrentweek(); i++) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String wc = sdf.format(firstDayOfWeekByWN(week).getTime());
+                String wc = sdf.format(firstDayOfWeekByWN(i).getTime());
                 getWeek2Value().put("Week "+i+" W/C: "+wc, i); //label, value    
                 }
 		
