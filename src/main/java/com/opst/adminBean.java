@@ -44,7 +44,7 @@ public class adminBean implements Serializable{
     /**
      * @return the week2Value
      */
-    public static Map<String,Object> getWeek2Value() {
+    public Map<String,Object> getWeek2Value() {
         return week2Value;
     }
 
@@ -68,7 +68,7 @@ public class adminBean implements Serializable{
         setWeek(week+1);
         getCtpByWeek(week,year);
     }
-    public static void setWeek2Value(Map<String,Object> aWeek2Value) {
+    public  void setWeek2Value(Map<String,Object> aWeek2Value) {
         week2Value = aWeek2Value;
     }
     
@@ -655,11 +655,13 @@ public class adminBean implements Serializable{
     }
     private String favWeek2;
     
-    private static Map<String,Object> week2Value;
-	static{
+    private  Map<String,Object> week2Value;
+	{
 		setWeek2Value(new LinkedHashMap<String,Object>());
                 for (int i=1; i<=getCurrentweek(); i++) {
-                getWeek2Value().put("Week "+i, i); //label, value    
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String wc = sdf.format(firstDayOfWeekByWN(week).getTime());
+                getWeek2Value().put("Week "+i+" W/C: "+wc, i); //label, value    
                 }
 		
 		

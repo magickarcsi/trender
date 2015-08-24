@@ -71,9 +71,9 @@
                     <h:panelGrid columns="2">
         
                         <h:selectOneMenu id="select" value="#{adminbean.week}" >
-                            <f:selectItems value="#{adminbean.favWeek2Value}"/>
+                            <f:selectItems value="#{adminbean.favWeek2Value}" />
                             <f:valueChangeListener type="com.opst.WeekValueListener" />
-                            <f:ajax event="change" render=":firstandlast" />
+                            <f:ajax event="valueChange" render=":firstandlast" />
                         </h:selectOneMenu>
                         <h:selectOneMenu value="#{adminbean.year}">
                             <f:selectItem itemValue="2015" itemLabel="2015" />
