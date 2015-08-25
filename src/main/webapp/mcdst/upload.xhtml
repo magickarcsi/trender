@@ -45,25 +45,7 @@
 <ui:insert name="content">
     
 <div id="left">
-</div>
-        <div id="right">
-    <p:panel id="toggleable1" header="Uploads and data" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
-
-    <h:panelGrid columns="3">
-        <h:outputLabel value="Data for "/>
-        
-        <h:outputLabel value="Week: #{adminbean.week}"/>
-        
-        <h:outputLabel value ="Year: #{adminbean.year}"/> 
-        
-                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
-                
-                <h:outputLabel value="#{adminbean.firstandlast}"/>
-            
-                <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
-                <br/>
-    </h:panelGrid>
-        <h:form id="form" enctype="multipart/form-data">
+    <h:form id="form" enctype="multipart/form-data">
             <p:wizard flowListener="#{uploadwizzard.onFlowProcess}">
         <p:tab id="calendar" title="Week">
             <p:panel header="Choose week of year">
@@ -163,6 +145,25 @@
         </p:tab>
             </p:wizard>
         </h:form>
+</div>
+        <div id="right">
+    <p:panel id="toggleable1" header="Uploads and data" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
+
+    <h:panelGrid columns="3">
+        <h:outputLabel value="Data for "/>
+        
+        <h:outputLabel value="Week: #{adminbean.week}"/>
+        
+        <h:outputLabel value ="Year: #{adminbean.year}"/> 
+        
+                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
+                
+                <h:outputLabel value="#{adminbean.firstandlast}"/>
+            
+                <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
+                <br/>
+    </h:panelGrid>
+        
     </p:panel>
   </div>
 </ui:insert>
