@@ -28,6 +28,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.w3c.dom.Document;
@@ -98,6 +100,14 @@ public class adminBean implements Serializable{
     private String personrole = null;
     private Boolean detailsCollapsed = true;
     private Boolean leaderboardShouldBeCollapsed = true;
+    
+    private Day monday;
+    private Day tuesday;
+    private Day wednesday;
+    private Day thursday;
+    private Day friday;
+    private Day saturday;
+    private Day sunday;
     
     private Boolean serviceOn = true;
     private Boolean productionOn = true;
@@ -384,6 +394,118 @@ public class adminBean implements Serializable{
     public void setMessageBoardOn(Boolean messageBoardOn) {
         this.messageBoardOn = messageBoardOn;
     }
+
+    /**
+     * @return the managers
+     */
+    public Map<String,Object> getManagers() {
+        return managers;
+    }
+
+    /**
+     * @param managers the managers to set
+     */
+    public void setManagers(Map<String,Object> managers) {
+        this.managers = managers;
+    }
+
+    /**
+     * @return the monday
+     */
+    public Day getMonday() {
+        return monday;
+    }
+
+    /**
+     * @param monday the monday to set
+     */
+    public void setMonday(Day monday) {
+        this.monday = monday;
+    }
+
+    /**
+     * @return the tuesday
+     */
+    public Day getTuesday() {
+        return tuesday;
+    }
+
+    /**
+     * @param tuesday the tuesday to set
+     */
+    public void setTuesday(Day tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    /**
+     * @return the wednesday
+     */
+    public Day getWednesday() {
+        return wednesday;
+    }
+
+    /**
+     * @param wednesday the wednesday to set
+     */
+    public void setWednesday(Day wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    /**
+     * @return the thursday
+     */
+    public Day getThursday() {
+        return thursday;
+    }
+
+    /**
+     * @param thursday the thursday to set
+     */
+    public void setThursday(Day thursday) {
+        this.thursday = thursday;
+    }
+
+    /**
+     * @return the friday
+     */
+    public Day getFriday() {
+        return friday;
+    }
+
+    /**
+     * @param friday the friday to set
+     */
+    public void setFriday(Day friday) {
+        this.friday = friday;
+    }
+
+    /**
+     * @return the saturday
+     */
+    public Day getSaturday() {
+        return saturday;
+    }
+
+    /**
+     * @param saturday the saturday to set
+     */
+    public void setSaturday(Day saturday) {
+        this.saturday = saturday;
+    }
+
+    /**
+     * @return the sunday
+     */
+    public Day getSunday() {
+        return sunday;
+    }
+
+    /**
+     * @param sunday the sunday to set
+     */
+    public void setSunday(Day sunday) {
+        this.sunday = sunday;
+    }
     public static class Ctp{
         private int id;
         private String name;
@@ -501,6 +623,108 @@ public class adminBean implements Serializable{
             this.year = year;
         }
                 
+    }
+    public static class Day{
+        private Date date;
+        private int overnight;
+        private int open;
+        private int day;
+        private int evening;
+        private int updated_by;
+        
+        public Day(Date date, int overnight, int open, int day, int evening, int updated_by) {
+            this.date = date;
+            this.overnight = overnight;
+            this.open = open;
+            this.day = day;
+            this.evening = evening;
+            this.updated_by = updated_by;
+        }
+
+        /**
+         * @return the date
+         */
+        public Date getDate() {
+            return date;
+        }
+
+        /**
+         * @param date the date to set
+         */
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
+        /**
+         * @return the overnight
+         */
+        public int getOvernight() {
+            return overnight;
+        }
+
+        /**
+         * @param overnight the overnight to set
+         */
+        public void setOvernight(int overnight) {
+            this.overnight = overnight;
+        }
+
+        /**
+         * @return the open
+         */
+        public int getOpen() {
+            return open;
+        }
+
+        /**
+         * @param open the open to set
+         */
+        public void setOpen(int open) {
+            this.open = open;
+        }
+
+        /**
+         * @return the day
+         */
+        public int getDay() {
+            return day;
+        }
+
+        /**
+         * @param day the day to set
+         */
+        public void setDay(int day) {
+            this.day = day;
+        }
+
+        /**
+         * @return the evening
+         */
+        public int getEvening() {
+            return evening;
+        }
+
+        /**
+         * @param evening the evening to set
+         */
+        public void setEvening(int evening) {
+            this.evening = evening;
+        }
+
+        /**
+         * @return the updated_by
+         */
+        public int getUpdated_by() {
+            return updated_by;
+        }
+
+        /**
+         * @param updated_by the updated_by to set
+         */
+        public void setUpdated_by(int updated_by) {
+            this.updated_by = updated_by;
+        }
+        
     }
     public static class Person{
         
@@ -655,7 +879,40 @@ public class adminBean implements Serializable{
     }
     private String favWeek2;
     
-    private  Map<String,Object> week2Value;
+    private Map<String,Object> managers;
+        {
+        try {
+            setManagers(new LinkedHashMap<String,Object>());
+            Connection conn = com.opst.MySqlDAOFactory.createConnection();
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("select id,firstname,surname from `names` WHERE role in (6,8)");
+                while (rs.next())
+                {
+                    int id = rs.getInt(1);
+                    String fn = rs.getNString(2);
+                    String ln = rs.getNString(3);
+                    String name = fn + " " + ln.substring(0, 1);
+                    getManagers().put(name, id);
+                }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        }
+    
+        public void spread_dates(int wk) {
+            getMonday().date = firstDayOfWeekByWN(wk).getTime();
+        }
+    
+        private  Map<String,Object> week2Value;
 	{
 		setWeek2Value(new LinkedHashMap<String,Object>());
                 for (int i=1; i<=getCurrentweek(); i++) {

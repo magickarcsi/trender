@@ -73,7 +73,7 @@
                         <h:selectOneMenu id="select" value="#{adminbean.week}" >
                             <f:selectItems value="#{adminbean.favWeek2Value}" />
                             <f:valueChangeListener type="com.opst.WeekValueListener" />
-                            <f:ajax event="valueChange" render=":firstandlast" />
+                            <f:ajax event="valueChange" render="container" />
                         </h:selectOneMenu>
                         <h:selectOneMenu value="#{adminbean.year}">
                             <f:selectItem itemValue="2015" itemLabel="2015" />
@@ -102,11 +102,27 @@
 
             </f:facet>
                 <p:row>
-                    <p:column style="font-weight: bold;">Monday</p:column>
-                    <p:column>Monday</p:column>
-                    <p:column>Monday</p:column>
-                    <p:column>Monday</p:column>
-                    <p:column>Monday</p:column>
+                    <p:column style="font-weight: bold;"><h:outputLabel id="m" value="Monday (#{adminbean.monday.date}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mmon" value="#{adminbean.monday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mmop" value="#{adminbean.monday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mmds" value="#{adminbean.monday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mmev" value="#{adminbean.monday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
                 </p:row>
             </p:panelGrid>
             </p:panel>
