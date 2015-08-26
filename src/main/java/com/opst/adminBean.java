@@ -101,13 +101,13 @@ public class adminBean implements Serializable{
     private Boolean detailsCollapsed = true;
     private Boolean leaderboardShouldBeCollapsed = true;
     
-    private Day monday;
-    private Day tuesday;
-    private Day wednesday;
-    private Day thursday;
-    private Day friday;
-    private Day saturday;
-    private Day sunday;
+    private Day monday = new Day();
+    private Day tuesday = new Day();
+    private Day wednesday = new Day();
+    private Day thursday = new Day();
+    private Day friday = new Day();
+    private Day saturday = new Day();
+    private Day sunday = new Day();
     
     private Boolean serviceOn = true;
     private Boolean productionOn = true;
@@ -639,6 +639,10 @@ public class adminBean implements Serializable{
             this.day = day;
             this.evening = evening;
             this.updated_by = updated_by;
+        }
+        
+        public Day(){
+            
         }
 
         /**
