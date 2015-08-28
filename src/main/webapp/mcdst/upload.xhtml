@@ -67,15 +67,15 @@
 </div>
         <div id="right">
     <h:form id="form" enctype="multipart/form-data">
-        <p:wizard flowListener="#{uploadwizzard.onFlowProcess}" style="width: 600px;">
+        <p:wizard flowListener="#{uploadwizzard.onFlowProcess}" style="width: 700px;">
         <p:tab id="calendar" title="Week">
             <p:panel header="Choose week of year">
                 <p:messages />
                     <h:panelGrid columns="2">
         
-                        <h:selectOneMenu id="select" value="#{adminbean.week}" >
-                            <f:selectItems value="#{adminbean.favWeek2Value}" />
-                            <f:valueChangeListener type="com.opst.WeekValueListener" />
+                        <h:selectOneMenu id="select" value="#{adminbean.week}">
+                            <f:selectItems value="#{adminbean.favWeek2Value}" noSelectionValue="0"/>
+                            <f:valueChangeListener type="com.opst.WeekValueListener"/>
                             <f:ajax event="valueChange" render="container" />
                         </h:selectOneMenu>
                         <h:selectOneMenu value="#{adminbean.year}">
@@ -92,9 +92,6 @@
             <p:panel header="Upload reports">    
                 <p:messages />
                     <h:panelGrid columns="2">
-                        
-                <h:outputLabel value="#{adminbean.first}"/>
-                        <h:outputLabel value="#{adminbean.last}"/>
                         
                         <p:fileUpload fileUploadListener="#{uploadbean.anyad}" mode="advanced" dragDropSupport="false"
                   multiple="true" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(txt|png)$/" />
@@ -131,7 +128,7 @@
             <p:panelGrid style="margin-top:20px">
             <f:facet name="header">
                 <p:row>
-                    <p:column colspan="5">Week #{adminbean.week}</p:column>
+                    <p:column colspan="5">Week #{adminbean.week} - #{adminbean.firstandlast}</p:column>
                 </p:row>
                 <p:row>
                     <p:column>Day of Week</p:column>

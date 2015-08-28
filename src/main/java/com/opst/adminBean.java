@@ -919,6 +919,7 @@ public class adminBean implements Serializable{
         private  Map<String,Object> week2Value;
 	{
 		setWeek2Value(new LinkedHashMap<String,Object>());
+                getWeek2Value().put("Please choose a Week", 0);
                 for (int i=1; i<=getCurrentweek(); i++) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
                 String wc = sdf.format(firstDayOfWeekByWN(i).getTime());

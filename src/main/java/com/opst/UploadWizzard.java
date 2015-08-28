@@ -22,7 +22,7 @@ import org.primefaces.event.FlowEvent;
 public class UploadWizzard {
 
     public String onFlowProcess(FlowEvent event) {
-        
+
             return event.getNewStep();
     }
     
