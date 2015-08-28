@@ -87,6 +87,41 @@
                 </h:panelGrid>
             </p:panel>
         </p:tab>
+            
+            <p:tab id="upload" title="Reports">
+            <p:panel header="Upload reports">    
+                <p:messages />
+                    <h:panelGrid columns="2">
+                        
+                <h:outputLabel value="#{adminbean.first}"/>
+                        <h:outputLabel value="#{adminbean.last}"/>
+                        
+                <h:outputLabel value="Monday: "/>
+                <h:inputFile id="monday" required="true"  value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
+                
+                <h:outputLabel value="Tuesday: "/>
+                <h:inputFile id="tuesday" required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
+<!--            
+                <h:outputLabel value="Wednesday: "/>
+                <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
+                
+                <h:outputLabel value="Thursday: "/>
+                <h:inputFile required="true" requiredMessage="Please upload a file for Thursday!"/>
+                
+                <h:outputLabel value="Friday: "/>
+                <h:inputFile required="true" requiredMessage="Please upload a file for Friday!"/>
+                
+                <h:outputLabel value="Saturday: "/>
+                <h:inputFile required="true" requiredMessage="Please upload a file for Saturday!"/>
+                
+                <h:outputLabel value="Sunday: "/>
+                <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>
+-->
+                </h:panelGrid>
+            <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload"/>
+            </p:panel>
+        </p:tab>
+            
         <p:tab id="pod" title="Managers">
             <p:panel header="Upload managers">    
                 <p:messages />
@@ -131,39 +166,7 @@
             </p:panel>
         </p:tab>
                 
-            <p:tab id="upload" title="Reports">
-            <p:panel header="Upload reports">    
-                <p:messages />
-                    <h:panelGrid columns="2">
-                        
-                <h:outputLabel value="#{adminbean.first}"/>
-                        <h:outputLabel value="#{adminbean.last}"/>
-                        
-                <h:outputLabel value="Monday: "/>
-                <h:inputFile id="monday" required="true"  value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
-                
-                <h:outputLabel value="Tuesday: "/>
-                <h:inputFile id="tuesday" required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
-<!--            
-                <h:outputLabel value="Wednesday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
-                
-                <h:outputLabel value="Thursday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Thursday!"/>
-                
-                <h:outputLabel value="Friday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Friday!"/>
-                
-                <h:outputLabel value="Saturday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Saturday!"/>
-                
-                <h:outputLabel value="Sunday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>
--->
-                </h:panelGrid>
-            <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload"/>
-            </p:panel>
-        </p:tab>
+            
             </p:wizard>
         </h:form>
   </div>
