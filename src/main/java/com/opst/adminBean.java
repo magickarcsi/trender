@@ -964,6 +964,7 @@ public class adminBean implements Serializable{
     public void getFandL(int week) {
         setWeek(this.week);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        monday.date = firstDayOfWeekByWN(week).getTime();
         setFirst(sdf.format(firstDayOfWeekByWN(week).getTime()));
         setLast(sdf.format(lastDayOfWeekByWN(week).getTime()));
         setFirstandlast(getFirst()+" - "+getLast());
