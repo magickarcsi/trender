@@ -94,7 +94,7 @@
                     <h:panelGrid columns="2">
                         
                         <p:fileUpload fileUploadListener="#{uploadbean.anyad}" mode="advanced" dragDropSupport="false"
-                  multiple="true" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(txt|png)$/" />
+                  multiple="true" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(txt|png)$/"  />
 <!--                         
                         <h:outputLabel value="Monday: "/>
                 <h:inputFile id="monday" required="true"  value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
@@ -121,7 +121,7 @@
             </p:panel>
         </p:tab>
             
-        <p:tab id="pod" title="Managers">
+        <p:tab id="managers" title="Managers">
             <p:panel header="Upload managers">    
                 <p:messages />
             <p:panelGrid style="margin-top:20px">
@@ -310,8 +310,41 @@
             </p:panelGrid>
             </p:panel>
         </p:tab>
-                
             
+            <p:tab id="sum" title="Summary">
+                <p:panel header="Summary">    
+                    <p:messages />
+                        <p:panelGrid style="margin-top:20px">
+            <f:facet name="header">
+                <p:row>
+                    <p:column colspan="10">Week #{adminbean.week} - #{adminbean.firstandlast} <br/> Summary</p:column>
+                </p:row>
+                <p:row>
+                    <p:column>Day of Week</p:column>
+                    <p:column>Overnight</p:column>
+                    <p:column>Open</p:column>
+                    <p:column>Dayshift</p:column>
+                    <p:column>Evening</p:column>
+                </p:row>
+                <p:row>
+                    <p:column></p:column>
+                    <p:column></p:column>
+                    <p:column>Name</p:column>
+                    <p:column>CTP</p:column>
+                    <p:column>Name</p:column>
+                    <p:column>CTP</p:column>
+                    <p:column>Name</p:column>
+                    <p:column>CTP</p:column>
+                    <p:column>Name</p:column>
+                    <p:column>CTP</p:column>
+                    <p:column>Name</p:column>
+                    <p:column>CTP</p:column>
+                </p:row>
+                    
+            </f:facet>
+                        </p:panelGrid>
+                </p:panel>
+            </p:tab>
             </p:wizard>
         </h:form>
   </div>
