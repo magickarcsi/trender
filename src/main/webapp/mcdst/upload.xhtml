@@ -44,28 +44,7 @@
 <div id="content">
 <ui:insert name="content">
     
-<div id="left">
-    <p:panel id="toggleable1" header="Uploads and data" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel1" style="margin-bottom:20px">
-
-    <h:panelGrid columns="3">
-        <h:outputLabel value="Data for "/>
-        
-        <h:outputLabel value="Week: #{adminbean.week}"/>
-        
-        <h:outputLabel value ="Year: #{adminbean.year}"/> 
-        
-                <h:commandButton value="Previous" action="#{adminbean.previousWeek()}"/>
-                
-                <h:outputLabel value="#{adminbean.firstandlast}"/>
-            
-                <h:commandButton value="Next" action="#{adminbean.nextWeek()}"/>
-                <br/>
-    </h:panelGrid>
-        
-    </p:panel>
-    
-</div>
-        <div id="right">
+        <div id="leftandright">
     <h:form id="form" enctype="multipart/form-data">
         <p:wizard flowListener="#{uploadwizzard.onFlowProcess}" style="width: 700px;">
         <p:tab id="calendar" title="Week">
@@ -95,28 +74,6 @@
                         
                         <p:fileUpload fileUploadListener="#{uploadbean.anyad}" mode="advanced" dragDropSupport="false"
                   multiple="true" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(txt|png)$/"  />
-<!--                         
-                        <h:outputLabel value="Monday: "/>
-                <h:inputFile id="monday" required="true"  value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
-                
-                <h:outputLabel value="Tuesday: "/>
-                <h:inputFile id="tuesday" required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
-           
-                <h:outputLabel value="Wednesday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
-                
-                <h:outputLabel value="Thursday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Thursday!"/>
-                
-                <h:outputLabel value="Friday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Friday!"/>
-                
-                <h:outputLabel value="Saturday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Saturday!"/>
-                
-                <h:outputLabel value="Sunday: "/>
-                <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>
--->
                 </h:panelGrid>
             </p:panel>
         </p:tab>
