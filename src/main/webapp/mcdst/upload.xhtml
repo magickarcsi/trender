@@ -74,7 +74,7 @@
                     <h:panelGrid columns="2">
         
                         <h:selectOneMenu id="select" value="#{adminbean.week}">
-                            <f:selectItems value="#{adminbean.favWeek2Value}" noSelectionValue="0"/>
+                            <f:selectItems value="#{adminbean.favWeek2Value}"/>
                             <f:valueChangeListener type="com.opst.WeekValueListener"/>
                             <f:ajax event="valueChange" render="container" />
                         </h:selectOneMenu>
@@ -118,7 +118,6 @@
                 <h:inputFile required="true" requiredMessage="Please upload a file for Sunday!"/>
 -->
                 </h:panelGrid>
-            <h:commandButton action="#{uploadbean.uploadFile()}" value="Upload"/>
             </p:panel>
         </p:tab>
             
@@ -140,7 +139,8 @@
 
             </f:facet>
                 <p:row>
-                    <p:column style="font-weight: bold;"><h:outputLabel id="m" value="Monday (#{adminbean.monday.date}) "/></p:column>
+                    <!--Monday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="m" value="Monday (#{adminbean.dateToString(adminbean.monday.date)}) "/></p:column>
                     <p:column>
                         <h:selectOneMenu id="mmon" value="#{adminbean.monday.overnight}" >
                             <f:selectItems value="#{adminbean.managers}" />
@@ -162,6 +162,151 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
+                <p:row>
+                    <!--Tuesday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="tu" value="Tuesday (#{adminbean.dateToString(adminbean.tuesday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mtuon" value="#{adminbean.tuesday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mtuop" value="#{adminbean.tuesday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mtuds" value="#{adminbean.tuesday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mtuev" value="#{adminbean.tuesday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <!--Wednesday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="we" value="Wednesday (#{adminbean.dateToString(adminbean.wednesday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mweon" value="#{adminbean.wednesday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mweop" value="#{adminbean.wednesday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mweds" value="#{adminbean.wednesday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mweev" value="#{adminbean.wednesday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <!--Thursday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="t" value="Thursday (#{adminbean.dateToString(adminbean.thursday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mthon" value="#{adminbean.thursday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mthop" value="#{adminbean.thursday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mthds" value="#{adminbean.thursday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mthev" value="#{adminbean.thursday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <!--Friday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="f" value="Friday (#{adminbean.dateToString(adminbean.friday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mfon" value="#{adminbean.friday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mfop" value="#{adminbean.friday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mfds" value="#{adminbean.friday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="mfev" value="#{adminbean.friday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <!--Saturday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="sa" value="Saturday (#{adminbean.dateToString(adminbean.monday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msaon" value="#{adminbean.monday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msaop" value="#{adminbean.monday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msads" value="#{adminbean.monday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msaev" value="#{adminbean.monday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <!--Sunday -->
+                    <p:column style="font-weight: bold;"><h:outputLabel id="su" value="Sunday (#{adminbean.dateToString(adminbean.sunday.date)}) "/></p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msuon" value="#{adminbean.sunday.overnight}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msuop" value="#{adminbean.sunday.open}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msuds" value="#{adminbean.sunday.day}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                    <p:column>
+                        <h:selectOneMenu id="msuev" value="#{adminbean.sunday.evening}" >
+                            <f:selectItems value="#{adminbean.managers}" />
+                        </h:selectOneMenu>
+                    </p:column>
+                </p:row>
+                
             </p:panelGrid>
             </p:panel>
         </p:tab>

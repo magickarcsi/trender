@@ -83,7 +83,7 @@ public class adminBean implements Serializable{
     private int role = 1;
     private static Calendar sDateCalendar = new GregorianCalendar();
     private static int currentweek = sDateCalendar.get(Calendar.WEEK_OF_YEAR);
-    private int week = currentweek-1;
+    private int week = 0;
     private int year = 2015;
     public int bonus;
     private String searchfield;
@@ -100,6 +100,7 @@ public class adminBean implements Serializable{
     private String personrole = null;
     private Boolean detailsCollapsed = true;
     private Boolean leaderboardShouldBeCollapsed = true;
+    SimpleDateFormat ddmm = new SimpleDateFormat("dd/MM");
     
     private Day monday = new Day();
     private Day tuesday = new Day();
@@ -114,6 +115,11 @@ public class adminBean implements Serializable{
     private Boolean trainingOn = true;
     private Boolean messageBoardOn = false;
 
+    public String dateToString(Date date){
+        String datestring = ddmm.format(date);
+        return datestring;
+    }
+    
     public void service() {
     
     }
@@ -962,10 +968,24 @@ public class adminBean implements Serializable{
         return cal;
     }
     
+    public static Date addDays(Date date, int days)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days); //minus number would decrement the days
+        return cal.getTime();
+    }
+    
     public void getFandL(int week) {
         setWeek(this.week);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         monday.date = firstDayOfWeekByWN(week).getTime();
+        tuesday.date = addDays(monday.date, 1);
+        wednesday.date = addDays(monday.date, 2);
+        thursday.date = addDays(monday.date, 3);
+        friday.date = addDays(monday.date, 4);
+        saturday.date = addDays(monday.date, 5);
+        sunday.date = lastDayOfWeekByWN(week).getTime();
         setFirst(sdf.format(firstDayOfWeekByWN(week).getTime()));
         setLast(sdf.format(lastDayOfWeekByWN(week).getTime()));
         setFirstandlast(getFirst()+" - "+getLast());
