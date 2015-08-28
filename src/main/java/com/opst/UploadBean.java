@@ -29,6 +29,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.servlet.http.Part;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
+
 /**
  *
  * @author karci
@@ -58,8 +61,77 @@ public class UploadBean {
     public Date ctpdate = new Date();
 
   
-    public void anyad() throws Exception, IOException {
+    public void anyad(FileUploadEvent event) throws Exception, IOException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
+        UploadedFile file = event.getFile();
+        String filename = file.getFileName();
+        try {
+        byte[] results = new byte[(int) file.getSize()];
+        
+        InputStream in = file.getInputstream();
+        in.read(results);
+        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + filename);
+        os.write(results);
+        os.flush();
+        in.close();
+        os.close();
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
         }
+        
+        //readfile
+        File text = new File(System.getenv("OPENSHIFT_DATA_DIR") + filename);
+        FileReader fileReader = new FileReader(text);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			StringBuffer stringBuffer = new StringBuffer();
+			String line;
+                        int i =0;
+        while ((line = bufferedReader.readLine()) != null) {
+            //System.out.println(line);
+            i++;
+            String showme = null;
+            if (i == 6) {
+              String ymd=line.substring(61, 70);
+              System.out.println("[INFO] - UploadBean: "+ymd);
+                if (!"".equals(ymd))
+                    {
+                        String[] parts = ymd.split("/");
+                        String d = parts[0]; // day
+                        String m = parts[1]; //month
+                        String y = "20"+parts[2]; //year
+                        if (!"dd".equals(d))
+                            {
+                            Float D = Float.parseFloat(d);
+                            int Dd = Math.round(D);
+                            Float M =Float.parseFloat(m);
+                            int Mm = Math.round(M)-1;
+                            Float Y =Float.parseFloat(y);
+                            int Yy = Math.round(Y);
+                            showme = sdf.format(showme(Yy, Mm, Dd).getTime());
+                            ctpdate = showme(Yy, Mm, Dd).getTime();
+                            }
+                    }
+              //ctpdate = showme(2015,8,20).getTime();
+              //Date date = new Date(line.substring(61,70));
+              
+          }
+          if (i>10 && i<35) {
+             
+             //System.out.println(i+" "+line);
+              Double ctp = Double.parseDouble(line.substring(87, 92));
+             ctparray[i-11] = ctp;
+             
+          }
+          
+      }
+            
+            updateCtp( ctparray, ctpdate);
+        
+      // dispose all the resources after using them.
+        fileReader.close();
+        }
+        
     
     public void uploadFile() throws IOException, Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

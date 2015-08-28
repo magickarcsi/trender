@@ -96,12 +96,15 @@
                 <h:outputLabel value="#{adminbean.first}"/>
                         <h:outputLabel value="#{adminbean.last}"/>
                         
-                <h:outputLabel value="Monday: "/>
+                        <p:fileUpload fileUploadListener="#{uploadbean.anyad}" mode="advanced" dragDropSupport="false"
+                  multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(txt|png)$/" />
+<!--                         
+                        <h:outputLabel value="Monday: "/>
                 <h:inputFile id="monday" required="true"  value="#{uploadbean.monday}" requiredMessage="Please upload a file for Monday!"/>
                 
                 <h:outputLabel value="Tuesday: "/>
                 <h:inputFile id="tuesday" required="true" value="#{uploadbean.tuesday}" requiredMessage="Please upload a file for Tuesday!"/>
-<!--            
+           
                 <h:outputLabel value="Wednesday: "/>
                 <h:inputFile required="true" requiredMessage="Please upload a file for Wednesday!"/>
                 
