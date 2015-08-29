@@ -635,13 +635,13 @@ public class adminBean implements Serializable{
     
     public static class uploadData {
         private int week;
-        private Day monday;
-        private Day tuesday;
-        private Day wednesday;
-        private Day thursday;
-        private Day friday;
-        private Day saturday;
-        private Day sunday;
+        private Day monday = new Day();
+        private Day tuesday = new Day();
+        private Day wednesday = new Day();
+        private Day thursday = new Day();
+        private Day friday = new Day();
+        private Day saturday = new Day();
+        private Day sunday = new Day();
         private Double[] mondaypod = new Double[4];
         private Double[] tuesdaypod = new Double[4];
         private Double[] wednesdaypod = new Double[4];
