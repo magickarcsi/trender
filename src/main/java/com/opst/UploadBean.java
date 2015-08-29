@@ -31,6 +31,7 @@ import javax.servlet.http.Part;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
+import com.opst.adminBean.uploadData;
 
 /**
  *
@@ -59,8 +60,11 @@ public class UploadBean {
     public Double[] ctparray = new Double[24];
     public Double[] ctp_pod = new Double[4];
     public Date ctpdate = new Date();
+    private uploadData udata = new uploadData();
 
-  
+    
+    
+    
     public void anyad(FileUploadEvent event) throws Exception, IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
@@ -125,9 +129,70 @@ public class UploadBean {
           }
           
       }
-            
-            updateCtp( ctparray, ctpdate);
+            // TODO add data to uploadData()
         
+        Double sum = 0.0;
+        Double[] pod = new Double[4];
+              pod[0] = 0.0;
+              pod[1] = 0.0;
+              pod[2] = 0.0;
+              pod[3] = 0.0;
+              for (int j=0;j<24;j++)
+                {
+                  
+                  sum = sum+ctparray[j];
+                  if (j<5)
+                  {
+                      pod[0] = pod[0]+ctparray[j];
+                  }
+                  else if (j>4 && j<8)
+                  {
+                      pod[1] = pod[1]+ctparray[j];
+                  }
+                  else if (j>7 && j<16)
+                  {
+                      pod[2] = pod[2]+ctparray[j];
+                  }
+                  else if (j>15)
+                  {
+                      pod[3] = pod[3]+ctparray[j];
+                  }
+                }
+
+              Double avg = sum/24;
+              Calendar c = Calendar.getInstance();
+                c.setTime(ctpdate);
+                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+                switch (dayOfWeek){
+                    case 2: getUdata().getMonday().setDate(ctpdate);
+                    udata.setMondaypod(pod);
+                    udata.setMondayavg(avg);
+                        break;
+                    case 3: getUdata().getTuesday().setDate(ctpdate);
+                    udata.setTuesdaypod(pod);
+                    udata.setTuesdayavg(avg);
+                        break;
+                    case 4: getUdata().getWednesday().setDate(ctpdate);
+                    udata.setWednesdaypod(pod);
+                    udata.setWednesdayavg(avg);
+                        break;
+                    case 5: getUdata().getThursday().setDate(ctpdate);
+                    udata.setThursdaypod(pod);
+                    udata.setThursdayavg(avg);
+                        break;
+                    case 6: getUdata().getFriday().setDate(ctpdate);
+                    udata.setFridaypod(pod);
+                    udata.setFridayavg(avg);
+                        break;
+                    case 7: getUdata().getSaturday().setDate(ctpdate);
+                    udata.setSaturdaypod(pod);
+                    udata.setSaturdayavg(avg);
+                        break;
+                    case 1: getUdata().getSunday().setDate(ctpdate);
+                    udata.setSundaypod(pod);
+                    udata.setSundayavg(avg);
+                        break;
+                }
       // dispose all the resources after using them.
         fileReader.close();
         }
@@ -209,7 +274,7 @@ public class UploadBean {
           
       }
             
-            updateCtp( ctparray, ctpdate);
+            // TODO add data to uploadData()
         
       // dispose all the resources after using them.
         fileReader.close();
@@ -218,9 +283,9 @@ public class UploadBean {
     
     }
     
-    public void updateCtp(Double[] ctparray, Date date) throws Exception{
+    public void updateCtp() throws Exception{
         int count = 0;
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        java.sql.Date sqlDate = new java.sql.Date(ctpdate.getTime());
         
         //check if there is an entry to that date already
         Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
@@ -349,6 +414,13 @@ public class UploadBean {
      */
     public void setTuesday(Part tuesday) {
         this.tuesday = tuesday;
+    }
+
+    /**
+     * @return the udata
+     */
+    public uploadData getUdata() {
+        return udata;
     }
     
 }

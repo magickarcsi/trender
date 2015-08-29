@@ -630,6 +630,360 @@ public class adminBean implements Serializable{
         }
                 
     }
+    
+    public static class uploadData {
+        private int week;
+        private Day monday;
+        private Day tuesday;
+        private Day wednesday;
+        private Day thursday;
+        private Day friday;
+        private Day saturday;
+        private Day sunday;
+        private Double[] mondaypod = new Double[4];
+        private Double[] tuesdaypod = new Double[4];
+        private Double[] wednesdaypod = new Double[4];
+        private Double[] thursdaypod = new Double[4];
+        private Double[] fridaypod = new Double[4];
+        private Double[] saturdaypod = new Double[4];
+        private Double[] sundaypod = new Double[4];
+        
+        private Double mondayavg;
+        private Double tuesdayavg;
+        private Double wednesdayavg;
+        private Double thursdayavg;
+        private Double fridayavg;
+        private Double saturdayavg;
+        private Double sundayavg;
+        private Double weekavg;
+        public uploadData(){
+            
+        }
+
+        /**
+         * @return the week
+         */
+        public int getWeek() {
+            return week;
+        }
+
+        /**
+         * @return the monday
+         */
+        public Day getMonday() {
+            return monday;
+        }
+
+        /**
+         * @return the tuesday
+         */
+        public Day getTuesday() {
+            return tuesday;
+        }
+
+        /**
+         * @return the wednesday
+         */
+        public Day getWednesday() {
+            return wednesday;
+        }
+
+        /**
+         * @return the thursday
+         */
+        public Day getThursday() {
+            return thursday;
+        }
+
+        /**
+         * @return the friday
+         */
+        public Day getFriday() {
+            return friday;
+        }
+
+        /**
+         * @return the saturday
+         */
+        public Day getSaturday() {
+            return saturday;
+        }
+
+        /**
+         * @return the sunday
+         */
+        public Day getSunday() {
+            return sunday;
+        }
+
+        /**
+         * @return the mondaypod
+         */
+        public Double[] getMondaypod() {
+            return mondaypod;
+        }
+
+        /**
+         * @return the tuesdaypod
+         */
+        public Double[] getTuesdaypod() {
+            return tuesdaypod;
+        }
+
+        /**
+         * @return the wednesdaypod
+         */
+        public Double[] getWednesdaypod() {
+            return wednesdaypod;
+        }
+
+        /**
+         * @return the thursdaypod
+         */
+        public Double[] getThursdaypod() {
+            return thursdaypod;
+        }
+
+        /**
+         * @return the fridaypod
+         */
+        public Double[] getFridaypod() {
+            return fridaypod;
+        }
+
+        /**
+         * @return the saturdaypod
+         */
+        public Double[] getSaturdaypod() {
+            return saturdaypod;
+        }
+
+        /**
+         * @return the sundaypod
+         */
+        public Double[] getSundaypod() {
+            return sundaypod;
+        }
+
+        /**
+         * @return the mondayavg
+         */
+        public Double getMondayavg() {
+            return mondayavg;
+        }
+
+        /**
+         * @return the tuesdayavg
+         */
+        public Double getTuesdayavg() {
+            return tuesdayavg;
+        }
+
+        /**
+         * @return the wednesdayavg
+         */
+        public Double getWednesdayavg() {
+            return wednesdayavg;
+        }
+
+        /**
+         * @return the thursdayavg
+         */
+        public Double getThursdayavg() {
+            return thursdayavg;
+        }
+
+        /**
+         * @return the fridayavg
+         */
+        public Double getFridayavg() {
+            return fridayavg;
+        }
+
+        /**
+         * @return the saturdayavg
+         */
+        public Double getSaturdayavg() {
+            return saturdayavg;
+        }
+
+        /**
+         * @return the sundayavg
+         */
+        public Double getSundayavg() {
+            return sundayavg;
+        }
+
+        /**
+         * @return the weekavg
+         */
+        public Double getWeekavg() {
+            return weekavg;
+        }
+
+        /**
+         * @param week the week to set
+         */
+        public void setWeek(int week) {
+            this.week = week;
+        }
+
+        /**
+         * @param monday the monday to set
+         */
+        public void setMonday(Day monday) {
+            this.monday = monday;
+        }
+
+        /**
+         * @param tuesday the tuesday to set
+         */
+        public void setTuesday(Day tuesday) {
+            this.tuesday = tuesday;
+        }
+
+        /**
+         * @param wednesday the wednesday to set
+         */
+        public void setWednesday(Day wednesday) {
+            this.wednesday = wednesday;
+        }
+
+        /**
+         * @param thursday the thursday to set
+         */
+        public void setThursday(Day thursday) {
+            this.thursday = thursday;
+        }
+
+        /**
+         * @param friday the friday to set
+         */
+        public void setFriday(Day friday) {
+            this.friday = friday;
+        }
+
+        /**
+         * @param saturday the saturday to set
+         */
+        public void setSaturday(Day saturday) {
+            this.saturday = saturday;
+        }
+
+        /**
+         * @param sunday the sunday to set
+         */
+        public void setSunday(Day sunday) {
+            this.sunday = sunday;
+        }
+
+        /**
+         * @param mondaypod the mondaypod to set
+         */
+        public void setMondaypod(Double[] mondaypod) {
+            this.mondaypod = mondaypod;
+        }
+
+        /**
+         * @param tuesdaypod the tuesdaypod to set
+         */
+        public void setTuesdaypod(Double[] tuesdaypod) {
+            this.tuesdaypod = tuesdaypod;
+        }
+
+        /**
+         * @param wednesdaypod the wednesdaypod to set
+         */
+        public void setWednesdaypod(Double[] wednesdaypod) {
+            this.wednesdaypod = wednesdaypod;
+        }
+
+        /**
+         * @param thursdaypod the thursdaypod to set
+         */
+        public void setThursdaypod(Double[] thursdaypod) {
+            this.thursdaypod = thursdaypod;
+        }
+
+        /**
+         * @param fridaypod the fridaypod to set
+         */
+        public void setFridaypod(Double[] fridaypod) {
+            this.fridaypod = fridaypod;
+        }
+
+        /**
+         * @param saturdaypod the saturdaypod to set
+         */
+        public void setSaturdaypod(Double[] saturdaypod) {
+            this.saturdaypod = saturdaypod;
+        }
+
+        /**
+         * @param sundaypod the sundaypod to set
+         */
+        public void setSundaypod(Double[] sundaypod) {
+            this.sundaypod = sundaypod;
+        }
+
+        /**
+         * @param mondayavg the mondayavg to set
+         */
+        public void setMondayavg(Double mondayavg) {
+            this.mondayavg = mondayavg;
+        }
+
+        /**
+         * @param tuesdayavg the tuesdayavg to set
+         */
+        public void setTuesdayavg(Double tuesdayavg) {
+            this.tuesdayavg = tuesdayavg;
+        }
+
+        /**
+         * @param wednesdayavg the wednesdayavg to set
+         */
+        public void setWednesdayavg(Double wednesdayavg) {
+            this.wednesdayavg = wednesdayavg;
+        }
+
+        /**
+         * @param thursdayavg the thursdayavg to set
+         */
+        public void setThursdayavg(Double thursdayavg) {
+            this.thursdayavg = thursdayavg;
+        }
+
+        /**
+         * @param fridayavg the fridayavg to set
+         */
+        public void setFridayavg(Double fridayavg) {
+            this.fridayavg = fridayavg;
+        }
+
+        /**
+         * @param saturdayavg the saturdayavg to set
+         */
+        public void setSaturdayavg(Double saturdayavg) {
+            this.saturdayavg = saturdayavg;
+        }
+
+        /**
+         * @param sundayavg the sundayavg to set
+         */
+        public void setSundayavg(Double sundayavg) {
+            this.sundayavg = sundayavg;
+        }
+
+        /**
+         * @param weekavg the weekavg to set
+         */
+        public void setWeekavg(Double weekavg) {
+            this.weekavg = weekavg;
+        }
+        
+    }
+    
     public static class Day{
         private Date date;
         private int overnight;
