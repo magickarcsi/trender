@@ -60,7 +60,7 @@ public class UploadBean {
     public Double[] ctparray = new Double[24];
     public Double[] ctp_pod = new Double[4];
     public Date ctpdate = new Date();
-    private uploadData udata = new uploadData();
+    
 
     
     
@@ -131,6 +131,7 @@ public class UploadBean {
       }
             // TODO add data to uploadData()
         
+        
         Double sum = 0.0;
         Double[] pod = new Double[4];
               pod[0] = 0.0;
@@ -165,32 +166,32 @@ public class UploadBean {
                 int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
                 switch (dayOfWeek){
                     case 2: getUdata().getMonday().setDate(ctpdate);
-                    udata.setMondaypod(pod);
-                    udata.setMondayavg(avg);
+                    getUdata().setMondaypod(pod);
+                    getUdata().setMondayavg(avg);
                         break;
                     case 3: getUdata().getTuesday().setDate(ctpdate);
-                    udata.setTuesdaypod(pod);
-                    udata.setTuesdayavg(avg);
+                    getUdata().setTuesdaypod(pod);
+                    getUdata().setTuesdayavg(avg);
                         break;
                     case 4: getUdata().getWednesday().setDate(ctpdate);
-                    udata.setWednesdaypod(pod);
-                    udata.setWednesdayavg(avg);
+                    getUdata().setWednesdaypod(pod);
+                    getUdata().setWednesdayavg(avg);
                         break;
                     case 5: getUdata().getThursday().setDate(ctpdate);
-                    udata.setThursdaypod(pod);
-                    udata.setThursdayavg(avg);
+                    getUdata().setThursdaypod(pod);
+                    getUdata().setThursdayavg(avg);
                         break;
                     case 6: getUdata().getFriday().setDate(ctpdate);
-                    udata.setFridaypod(pod);
-                    udata.setFridayavg(avg);
+                    getUdata().setFridaypod(pod);
+                    getUdata().setFridayavg(avg);
                         break;
                     case 7: getUdata().getSaturday().setDate(ctpdate);
-                    udata.setSaturdaypod(pod);
-                    udata.setSaturdayavg(avg);
+                    getUdata().setSaturdaypod(pod);
+                    getUdata().setSaturdayavg(avg);
                         break;
                     case 1: getUdata().getSunday().setDate(ctpdate);
-                    udata.setSundaypod(pod);
-                    udata.setSundayavg(avg);
+                    getUdata().setSundaypod(pod);
+                    getUdata().setSundayavg(avg);
                         break;
                 }
       // dispose all the resources after using them.
@@ -420,7 +421,7 @@ public class UploadBean {
      * @return the udata
      */
     public uploadData getUdata() {
-        return udata;
+        return adminBean.udata;
     }
     
 }

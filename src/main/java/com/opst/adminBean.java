@@ -110,6 +110,8 @@ public class adminBean implements Serializable{
     private Day saturday = new Day();
     private Day sunday = new Day();
     
+    public static uploadData udata = new uploadData();
+    
     private Boolean serviceOn = true;
     private Boolean productionOn = true;
     private Boolean trainingOn = true;
@@ -663,6 +665,33 @@ public class adminBean implements Serializable{
         /**
          * @return the week
          */
+        public void clear() {
+         int week = 0;
+         Day monday = null;
+         Day tuesday = null;
+         Day wednesday = null;
+         Day thursday = null;
+         Day friday = null;
+         Day saturday = null;
+         Day sunday = null;
+         Double[] mondaypod = null;
+         Double[] tuesdaypod = null;
+         Double[] wednesdaypod = null;
+         Double[] thursdaypod = null;
+         Double[] fridaypod = null;
+         Double[] saturdaypod = null;
+         Double[] sundaypod = null;
+        
+         Double mondayavg = null;
+         Double tuesdayavg = null;
+         Double wednesdayavg = null;
+         Double thursdayavg = null;
+         Double fridayavg = null;
+         Double saturdayavg = null;
+         Double sundayavg = null;
+         Double weekavg = null;
+        }
+        
         public int getWeek() {
             return week;
         }
