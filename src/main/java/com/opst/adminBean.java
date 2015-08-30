@@ -1293,10 +1293,7 @@ public class adminBean implements Serializable{
     }
     private String favWeek2;
     
-    private Map<String,Object> managernames;
-    {
-        
-    }
+    
     
     private Map<String,Object> managers;
         {
@@ -1314,7 +1311,6 @@ public class adminBean implements Serializable{
                     String ln = rs.getNString(3);
                     String name = fn + " " + ln.substring(0, 1);
                     getManagers().put(name, id);
-                    getManagernames().put(name, id);
                     
                 }
             
@@ -1327,6 +1323,11 @@ public class adminBean implements Serializable{
         } catch (IllegalAccessException ex) {
             Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
         }   
+        }
+        
+        private Map<String,Object> managernames;
+        {
+            setManagernames(managers);
         }
     
         public void spread_dates(int wk) {
