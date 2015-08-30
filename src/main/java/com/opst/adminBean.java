@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -120,6 +121,12 @@ public class adminBean implements Serializable{
     public String dateToString(Date date){
         String datestring = ddmm.format(date);
         return datestring;
+    }
+    
+    public String twoDecimal(Double szam){
+        DecimalFormat df = new DecimalFormat("#.00"); 
+        String twodecimal = df.format(szam);
+        return twodecimal;
     }
     
     public void service() {

@@ -99,22 +99,22 @@
                     <!--Monday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="m" value="Monday (#{adminbean.dateToString(adminbean.monday.date)}) "/></p:column>
                     <p:column>
-                        <h:selectOneMenu id="mmon" value="#{adminbean.monday.overnight}" >
+                        <h:selectOneMenu id="mmon" value="#{uploadbean.udata.monday.overnight}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mmop" value="#{adminbean.monday.open}" >
+                        <h:selectOneMenu id="mmop" value="#{uploadbean.udata.monday.open}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mmds" value="#{adminbean.monday.day}" >
+                        <h:selectOneMenu id="mmds" value="#{uploadbean.udata.monday.day}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mmev" value="#{adminbean.monday.evening}" >
+                        <h:selectOneMenu id="mmev" value="#{uploadbean.udata.monday.evening}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
@@ -123,22 +123,22 @@
                     <!--Tuesday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="tu" value="Tuesday (#{adminbean.dateToString(adminbean.tuesday.date)}) "/></p:column>
                     <p:column>
-                        <h:selectOneMenu id="mtuon" value="#{adminbean.tuesday.overnight}" >
+                        <h:selectOneMenu id="mtuon" value="#{uploadbean.udata.tuesday.overnight}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mtuop" value="#{adminbean.tuesday.open}" >
+                        <h:selectOneMenu id="mtuop" value="#{uploadbean.udata.tuesday.open}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mtuds" value="#{adminbean.tuesday.day}" >
+                        <h:selectOneMenu id="mtuds" value="#{uploadbean.udata.tuesday.day}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
                     <p:column>
-                        <h:selectOneMenu id="mtuev" value="#{adminbean.tuesday.evening}" >
+                        <h:selectOneMenu id="mtuev" value="#{uploadbean.udata.tuesday.evening}" >
                             <f:selectItems value="#{adminbean.managers}" />
                         </h:selectOneMenu>
                     </p:column>
@@ -295,18 +295,18 @@
                     <p:column>CTP</p:column>
                 </p:row>
                 <p:row>
-                    <p:column style="font-weight: bold;">Monday #{uploadbean.udata.monday.date}</p:column>
+                    <p:column style="font-weight: bold;">Monday #{adminbean.dateToString(uploadbean.udata.monday.date)}</p:column>
                     <p:column>#{uploadbean.udata.monday.overnight}</p:column>
-                    <p:column>#{uploadbean.udata.mondaypod[0]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[0])}</p:column>
                     <p:column>#{uploadbean.udata.monday.open}</p:column>
-                    <p:column>#{uploadbean.udata.mondaypod[1]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[1])}</p:column>
                     <p:column>#{uploadbean.udata.monday.day}</p:column>
-                    <p:column>#{uploadbean.udata.mondaypod[2]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[2])}</p:column>
                     <p:column>#{uploadbean.udata.monday.evening}</p:column>
-                    <p:column>#{uploadbean.udata.mondaypod[3]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[3])}</p:column>
                 </p:row>
                 <p:row>
-                    <p:column style="font-weight: bold;">Tuesday #{uploadbean.udata.tuesday.date}</p:column>
+                    <p:column style="font-weight: bold;">Tuesday #{adminbean.dateToString(uploadbean.udata.tuesday.date)}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.overnight}</p:column>
                     <p:column>#{uploadbean.udata.tuesdaypod[0]}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.open}</p:column>

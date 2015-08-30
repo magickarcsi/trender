@@ -159,6 +159,10 @@ public class UploadBean {
                       pod[3] = pod[3]+ctparray[j];
                   }
                 }
+              pod[0] = pod[0]/5;
+              pod[1] = pod[1]/3;
+              pod[2] = pod[2]/8;
+              pod[3] = pod[3]/8;
 
               Double avg = sum/24;
               Calendar c = Calendar.getInstance();
