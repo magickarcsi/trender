@@ -1295,6 +1295,7 @@ public class adminBean implements Serializable{
                     String ln = rs.getNString(3);
                     String name = fn + " " + ln.substring(0, 1);
                     getManagers().put(name, id);
+                    
                 }
             
         } catch (SQLException ex) {
