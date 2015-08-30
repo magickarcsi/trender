@@ -525,14 +525,14 @@ public class adminBean implements Serializable{
     /**
      * @return the managernames
      */
-    public Map<String,Object> getManagernames() {
+    public Map<Object,String> getManagernames() {
         return managernames;
     }
 
     /**
      * @param managernames the managernames to set
      */
-    public void setManagernames(Map<String,Object> managernames) {
+    public void setManagernames(Map<Object,String> managernames) {
         this.managernames = managernames;
     }
     public static class Ctp{
@@ -1293,9 +1293,9 @@ public class adminBean implements Serializable{
     }
     private String favWeek2;
     
-    private Map<String,Object> managernames;
+    private Map<Object,String> managernames;
     {
-        setManagernames(new LinkedHashMap<String,Object>());
+        setManagernames(new LinkedHashMap<Object,String>());
     }
     
     
@@ -1315,7 +1315,7 @@ public class adminBean implements Serializable{
                     String ln = rs.getNString(3);
                     String name = fn + " " + ln.substring(0, 1);
                     getManagers().put(name, id);
-                    getManagernames().put(name, id);
+                    getManagernames().put(id, name);
                     
                 }
             
