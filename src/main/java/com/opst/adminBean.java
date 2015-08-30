@@ -124,7 +124,7 @@ public class adminBean implements Serializable{
     }
     
     public String twoDecimal(Double szam){
-        DecimalFormat df = new DecimalFormat("#.00"); 
+        DecimalFormat df = new DecimalFormat("0.##"); 
         String twodecimal = df.format(szam);
         return twodecimal;
     }
@@ -1287,7 +1287,7 @@ public class adminBean implements Serializable{
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select id,firstname,surname from `names` WHERE role in (6,7,8)");
+            rs = stmt.executeQuery("select id,firstname,surname from `names` WHERE role in (6,7,8) AND is_active in (1)");
                 while (rs.next())
                 {
                     int id = rs.getInt(1);

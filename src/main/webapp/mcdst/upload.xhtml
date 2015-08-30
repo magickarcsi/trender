@@ -294,6 +294,7 @@
                     <p:column>Name</p:column>
                     <p:column>CTP</p:column>
                 </p:row>
+                </f:facet>
                 <p:row>
                     <p:column style="font-weight: bold;">Monday #{adminbean.dateToString(uploadbean.udata.monday.date)}</p:column>
                     <p:column>#{uploadbean.udata.monday.overnight}</p:column>
@@ -308,17 +309,16 @@
                 <p:row>
                     <p:column style="font-weight: bold;">Tuesday #{adminbean.dateToString(uploadbean.udata.tuesday.date)}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.overnight}</p:column>
-                    <p:column>#{uploadbean.udata.tuesdaypod[0]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[0])}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.open}</p:column>
-                    <p:column>#{uploadbean.udata.tuesdaypod[1]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[1])}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.day}</p:column>
-                    <p:column>#{uploadbean.udata.tuesdaypod[2]}</p:column>
+                    <p:column>#{uadminbean.twoDecimal(ploadbean.udata.tuesdaypod[2])}</p:column>
                     <p:column>#{uploadbean.udata.tuesday.evening}</p:column>
-                    <p:column>#{uploadbean.udata.tuesdaypod[3]}</p:column>
+                    <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[3])}</p:column>
                 </p:row>
-                    
-            </f:facet>
                         </p:panelGrid>
+                    <br/>
                 <h:commandButton action="#{uploadbean.updateCtp}" value="Submit"/>
                 </p:panel>
             </p:tab>
