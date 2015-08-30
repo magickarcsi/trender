@@ -297,24 +297,24 @@
                 </f:facet>
                 <p:row>
                     <p:column style="font-weight: bold;">Monday #{adminbean.dateToString(uploadbean.udata.monday.date)}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.monday.overnight)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.monday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[0])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.monday.open)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.monday.open)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[1])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.monday.day)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.monday.day)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[2])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.monday.evening)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.monday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[3])}</p:column>
                 </p:row>
                 <p:row>
                     <p:column style="font-weight: bold;">Tuesday #{adminbean.dateToString(uploadbean.udata.tuesday.date)}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.tuesday.overnight)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.tuesday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[0])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.tuesday.open)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.tuesday.open)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[1])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.tuesday.day)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.tuesday.day)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[2])}</p:column>
-                    <p:column>#{adminbean.managers.get(uploadbean.udata.tuesday.evening)}</p:column>
+                    <p:column>#{adminbean.getManagers().get(uploadbean.udata.tuesday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[3])}</p:column>
                 </p:row>
                         </p:panelGrid>
