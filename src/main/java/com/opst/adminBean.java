@@ -1294,6 +1294,10 @@ public class adminBean implements Serializable{
     private String favWeek2;
     
     private Map<String,Object> managernames;
+    {
+        setManagernames(new LinkedHashMap<String,Object>());
+    }
+    
     
     private Map<String,Object> managers;
         {
