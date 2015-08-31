@@ -381,7 +381,7 @@ public class UploadBean {
         if (getUdata().getTuesday().getDate() != null)
         {
         count = 0;
-        java.sql.Date sqlDate = new java.sql.Date(getUdata().getMonday().getDate().getTime());
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getTuesday().getDate().getTime());
         
         //check if there is an entry to that date already
         Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
