@@ -347,10 +347,32 @@ public class UploadBean {
               preparedStmt1.setInt(6, 48);
               preparedStmt1.execute();
               conn1.close();
-              System.out.println("[INFO] - UPLOADER: Upload successful for "+ctpdate+".");
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getMonday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getMonday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getMonday().getDay());
+              preparedStmt2.setInt(5, getUdata().getMonday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
-            System.out.println("[INFO] - Entry already exists for "+ctpdate+".");
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
     //tuesday
         count = 0;
@@ -409,10 +431,10 @@ public class UploadBean {
               preparedStmt1.setInt(6, 48);
               preparedStmt1.execute();
               conn1.close();
-              System.out.println("[INFO] - UPLOADER: Upload successful for "+ctpdate+".");
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
-            System.out.println("[INFO] - Entry already exists for "+ctpdate+".");
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
         
     }
