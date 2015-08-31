@@ -665,6 +665,15 @@ public class adminBean implements Serializable{
         private Day friday = new Day();
         private Day saturday = new Day();
         private Day sunday = new Day();
+        
+        private Double[] mondayctp = new Double[24];
+        private Double[] tuesdayctp = new Double[24];
+        private Double[] wednesdayctp = new Double[24];
+        private Double[] thursdayctp = new Double[24];
+        private Double[] fridayctp = new Double[24];
+        private Double[] saturdayctp = new Double[24];
+        private Double[] sundayctp = new Double[24];
+        
         private Double[] mondaypod = new Double[4];
         private Double[] tuesdaypod = new Double[4];
         private Double[] wednesdaypod = new Double[4];
@@ -1032,6 +1041,104 @@ public class adminBean implements Serializable{
          */
         public void setWeekavg(Double weekavg) {
             this.weekavg = weekavg;
+        }
+
+        /**
+         * @return the mondayctp
+         */
+        public Double[] getMondayctp() {
+            return mondayctp;
+        }
+
+        /**
+         * @param mondayctp the mondayctp to set
+         */
+        public void setMondayctp(Double[] mondayctp) {
+            this.mondayctp = mondayctp;
+        }
+
+        /**
+         * @return the tuesdayctp
+         */
+        public Double[] getTuesdayctp() {
+            return tuesdayctp;
+        }
+
+        /**
+         * @param tuesdayctp the tuesdayctp to set
+         */
+        public void setTuesdayctp(Double[] tuesdayctp) {
+            this.tuesdayctp = tuesdayctp;
+        }
+
+        /**
+         * @return the wednesdayctp
+         */
+        public Double[] getWednesdayctp() {
+            return wednesdayctp;
+        }
+
+        /**
+         * @param wednesdayctp the wednesdayctp to set
+         */
+        public void setWednesdayctp(Double[] wednesdayctp) {
+            this.wednesdayctp = wednesdayctp;
+        }
+
+        /**
+         * @return the thursdayctp
+         */
+        public Double[] getThursdayctp() {
+            return thursdayctp;
+        }
+
+        /**
+         * @param thursdayctp the thursdayctp to set
+         */
+        public void setThursdayctp(Double[] thursdayctp) {
+            this.thursdayctp = thursdayctp;
+        }
+
+        /**
+         * @return the fridayctp
+         */
+        public Double[] getFridayctp() {
+            return fridayctp;
+        }
+
+        /**
+         * @param fridayctp the fridayctp to set
+         */
+        public void setFridayctp(Double[] fridayctp) {
+            this.fridayctp = fridayctp;
+        }
+
+        /**
+         * @return the saturdayctp
+         */
+        public Double[] getSaturdayctp() {
+            return saturdayctp;
+        }
+
+        /**
+         * @param saturdayctp the saturdayctp to set
+         */
+        public void setSaturdayctp(Double[] saturdayctp) {
+            this.saturdayctp = saturdayctp;
+        }
+
+        /**
+         * @return the sundayctp
+         */
+        public Double[] getSundayctp() {
+            return sundayctp;
+        }
+
+        /**
+         * @param sundayctp the sundayctp to set
+         */
+        public void setSundayctp(Double[] sundayctp) {
+            this.sundayctp = sundayctp;
         }
         
     }

@@ -172,30 +172,37 @@ public class UploadBean {
                     case 2: getUdata().getMonday().setDate(ctpdate);
                     getUdata().setMondaypod(pod);
                     getUdata().setMondayavg(avg);
+                    getUdata().setMondayctp(ctparray);
                         break;
                     case 3: getUdata().getTuesday().setDate(ctpdate);
                     getUdata().setTuesdaypod(pod);
                     getUdata().setTuesdayavg(avg);
+                    getUdata().setTuesdayctp(ctparray);
                         break;
                     case 4: getUdata().getWednesday().setDate(ctpdate);
                     getUdata().setWednesdaypod(pod);
                     getUdata().setWednesdayavg(avg);
+                    getUdata().setWednesdayctp(ctparray);
                         break;
                     case 5: getUdata().getThursday().setDate(ctpdate);
                     getUdata().setThursdaypod(pod);
                     getUdata().setThursdayavg(avg);
+                    getUdata().setThursdayctp(ctparray);
                         break;
                     case 6: getUdata().getFriday().setDate(ctpdate);
                     getUdata().setFridaypod(pod);
                     getUdata().setFridayavg(avg);
+                    getUdata().setFridayctp(ctparray);
                         break;
                     case 7: getUdata().getSaturday().setDate(ctpdate);
                     getUdata().setSaturdaypod(pod);
                     getUdata().setSaturdayavg(avg);
+                    getUdata().setSaturdayctp(ctparray);
                         break;
                     case 1: getUdata().getSunday().setDate(ctpdate);
                     getUdata().setSundaypod(pod);
                     getUdata().setSundayavg(avg);
+                    getUdata().setSundayctp(ctparray);
                         break;
                 }
       // dispose all the resources after using them.
@@ -321,7 +328,7 @@ public class UploadBean {
               preparedStmt.setDate (1, sqlDate);
               for (int i=0;i<24;i++)
                 {
-                  preparedStmt.setDouble (i+2, ctparray[i]);
+                  preparedStmt.setDouble (i+2, getUdata().getMondayctp()[i]);
                 }
               preparedStmt.setDouble(26, getUdata().getMondayavg());
               preparedStmt.setInt(27, 48);
@@ -350,27 +357,27 @@ public class UploadBean {
               preparedStmt1.execute();
               conn1.close();
               
-//              //PoD Manager CTP
-//              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
-//                Statement stmt2 = null;
-//                ResultSet rs2 = null;
-//
-//                stmt2 = conn2.createStatement();
-//                // the mysql insert statement
-//              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
-//                + " values (?, ?, ?, ?, ?, ?)";
-//
-//              // create the mysql insert preparedstatement1
-//              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
-//              preparedStmt2.setDate (1, sqlDate);
-//              preparedStmt2.setInt(2, getUdata().getMonday().getOvernight());
-//              preparedStmt2.setInt(3, getUdata().getMonday().getOpen());
-//              preparedStmt2.setInt(4, getUdata().getMonday().getDay());
-//              preparedStmt2.setInt(5, getUdata().getMonday().getEvening());
-//              preparedStmt2.setInt(6, 48);
-//              preparedStmt2.execute();
-//              conn2.close();
-//              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getMonday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getMonday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getMonday().getDay());
+              preparedStmt2.setInt(5, getUdata().getMonday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
@@ -408,7 +415,7 @@ public class UploadBean {
               preparedStmt.setDate (1, sqlDate);
               for (int i=0;i<24;i++)
                 {
-                  preparedStmt.setDouble (i+2, ctparray[i]);
+                  preparedStmt.setDouble (i+2, getUdata().getTuesdayctp()[i]);
                 }
               preparedStmt.setDouble(26, getUdata().getTuesdayavg());
               preparedStmt.setInt(27, 48);
