@@ -295,7 +295,7 @@
                     <p:column>CTP</p:column>
                 </p:row>
                 </f:facet>
-                            <p:row rendered="uploadbean.udata.monday.date != null">
+                            <p:row rendered="#{uploadbean.udata.monday.date != null}">
                     <p:column style="font-weight: bold;">Monday #{adminbean.dateToString(uploadbean.udata.monday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.monday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[0])}</p:column>
@@ -306,7 +306,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.monday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.mondaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.tuesday.date != null">
+                            <p:row rendered="#{uploadbean.udata.tuesday.date != null}">
                     <p:column style="font-weight: bold;">Tuesday #{adminbean.dateToString(uploadbean.udata.tuesday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.tuesday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[0])}</p:column>
@@ -317,7 +317,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.tuesday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.tuesdaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.wednesday.date != null">
+                            <p:row rendered="#{uploadbean.udata.wednesday.date != null}">
                     <p:column style="font-weight: bold;">Wednesday #{adminbean.dateToString(uploadbean.udata.wednesday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.wednesday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.wednesdaypod[0])}</p:column>
@@ -328,7 +328,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.wednesday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.wednesdaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.thursday.date != null">
+                            <p:row rendered="#{uploadbean.udata.thursday.date != null}">
                     <p:column style="font-weight: bold;">Thursday #{adminbean.dateToString(uploadbean.udata.thursday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.thursday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.thursdaypod[0])}</p:column>
@@ -339,7 +339,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.thursday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.thursdaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.friday.date != null">
+                            <p:row rendered="#{uploadbean.udata.friday.date != null}">
                     <p:column style="font-weight: bold;">Friday #{adminbean.dateToString(uploadbean.udata.friday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.friday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.fridaypod[0])}</p:column>
@@ -350,7 +350,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.friday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.fridaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.saturday.date != null">
+                            <p:row rendered="#{uploadbean.udata.saturday.date != null}">
                     <p:column style="font-weight: bold;">Saturday #{adminbean.dateToString(uploadbean.udata.saturday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.saturday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.saturdaypod[0])}</p:column>
@@ -361,7 +361,7 @@
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.saturday.evening)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.saturdaypod[3])}</p:column>
                 </p:row>
-                            <p:row rendered="uploadbean.udata.sunday.date != null">
+                            <p:row rendered="#{uploadbean.udata.sunday.date != null}">
                     <p:column style="font-weight: bold;">Sunday #{adminbean.dateToString(uploadbean.udata.sunday.date)}</p:column>
                     <p:column>#{adminbean.getManagernames().get(uploadbean.udata.sunday.overnight)}</p:column>
                     <p:column>#{adminbean.twoDecimal(uploadbean.udata.sundaypod[0])}</p:column>
