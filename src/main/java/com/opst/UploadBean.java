@@ -291,6 +291,8 @@ public class UploadBean {
     public void updateCtp() throws Exception{
         int count;
     //monday
+        if (getUdata().getMonday().getDate() != null)
+        {
         count = 0;
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getMonday().getDate().getTime());
         
@@ -374,16 +376,19 @@ public class UploadBean {
         else {
             System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
+        }
     //tuesday
+        if (getUdata().getTuesday().getDate() != null)
+        {
         count = 0;
-        sqlDate = new java.sql.Date(getUdata().getTuesday().getDate().getTime());
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getMonday().getDate().getTime());
         
         //check if there is an entry to that date already
-        connCheck = com.opst.MySqlDAOFactory.createConnection();
-        queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
-        psCheck = connCheck.prepareStatement(queryCheck);
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
-        resultSet = psCheck.executeQuery();
+        ResultSet resultSet = psCheck.executeQuery();
         if(resultSet.next()) {
         count = resultSet.getInt(1);
         }
@@ -435,6 +440,7 @@ public class UploadBean {
         }
         else {
             System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
         }
         
     }
