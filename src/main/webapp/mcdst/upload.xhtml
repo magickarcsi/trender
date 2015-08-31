@@ -95,7 +95,7 @@
                 </p:row>
 
             </f:facet>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.monday.date != null}">
                     <!--Monday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="m" value="Monday (#{adminbean.dateToString(adminbean.monday.date)}) "/></p:column>
                     <p:column>
@@ -119,7 +119,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.tuesday.date != null}">
                     <!--Tuesday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="tu" value="Tuesday (#{adminbean.dateToString(adminbean.tuesday.date)}) "/></p:column>
                     <p:column>
@@ -143,7 +143,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.wednesday.date != null}">
                     <!--Wednesday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="we" value="Wednesday (#{adminbean.dateToString(adminbean.wednesday.date)}) "/></p:column>
                     <p:column>
@@ -167,7 +167,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.thursday.date != null}">
                     <!--Thursday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="t" value="Thursday (#{adminbean.dateToString(adminbean.thursday.date)}) "/></p:column>
                     <p:column>
@@ -191,7 +191,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.friday.date != null}">
                     <!--Friday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="f" value="Friday (#{adminbean.dateToString(adminbean.friday.date)}) "/></p:column>
                     <p:column>
@@ -215,7 +215,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.saturday.date != null}">
                     <!--Saturday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="sa" value="Saturday (#{adminbean.dateToString(adminbean.saturday.date)}) "/></p:column>
                     <p:column>
@@ -239,7 +239,7 @@
                         </h:selectOneMenu>
                     </p:column>
                 </p:row>
-                <p:row>
+                <p:row rendered="#{uploadbean.udata.sunday.date != null}">
                     <!--Sunday -->
                     <p:column style="font-weight: bold;"><h:outputLabel id="su" value="Sunday (#{adminbean.dateToString(adminbean.sunday.date)}) "/></p:column>
                     <p:column>
