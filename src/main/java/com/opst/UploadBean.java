@@ -32,6 +32,7 @@ import javax.servlet.http.Part;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import com.opst.adminBean.uploadData;
+import java.util.HashMap;
 
 /**
  *
@@ -68,6 +69,9 @@ public class UploadBean {
     public void anyad(FileUploadEvent event) throws Exception, IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
+        
+        
+        
         UploadedFile file = event.getFile();
         String filename = file.getFileName();
         try {
@@ -129,6 +133,21 @@ public class UploadBean {
           }
           
       }
+        //
+        java.sql.Date sqldate = new java.sql.Date(ctpdate.getTime());
+        int count = 0;
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqldate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+            
+        }
             // TODO add data to uploadData()
         
         
@@ -443,12 +462,484 @@ public class UploadBean {
               preparedStmt1.setInt(6, 48);
               preparedStmt1.execute();
               conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getTuesday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getTuesday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getTuesday().getDay());
+              preparedStmt2.setInt(5, getUdata().getTuesday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
             System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
         }
+        
+        //wednesday
+        if (getUdata().getWednesday().getDate() != null)
+        {
+        count = 0;
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getWednesday().getDate().getTime());
+        
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, getUdata().getWednesdayctp()[i]);
+                }
+              preparedStmt.setDouble(26, getUdata().getWednesdayavg());
+              preparedStmt.setInt(27, 48);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, getUdata().getWednesdaypod()[0]);
+              preparedStmt1.setDouble(3, getUdata().getWednesdaypod()[1]);
+              preparedStmt1.setDouble(4, getUdata().getWednesdaypod()[2]);
+              preparedStmt1.setDouble(5, getUdata().getWednesdaypod()[3]);
+              preparedStmt1.setInt(6, 48);
+              preparedStmt1.execute();
+              conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getWednesday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getWednesday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getWednesday().getDay());
+              preparedStmt2.setInt(5, getUdata().getWednesday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
+        }
+        
+        //thursday
+        if (getUdata().getThursday().getDate() != null)
+        {
+        count = 0;
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getThursday().getDate().getTime());
+        
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, getUdata().getThursdayctp()[i]);
+                }
+              preparedStmt.setDouble(26, getUdata().getThursdayavg());
+              preparedStmt.setInt(27, 48);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, getUdata().getThursdaypod()[0]);
+              preparedStmt1.setDouble(3, getUdata().getThursdaypod()[1]);
+              preparedStmt1.setDouble(4, getUdata().getThursdaypod()[2]);
+              preparedStmt1.setDouble(5, getUdata().getThursdaypod()[3]);
+              preparedStmt1.setInt(6, 48);
+              preparedStmt1.execute();
+              conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getThursday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getThursday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getThursday().getDay());
+              preparedStmt2.setInt(5, getUdata().getThursday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
+        }
+        
+        //friday
+        if (getUdata().getFriday().getDate() != null)
+        {
+        count = 0;
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getFriday().getDate().getTime());
+        
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, getUdata().getFridayctp()[i]);
+                }
+              preparedStmt.setDouble(26, getUdata().getFridayavg());
+              preparedStmt.setInt(27, 48);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, getUdata().getFridaypod()[0]);
+              preparedStmt1.setDouble(3, getUdata().getFridaypod()[1]);
+              preparedStmt1.setDouble(4, getUdata().getFridaypod()[2]);
+              preparedStmt1.setDouble(5, getUdata().getFridaypod()[3]);
+              preparedStmt1.setInt(6, 48);
+              preparedStmt1.execute();
+              conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getFriday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getFriday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getFriday().getDay());
+              preparedStmt2.setInt(5, getUdata().getFriday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
+        }
+        
+        //saturday
+        if (getUdata().getSaturday().getDate() != null)
+        {
+        count = 0;
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getSaturday().getDate().getTime());
+        
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, getUdata().getSaturdayctp()[i]);
+                }
+              preparedStmt.setDouble(26, getUdata().getSaturdayavg());
+              preparedStmt.setInt(27, 48);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, getUdata().getSaturdaypod()[0]);
+              preparedStmt1.setDouble(3, getUdata().getSaturdaypod()[1]);
+              preparedStmt1.setDouble(4, getUdata().getSaturdaypod()[2]);
+              preparedStmt1.setDouble(5, getUdata().getSaturdaypod()[3]);
+              preparedStmt1.setInt(6, 48);
+              preparedStmt1.execute();
+              conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getSaturday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getSaturday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getSaturday().getDay());
+              preparedStmt2.setInt(5, getUdata().getSaturday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
+        }
+        
+        //sunday
+        if (getUdata().getSunday().getDate() != null)
+        {
+        count = 0;
+        java.sql.Date sqlDate = new java.sql.Date(getUdata().getSunday().getDate().getTime());
+        
+        //check if there is an entry to that date already
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
+        PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
+        psCheck.setDate(1, sqlDate);
+        ResultSet resultSet = psCheck.executeQuery();
+        if(resultSet.next()) {
+        count = resultSet.getInt(1);
+        }
+        if (count != 1)
+        {
+                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt = null;
+                ResultSet rs = null;
+
+                stmt = conn.createStatement();
+                // the mysql insert statement
+              String query = " insert into `ctp_daily` (`date`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, `19`, `20`, `21`, `22`, `23`, `24`, `avg`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement
+              PreparedStatement preparedStmt = conn.prepareStatement(query);
+              preparedStmt.setDate (1, sqlDate);
+              for (int i=0;i<24;i++)
+                {
+                  preparedStmt.setDouble (i+2, getUdata().getSundayctp()[i]);
+                }
+              preparedStmt.setDouble(26, getUdata().getSundayavg());
+              preparedStmt.setInt(27, 48);
+              // execute the preparedstatement
+              preparedStmt.execute();
+              conn.close();
+
+              //PoD CTP
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+                ResultSet rs1 = null;
+
+                stmt1 = conn1.createStatement();
+                // the mysql insert statement
+              String query1 = " insert into `ctp_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setDate (1, sqlDate);
+              preparedStmt1.setDouble(2, getUdata().getSundaypod()[0]);
+              preparedStmt1.setDouble(3, getUdata().getSundaypod()[1]);
+              preparedStmt1.setDouble(4, getUdata().getSundaypod()[2]);
+              preparedStmt1.setDouble(5, getUdata().getSundaypod()[3]);
+              preparedStmt1.setInt(6, 48);
+              preparedStmt1.execute();
+              conn1.close();
+              
+              //PoD Manager CTP
+              Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt2 = null;
+                ResultSet rs2 = null;
+
+                stmt2 = conn2.createStatement();
+                // the mysql insert statement
+              String query2 = " insert into `manager_pod` (`date`, `1`, `2`, `3`, `4`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+              preparedStmt2.setDate (1, sqlDate);
+              preparedStmt2.setInt(2, getUdata().getSunday().getOvernight());
+              preparedStmt2.setInt(3, getUdata().getSunday().getOpen());
+              preparedStmt2.setInt(4, getUdata().getSunday().getDay());
+              preparedStmt2.setInt(5, getUdata().getSunday().getEvening());
+              preparedStmt2.setInt(6, 48);
+              preparedStmt2.execute();
+              conn2.close();
+              
+              System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
+        }
+        else {
+            System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
+        }
+        }
+        
+    }
+    
+    
+    private HashMap<Integer,Double> leaderboard = new HashMap<Integer, Double>();
+    {
+            
+    }
+    
+    public void leaderBoardCreatorCTP () {
         
     }
     
