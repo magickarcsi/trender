@@ -5,6 +5,7 @@
  */
 package com.opst;
 
+import com.opst.adminBean.PoD;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -32,7 +33,10 @@ import javax.servlet.http.Part;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import com.opst.adminBean.uploadData;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -420,6 +424,56 @@ public class UploadBean {
               preparedStmt2.execute();
               conn2.close();
               
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getMonday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getMondayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getMonday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getMondayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getMonday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getMondayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getMonday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getMondayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
@@ -506,6 +560,56 @@ public class UploadBean {
               preparedStmt2.setInt(6, 48);
               preparedStmt2.execute();
               conn2.close();
+              
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getTuesday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getTuesdayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getTuesday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getTuesdayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getTuesday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getTuesdayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getTuesday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getTuesdayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
               
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
@@ -595,6 +699,56 @@ public class UploadBean {
               preparedStmt2.execute();
               conn2.close();
               
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getWednesday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getWednesdayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getWednesday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getWednesdayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getWednesday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getWednesdayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getWednesday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getWednesdayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
@@ -682,6 +836,56 @@ public class UploadBean {
               preparedStmt2.setInt(6, 48);
               preparedStmt2.execute();
               conn2.close();
+              
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getThursday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getThursdayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getThursday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getThursdayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getThursday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getThursdayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getThursday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getThursdayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
               
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
@@ -771,6 +975,56 @@ public class UploadBean {
               preparedStmt2.execute();
               conn2.close();
               
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getFriday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getFridayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getFriday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getFridayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getFriday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getFridayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getFriday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getFridayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
@@ -858,6 +1112,56 @@ public class UploadBean {
               preparedStmt2.setInt(6, 48);
               preparedStmt2.execute();
               conn2.close();
+              
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSaturday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getSaturdayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSaturday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getSaturdayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSaturday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getSaturdayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSaturday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getSaturdayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
               
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
@@ -947,6 +1251,56 @@ public class UploadBean {
               preparedStmt2.execute();
               conn2.close();
               
+              //PoD overnight
+              Connection conn3 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt3 = null;
+                ResultSet rs3 = null;
+
+                stmt3 = conn3.createStatement();
+                // the mysql insert statement
+              String query3 = " insert into `overnight` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+
+              // create the mysql insert preparedstatement1
+              PreparedStatement preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSunday().getOvernight());
+              preparedStmt3.setDouble(3,getUdata().getSundayctp()[0]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD open
+              query3 = " insert into `open` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSunday().getOpen());
+              preparedStmt3.setDouble(3,getUdata().getSundayctp()[1]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD day
+              query3 = " insert into `day` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSunday().getDay());
+              preparedStmt3.setDouble(3,getUdata().getSundayctp()[2]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              //PoD evening
+              query3 = " insert into `evening` (`date`, `man`, `ctp`, `updated_by`)"
+                + " values (?, ?, ?, ?)";
+              preparedStmt3 = conn3.prepareStatement(query3);
+              preparedStmt3.setDate (1, sqlDate);
+              preparedStmt3.setInt(2, getUdata().getSunday().getEvening());
+              preparedStmt3.setDouble(3,getUdata().getSundayctp()[3]);
+              preparedStmt3.setInt(4, 48);
+              preparedStmt3.execute();
+              
+              conn3.close();
+              
               System.out.println("[INFO] - UPLOADER: Upload successful for "+sqlDate+".");
         }
         else {
@@ -956,13 +1310,25 @@ public class UploadBean {
         
     }
     
+    private HashMap<Integer,Double> mon = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> tue = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> wed = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> thu = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> fri = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> sat = new HashMap<Integer,Double>();
+    private HashMap<Integer,Double> sun = new HashMap<Integer,Double>();
     
-    private HashMap<Integer,Double> leaderboard = new HashMap<Integer, Double>();
+    private HashMap<Integer,ArrayList<Double>> managerAndTheirCtp = new HashMap<Integer, ArrayList<Double>>();
     {
             
     }
     
-    public void leaderBoardCreatorCTP () {
+    public void leaderBoardCreatorCTP () throws Exception {
+        
+        mon.put(getUdata().getMonday().getOvernight(), getUdata().getMondaypod()[0]);
+        mon.put(getUdata().getMonday().getOpen(), getUdata().getMondaypod()[1]);
+        mon.put(getUdata().getMonday().getDay(), getUdata().getMondaypod()[2]);
+        mon.put(getUdata().getMonday().getEvening(), getUdata().getMondaypod()[3]);        
         
     }
     

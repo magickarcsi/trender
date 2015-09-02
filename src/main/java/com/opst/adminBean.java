@@ -656,6 +656,26 @@ public class adminBean implements Serializable{
                 
     }
     
+    public static class PoD {
+        private int man;
+        private Double ctp;
+        
+        
+        public void put(int man, Double ctp) {
+            this.man = man;
+            this.ctp = ctp;
+            
+        }
+        public Double get(int man) {
+            if (man == this.man){
+                return this.ctp;
+            }
+            else
+            return null;
+        }
+        
+    }
+    
     public static class uploadData {
         private int week;
         private Day monday = new Day();
