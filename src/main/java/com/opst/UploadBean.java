@@ -266,19 +266,17 @@ public class UploadBean {
 			StringBuffer stringBuffer = new StringBuffer();
 			String line;
                         int i =0;
-        while ((line = bufferedReader.readLine()) != null) {
-            //System.out.println(line);
-            i++;
-            String showme = null;
-            if (i == 6) {
-              String ymd=line.substring(61, 70);
-              System.out.println("[INFO] - UploadBean: "+ymd);
+                        String showme = null;                   
+                        
+                        String ymd= filename;
+                
                 if (!"".equals(ymd))
                     {
-                        String[] parts = ymd.split("/");
-                        String d = parts[0]; // day
-                        String m = parts[1]; //month
-                        String y = "20"+parts[2]; //year
+                        //Speed_of_Service_for_26_08_15_Wednesday.prn
+                        String[] parts = ymd.split("_");
+                        String d = parts[4]; // day
+                        String m = parts[5]; //month
+                        String y = "20"+parts[6]; //year
                         if (!"dd".equals(d))
                             {
                             Float D = Float.parseFloat(d);
@@ -290,11 +288,37 @@ public class UploadBean {
                             showme = sdf.format(showme(Yy, Mm, Dd).getTime());
                             ctpdate = showme(Yy, Mm, Dd).getTime();
                             }
+                System.out.println("[INFO] - UploadBean: "+showme);
                     }
-              //ctpdate = showme(2015,8,20).getTime();
-              //Date date = new Date(line.substring(61,70));
-              
-          }
+        while ((line = bufferedReader.readLine()) != null) {
+            //System.out.println(line);
+            i++;
+//            String showme = null;
+//            if (i == 6) {
+//              String ymd=line.substring(61, 70);
+//              System.out.println("[INFO] - UploadBean: "+ymd);
+//                if (!"".equals(ymd))
+//                    {
+//                        String[] parts = ymd.split("/");
+//                        String d = parts[0]; // day
+//                        String m = parts[1]; //month
+//                        String y = "20"+parts[2]; //year
+//                        if (!"dd".equals(d))
+//                            {
+//                            Float D = Float.parseFloat(d);
+//                            int Dd = Math.round(D);
+//                            Float M =Float.parseFloat(m);
+//                            int Mm = Math.round(M)-1;
+//                            Float Y =Float.parseFloat(y);
+//                            int Yy = Math.round(Y);
+//                            showme = sdf.format(showme(Yy, Mm, Dd).getTime());
+//                            ctpdate = showme(Yy, Mm, Dd).getTime();
+//                            }
+//                    }
+//              //ctpdate = showme(2015,8,20).getTime();
+//              //Date date = new Date(line.substring(61,70));
+//              
+//          }
           if (i>10 && i<35) {
              
              //System.out.println(i+" "+line);
@@ -313,6 +337,7 @@ public class UploadBean {
 			
     
     }
+    
     
     public void updateCtp() throws Exception{
         int count;
@@ -385,7 +410,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getMonday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getMondaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -393,7 +418,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getMonday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getMondaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -476,7 +501,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getTuesday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getTuesdaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -484,7 +509,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getTuesday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getTuesdaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -566,7 +591,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getWednesday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getWednesdaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -574,7 +599,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getWednesday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getWednesdaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -656,7 +681,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getThursday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getThursdaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -664,7 +689,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getThursday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getThursdaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -746,7 +771,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getFriday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getFridaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -754,7 +779,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getFriday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getFridaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -836,7 +861,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getSaturday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getSaturdaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -844,7 +869,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getSaturday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getSaturdaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -927,7 +952,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getSunday().getDay());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 3);
               preparedStmt1.setDouble(4, getUdata().getSundaypod()[2]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
@@ -935,7 +960,7 @@ public class UploadBean {
               preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setDate (1, sqlDate);
               preparedStmt1.setInt(2, getUdata().getSunday().getEvening());
-              preparedStmt1.setInt(3, 2);
+              preparedStmt1.setInt(3, 4);
               preparedStmt1.setDouble(4, getUdata().getSundaypod()[3]);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();

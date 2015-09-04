@@ -1436,7 +1436,7 @@ public class adminBean implements Serializable{
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select id,firstname,surname from `names` WHERE role in (6,7,8) AND is_active in (1)");
+            rs = stmt.executeQuery("select id,firstname,surname from `names` WHERE role in (6,7,8) AND is_active in (1) ORDER BY firstname ASC");
                 while (rs.next())
                 {
                     int id = rs.getInt(1);

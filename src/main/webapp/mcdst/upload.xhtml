@@ -70,10 +70,11 @@
             <p:tab id="upload" title="Reports">
             <p:panel header="Upload reports">    
                 <p:messages />
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="1">
                         
                         <p:fileUpload fileUploadListener="#{uploadbean.anyad}" mode="advanced" dragDropSupport="false"
                                       multiple="true" sizeLimit="100000" fileLimit="7" allowTypes="/(\.|\/)(prn|txt)$/" auto="true"  />
+                        <br/>
                 </h:panelGrid>
             </p:panel>
         </p:tab>
