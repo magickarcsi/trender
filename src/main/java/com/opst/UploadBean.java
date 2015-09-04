@@ -858,6 +858,7 @@ public class UploadBean {
         }
         }
         
+        
         //sunday
         if (getUdata().getSunday().getDate() != null)
         {
