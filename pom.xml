@@ -4,7 +4,7 @@
 	<groupId>trender</groupId>
 	<artifactId>trender</artifactId>
 	<packaging>war</packaging>
-	<version>1.0</version>
+	<version>0.8</version>
 	<name>trender</name>
 	<repositories>
 		<repository>
