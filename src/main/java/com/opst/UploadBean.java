@@ -1024,27 +1024,19 @@ public class UploadBean {
         Date oneBefore = adminBean.addDays(getUdata().getMonday().getDate(), -1);
         Date oneAfter = adminBean.addDays(getUdata().getSunday().getDate(), 1);
         Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
-                Statement stmt1 = null;
-
-                stmt1 = conn1.createStatement();
+        Statement stmt1 = conn1.createStatement();
                 // get each name
-              String query1 = " SELECT DISTINCT name" +
-                                " FROM `ctp_pod`" +
-                                " WHERE date > "+mysqldate.format(oneBefore)+"" +
-                                " AND date < "+mysqldate.format(oneAfter)+"";
-
-              //PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              String query1 = "SELECT DISTINCT name FROM `ctp_pod` WHERE date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter);
               ResultSet rs = stmt1.executeQuery(query1);
               System.out.println("[INFO] - UploadBean: "+mysqldate.format(getUdata().getMonday().getDate())+" - "+mysqldate.format(getUdata().getSunday().getDate())+"");
               while(rs.next()) {
                   //get all shift run by those names
                   String name = adminBean.managernames.get(rs.getInt(1));
                   System.out.println("[INFO] - UploadBean: "+rs.getInt(1)+"("+name+")");
+                  
                   Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
-                  Statement stmt2 = null;
-                  stmt2 = conn2.createStatement();
+                  Statement stmt2 = conn2.createStatement();
                   String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
-        
                   ResultSet rs2 = stmt2.executeQuery(query2);
                   List<Double> rowValues = new ArrayList<Double>();
                   while(rs2.next())
