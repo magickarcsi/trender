@@ -1072,7 +1072,7 @@ public class UploadBean {
                   int lbName = entry.getKey();
                   Double lbCtp = entry.getValue();
                   Calendar cal = Calendar.getInstance();
-                    cal.setTime(getUdata().getMonday().getDate());
+                    cal.setTime(first);
                     int week = cal.get(Calendar.WEEK_OF_YEAR);
                     int year = cal.get(Calendar.YEAR);
                   
@@ -1122,7 +1122,7 @@ public class UploadBean {
                         lbCtp = entry.getValue();
                     }
                     Calendar cal = Calendar.getInstance();
-                      cal.setTime(getUdata().getMonday().getDate());
+                      cal.setTime(first);
                       int week = cal.get(Calendar.WEEK_OF_YEAR);
                       int year = cal.get(Calendar.YEAR);
 
