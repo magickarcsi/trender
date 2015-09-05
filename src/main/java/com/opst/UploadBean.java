@@ -1042,11 +1042,11 @@ public class UploadBean {
               while(rs.next()) {
                   //get all shift run by those names
                   String name = adminBean.managernames.get(rs.getInt(1));
-                  System.out.println("[INFO] - UploadBean: "+rs.getInt(1)+"("+name+")");
+                  System.out.println("[INFO] - UploadBean: "+name+"("+rs.getInt(1)+")");
                   
                   Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
                   Statement stmt2 = conn2.createStatement();
-                  String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
+                  String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
                   ResultSet rs2 = stmt2.executeQuery(query2);
                   List<Double> rowValues = new ArrayList<Double>();
                   while(rs2.next())
@@ -1095,7 +1095,7 @@ public class UploadBean {
                 Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
                     Statement stmt2 = null;
                     
-                    String query2 = "SELECT ctp FROM `ctp_pod` WHERE daypart = "+dayPart+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
+                    String query2 = "SELECT ctp FROM `ctp_pod` WHERE daypart = "+dayPart+" AND date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
                     stmt2 = conn2.createStatement();
                     ResultSet rs2 = stmt2.executeQuery(query2);
                     List<Double> rowValues = new ArrayList<Double>();
