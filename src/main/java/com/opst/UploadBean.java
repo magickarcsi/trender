@@ -1043,12 +1043,12 @@ public class UploadBean {
                   String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
                   PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
                   rs2 = preparedStmt2.executeQuery();
-                  List rowValues = new ArrayList();
+                  List<Double> rowValues = new ArrayList<Double>();
                   while(rs2.next())
                   {
                       rowValues.add(rs2.getDouble(1));
                   }
-                  Double[] ctp = (Double[]) rowValues.toArray();
+                  Double[] ctp = rowValues.toArray(new Double[rowValues.size()]);
                   managerAndTheirCtp.put(rs.getInt(1), ctp);
                   Double sum = 0.0;
                   for (Double c : ctp){
