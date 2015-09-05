@@ -1096,7 +1096,7 @@ public class UploadBean {
                     {
                         rowValues.add(rs2.getDouble(1));
                     }
-                    Double[] ctp = (Double[]) rowValues.toArray();
+                    Double[] ctp = rowValues.toArray(new Double[rowValues.size()]);
                     Double sum = 0.0;
                     for (Double c : ctp){
                         if (!Double.isNaN(c)){
