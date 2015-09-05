@@ -1021,12 +1021,14 @@ public class UploadBean {
     public void leaderBoardCreatorCTP() throws Exception {
         
         SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
-        Date oneBefore = adminBean.addDays(getUdata().getMonday().getDate(), -1);
-        Date oneAfter = adminBean.addDays(getUdata().getSunday().getDate(), 1);
+        Date first = getUdata().getMonday().getDate();
+        Date oneBefore = adminBean.addDays(first, -1);
+        Date last = getUdata().getSunday().getDate();
+        Date oneAfter = adminBean.addDays(last, 1);
         Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
         Statement stmt1 = conn1.createStatement();
                 // get each name
-              String query1 = "SELECT DISTINCT name FROM `ctp_pod` WHERE date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter);
+              String query1 = "SELECT DISTINCT name FROM `ctp_pod` WHERE date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
               ResultSet rs = stmt1.executeQuery(query1);
               System.out.println("[INFO] - UploadBean: "+mysqldate.format(getUdata().getMonday().getDate())+" - "+mysqldate.format(getUdata().getSunday().getDate())+"");
               while(rs.next()) {
