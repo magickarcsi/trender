@@ -32,7 +32,10 @@ import javax.servlet.http.Part;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import com.opst.adminBean.uploadData;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -997,18 +1000,132 @@ public class UploadBean {
             System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
         }
-        
+        leaderBoardCreatorCTP();
     }
-    
-    
     private HashMap<Integer,Double> leaderboard = new HashMap<Integer, Double>();
     {
             
     }
     
-    public void leaderBoardCreatorCTP () {
-        
+    private HashMap<Integer,Double> PoDLeaderboard = new HashMap<Integer, Double>();
+    {
+            
     }
+    
+    private HashMap<Integer,Double[]> managerAndTheirCtp = new HashMap<Integer, Double[]>();
+    {
+            
+    }
+    
+    public void leaderBoardCreatorCTP() throws Exception {
+        
+        SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
+        Date oneBefore = adminBean.addDays(getUdata().getMonday().getDate(), -1);
+        Date oneAfter = adminBean.addDays(getUdata().getSunday().getDate(), 1);
+        Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+                Statement stmt1 = null;
+
+                stmt1 = conn1.createStatement();
+                // get each name
+              String query1 = " SELECT DISTINCT name" +
+                                "FROM `ctp_pod`" +
+                                "WHERE date > "+mysqldate.format(oneBefore)+"" +
+                                "AND date < "+mysqldate.format(oneAfter)+"";
+
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              ResultSet rs = preparedStmt1.executeQuery();
+              while(rs.next()) {
+                  //get all shift run by those names
+                  Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                  Statement stmt2 = null;
+                  ResultSet rs2 = null;
+                  String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
+                  PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+                  rs2 = preparedStmt2.executeQuery();
+                  List rowValues = new ArrayList();
+                  while(rs2.next())
+                  {
+                      rowValues.add(rs2.getDouble(1));
+                  }
+                  Double[] ctp = (Double[]) rowValues.toArray();
+                  managerAndTheirCtp.put(rs.getInt(1), ctp);
+                  Double sum = 0.0;
+                  for (Double c : ctp){
+                      sum += c;
+                  }
+                  Double avg = sum/ctp.length;
+                  leaderboard.put(rs.getInt(1), avg);
+                  conn2.close();
+              }
+              //creating the weekly average for the leaderboard
+              for (Map.Entry<Integer,Double> entry : leaderboard.entrySet()){
+                  int lbName = entry.getKey();
+                  Double lbCtp = entry.getValue();
+                  Calendar cal = Calendar.getInstance();
+                    cal.setTime(getUdata().getMonday().getDate());
+                    int week = cal.get(Calendar.WEEK_OF_YEAR);
+                    int year = cal.get(Calendar.YEAR);
+                  
+                  query1 = " insert into `ctp_weekly_by_manager` (`name`, `ctp`, `week`, `year`, `updated_by`)"
+                + " values (?, ?, ?, ?, ?)";
+
+              preparedStmt1 = conn1.prepareStatement(query1);
+              preparedStmt1.setInt (1, lbName);
+              preparedStmt1.setDouble(2, lbCtp);
+              preparedStmt1.setInt(3, week);
+              preparedStmt1.setInt(4, year);
+              preparedStmt1.setInt(5, 48);
+              preparedStmt1.execute();
+              
+              }
+              
+        //PoD weekly averages
+              for (int dayPart = 1;dayPart<5;dayPart++)
+              {
+                Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                    Statement stmt2 = null;
+                    ResultSet rs2 = null;
+                    String query2 = "SELECT ctp FROM `ctp_pod` WHERE daypart = "+dayPart+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
+                    PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
+                    rs2 = preparedStmt2.executeQuery();
+                    List rowValues = new ArrayList();
+                    while(rs2.next())
+                    {
+                        rowValues.add(rs2.getDouble(1));
+                    }
+                    Double[] ctp = (Double[]) rowValues.toArray();
+                    Double sum = 0.0;
+                    for (Double c : ctp){
+                        sum += c;
+                    }
+                    Double avg = sum/ctp.length;
+                    PoDLeaderboard.put(rs.getInt(1), avg);
+                    conn2.close();
+                //creating the weekly average for the leaderboard
+                for (Map.Entry<Integer,Double> entry : PoDLeaderboard.entrySet()){
+                    int lbDayPart = entry.getKey();
+                    Double lbCtp = entry.getValue();
+                    Calendar cal = Calendar.getInstance();
+                      cal.setTime(getUdata().getMonday().getDate());
+                      int week = cal.get(Calendar.WEEK_OF_YEAR);
+                      int year = cal.get(Calendar.YEAR);
+
+                    query1 = " insert into `ctp_weekly_by_pod` (`daypart`, `ctp`, `week`, `year`, `updated_by`)"
+                  + " values (?, ?, ?, ?, ?)";
+
+                preparedStmt1 = conn1.prepareStatement(query1);
+                preparedStmt1.setInt (1, lbDayPart);
+                preparedStmt1.setDouble(2, lbCtp);
+                preparedStmt1.setInt(3, week);
+                preparedStmt1.setInt(4, year);
+                preparedStmt1.setInt(5, 48);
+                preparedStmt1.execute();
+                }    
+              }
+              
+              conn1.close();
+    }
+    
     
     public UploadBean() {
     }

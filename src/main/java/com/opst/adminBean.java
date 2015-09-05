@@ -1550,7 +1550,7 @@ public class adminBean implements Serializable{
         ResultSet rs1 = null;
         stmt = conn.createStatement();
         stmt1 = conn1.createStatement();
-        rs = stmt.executeQuery("select id,name_id,ctp,dev,target from `ctp_weekly_by_manager` WHERE week in ("+getWeek()+") and year in ("+getYear()+") ORDER BY ctp ASC;");
+        rs = stmt.executeQuery("select id,name,ctp,dev,target from `ctp_weekly_by_manager` WHERE week in ("+getWeek()+") and year in ("+getYear()+") ORDER BY ctp ASC;");
         System.out.println("[INFO] - ADMINBEAN: CTP leaderboard "+getYear()+" "+getWeek());
                 while (rs.next())
                 {
