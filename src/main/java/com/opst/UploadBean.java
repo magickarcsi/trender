@@ -1028,9 +1028,9 @@ public class UploadBean {
                 stmt1 = conn1.createStatement();
                 // get each name
               String query1 = " SELECT DISTINCT name" +
-                                "FROM `ctp_pod`" +
-                                "WHERE date > "+mysqldate.format(oneBefore)+"" +
-                                "AND date < "+mysqldate.format(oneAfter)+"";
+                                " FROM `ctp_pod`" +
+                                " WHERE date > "+mysqldate.format(oneBefore)+"" +
+                                " AND date < "+mysqldate.format(oneAfter)+"";
 
               PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
               ResultSet rs = preparedStmt1.executeQuery();
