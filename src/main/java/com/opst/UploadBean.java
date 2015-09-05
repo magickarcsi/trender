@@ -1109,7 +1109,11 @@ public class UploadBean {
                 //creating the weekly average for the leaderboard
                 for (Map.Entry<Integer,Double> entry : PoDLeaderboard.entrySet()){
                     int lbDayPart = entry.getKey();
-                    Double lbCtp = entry.getValue();
+                    Double lbCtp = 0.0;
+                    if (!Double.isNaN(entry.getValue()))
+                    {
+                        lbCtp = entry.getValue();
+                    };
                     Calendar cal = Calendar.getInstance();
                       cal.setTime(getUdata().getMonday().getDate());
                       int week = cal.get(Calendar.WEEK_OF_YEAR);
