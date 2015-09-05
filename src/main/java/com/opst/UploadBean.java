@@ -1051,7 +1051,9 @@ public class UploadBean {
                   managerAndTheirCtp.put(rs.getInt(1), ctp);
                   Double sum = 0.0;
                   for (Double c : ctp){
-                      sum += c;
+                      if (!Double.isNaN(c)){
+                        sum += c;
+                      }
                   }
                   Double avg = sum/ctp.length;
                   leaderboard.put(rs.getInt(1), avg);
@@ -1093,11 +1095,14 @@ public class UploadBean {
                     {
                         rowValues.add(rs2.getDouble(1));
                     }
+                    Double[] ctp = (Double[]) rowValues.toArray();
                     Double sum = 0.0;
-                    for (Double c : rowValues){
-                        sum += c;
+                    for (Double c : ctp){
+                        if (!Double.isNaN(c)){
+                        sum += c;                            
+                        }
                     }
-                    Double avg = sum/rowValues.size();
+                    Double avg = sum/ctp.length;
                     PoDLeaderboard.put(dayPart, avg);
                     conn2.close();
                 //creating the weekly average for the leaderboard
