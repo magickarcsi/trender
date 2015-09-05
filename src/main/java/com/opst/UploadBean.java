@@ -1077,7 +1077,7 @@ public class UploadBean {
                   query1 = " insert into `ctp_weekly_by_manager` (`name`, `ctp`, `week`, `year`, `updated_by`)"
                 + " values (?, ?, ?, ?, ?)";
 
-              preparedStmt1 = conn1.prepareStatement(query1);
+              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
               preparedStmt1.setInt (1, lbName);
               preparedStmt1.setDouble(2, lbCtp);
               preparedStmt1.setInt(3, week);
@@ -1127,7 +1127,7 @@ public class UploadBean {
                     query1 = " insert into `ctp_weekly_by_pod` (`daypart`, `ctp`, `week`, `year`, `updated_by`)"
                   + " values (?, ?, ?, ?, ?)";
 
-                preparedStmt1 = conn1.prepareStatement(query1);
+                PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
                 preparedStmt1.setInt (1, lbDayPart);
                 preparedStmt1.setDouble(2, lbCtp);
                 preparedStmt1.setInt(3, week);
