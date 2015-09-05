@@ -1086,7 +1086,7 @@ public class UploadBean {
               preparedStmt1.setInt(4, year);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
-              System.out.println("[INFO] - UploadBean: Week "+week+" - "+lbName+" - "+lbCtp);
+              System.out.println("[INFO] - UploadBean: Week "+week+" - "+adminBean.managernames.get(lbName)+"("+lbName+") - "+lbCtp);
               }
               
         //PoD weekly averages
