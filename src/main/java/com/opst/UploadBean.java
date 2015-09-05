@@ -1042,10 +1042,10 @@ public class UploadBean {
                   System.out.println("[INFO] - UploadBean: "+rs.getInt(1)+"("+name+")");
                   Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
                   Statement stmt2 = null;
-                  ResultSet rs2 = null;
+                  stmt2 = conn2.createStatement();
                   String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
-                  PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
-                  rs2 = preparedStmt2.executeQuery();
+        
+                  ResultSet rs2 = stmt2.executeQuery(query2);
                   List<Double> rowValues = new ArrayList<Double>();
                   while(rs2.next())
                   {
@@ -1092,10 +1092,10 @@ public class UploadBean {
               {
                 Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
                     Statement stmt2 = null;
-                    ResultSet rs2 = null;
+                    
                     String query2 = "SELECT ctp FROM `ctp_pod` WHERE daypart = "+dayPart+" AND date > "+mysqldate.format(oneBefore)+" AND date < "+mysqldate.format(oneAfter)+"";
-                    PreparedStatement preparedStmt2 = conn2.prepareStatement(query2);
-                    rs2 = preparedStmt2.executeQuery();
+                    stmt2 = conn2.createStatement();
+                    ResultSet rs2 = stmt2.executeQuery(query2);
                     List<Double> rowValues = new ArrayList<Double>();
                     while(rs2.next())
                     {
@@ -1118,7 +1118,7 @@ public class UploadBean {
                     if (!Double.isNaN(entry.getValue()))
                     {
                         lbCtp = entry.getValue();
-                    };
+                    }
                     Calendar cal = Calendar.getInstance();
                       cal.setTime(getUdata().getMonday().getDate());
                       int week = cal.get(Calendar.WEEK_OF_YEAR);
