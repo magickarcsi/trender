@@ -1033,8 +1033,8 @@ public class UploadBean {
                                 " WHERE date > "+mysqldate.format(oneBefore)+"" +
                                 " AND date < "+mysqldate.format(oneAfter)+"";
 
-              PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
-              ResultSet rs = preparedStmt1.executeQuery();
+              //PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
+              ResultSet rs = stmt1.executeQuery(query1);
               System.out.println("[INFO] - UploadBean: "+mysqldate.format(getUdata().getMonday().getDate())+" - "+mysqldate.format(getUdata().getSunday().getDate())+"");
               while(rs.next()) {
                   //get all shift run by those names
