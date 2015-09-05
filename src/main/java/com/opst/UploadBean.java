@@ -1098,7 +1098,7 @@ public class UploadBean {
                         sum += c;
                     }
                     Double avg = sum/rowValues.size();
-                    PoDLeaderboard.put(rs.getInt(1), avg);
+                    PoDLeaderboard.put(dayPart, avg);
                     conn2.close();
                 //creating the weekly average for the leaderboard
                 for (Map.Entry<Integer,Double> entry : PoDLeaderboard.entrySet()){
