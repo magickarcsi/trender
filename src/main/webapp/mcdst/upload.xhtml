@@ -60,8 +60,10 @@
                         <h:selectOneMenu value="#{adminbean.year}">
                             <f:selectItem itemValue="2015" itemLabel="2015" />
                         </h:selectOneMenu>
-                        
+                        <br/>
                         <h:outputLabel id="firstandlast" value="#{adminbean.firstandlast}"/>
+                        <br/>
+                        <h:commandButton action="#{uploadbean.leaderBoardMe()}" value="LeaderBoaaaard"/>
                         
                 </h:panelGrid>
             </p:panel>

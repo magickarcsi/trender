@@ -1000,12 +1000,20 @@ public class UploadBean {
             System.out.println("[INFO] - Entry already exists for "+sqlDate+".");
         }
         }
-        leaderBoardCreatorCTP();
+        leaderBoardCreatorCTP(getUdata().getMonday().getDate(), getUdata().getSunday().getDate());
     }
     
     private HashMap<Integer,Double> leaderboard = new HashMap<Integer, Double>();
     {
             
+    }
+    
+    public void leaderBoardMe() throws Exception {
+        Calendar elso = new GregorianCalendar();
+        elso.set(2015, 7, 24);
+        Calendar utolso = new GregorianCalendar();
+        utolso.set(2015, 7, 30);
+        leaderBoardCreatorCTP(elso.getTime(), utolso.getTime());
     }
     
     private HashMap<Integer,Double> PoDLeaderboard = new HashMap<Integer, Double>();
@@ -1018,19 +1026,19 @@ public class UploadBean {
             
     }
     
-    public void leaderBoardCreatorCTP() throws Exception {
+    public void leaderBoardCreatorCTP(Date elso, Date utolso) throws Exception {
         
         SimpleDateFormat mysqldate = new SimpleDateFormat("yyyy-MM-dd");
-        Date first = getUdata().getMonday().getDate();
+        Date first = elso;
         Date oneBefore = adminBean.addDays(first, -1);
-        Date last = getUdata().getSunday().getDate();
+        Date last = utolso;
         Date oneAfter = adminBean.addDays(last, 1);
         Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
         Statement stmt1 = conn1.createStatement();
                 // get each name
               String query1 = "SELECT DISTINCT name FROM `ctp_pod` WHERE date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
               ResultSet rs = stmt1.executeQuery(query1);
-              System.out.println("[INFO] - UploadBean: "+mysqldate.format(getUdata().getMonday().getDate())+" - "+mysqldate.format(getUdata().getSunday().getDate())+"");
+              System.out.println("[INFO] - UploadBean: "+mysqldate.format(first)+" - "+mysqldate.format(last)+"");
               while(rs.next()) {
                   //get all shift run by those names
                   String name = adminBean.managernames.get(rs.getInt(1));
