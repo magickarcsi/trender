@@ -1035,8 +1035,11 @@ public class UploadBean {
 
               PreparedStatement preparedStmt1 = conn1.prepareStatement(query1);
               ResultSet rs = preparedStmt1.executeQuery();
+              System.out.println("[INFO] - UploadBean: "+mysqldate.format(getUdata().getMonday().getDate())+" - "+mysqldate.format(getUdata().getSunday().getDate())+"");
               while(rs.next()) {
                   //get all shift run by those names
+                  String name = adminBean.managernames.get(rs.getInt(1));
+                  System.out.println("[INFO] - UploadBean: "+rs.getInt(1)+"("+name+")");
                   Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
                   Statement stmt2 = null;
                   ResultSet rs2 = null;
@@ -1047,6 +1050,7 @@ public class UploadBean {
                   while(rs2.next())
                   {
                       rowValues.add(rs2.getDouble(1));
+                      System.out.println("[INFO] - UploadBean: "+rs2.getDouble(1));
                   }
                   Double[] ctp = rowValues.toArray(new Double[rowValues.size()]);
                   managerAndTheirCtp.put(rs.getInt(1), ctp);
@@ -1057,6 +1061,7 @@ public class UploadBean {
                       }
                   }
                   Double avg = sum/ctp.length;
+                  System.out.println("[INFO] - UploadBean: "+name+"("+rs.getInt(1)+") sum:"+sum+" avg:"+avg);
                   leaderboard.put(rs.getInt(1), avg);
                   conn2.close();
               }

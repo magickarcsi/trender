@@ -1422,7 +1422,7 @@ public class adminBean implements Serializable{
     }
     private String favWeek2;
     
-    private Map<Object,String> managernames;
+    public static Map<Object,String> managernames;
     {
         setManagernames(new LinkedHashMap<Object,String>());
     }
