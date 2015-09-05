@@ -1002,6 +1002,7 @@ public class UploadBean {
         }
         leaderBoardCreatorCTP();
     }
+    
     private HashMap<Integer,Double> leaderboard = new HashMap<Integer, Double>();
     {
             
