@@ -1052,7 +1052,7 @@ public class UploadBean {
                   while(rs2.next())
                   {
                       rowValues.add(rs2.getDouble(1));
-                      System.out.println("[INFO] - UploadBean: "+rs2.getDouble(1));
+                      System.out.print("[INFO] - UploadBean: "+rs2.getDouble(1)+" ");
                   }
                   Double[] ctp = rowValues.toArray(new Double[rowValues.size()]);
                   managerAndTheirCtp.put(rs.getInt(1), ctp);
@@ -1114,7 +1114,9 @@ public class UploadBean {
                     PoDLeaderboard.put(dayPart, avg);
                     conn2.close();
                 //creating the weekly average for the leaderboard
-                for (Map.Entry<Integer,Double> entry : PoDLeaderboard.entrySet()){
+                    
+              }
+              for (Map.Entry<Integer,Double> entry : PoDLeaderboard.entrySet()){
                     int lbDayPart = entry.getKey();
                     Double lbCtp = 0.0;
                     if (!Double.isNaN(entry.getValue()))
@@ -1137,8 +1139,7 @@ public class UploadBean {
                 preparedStmt1.setInt(5, 48);
                 preparedStmt1.execute();
                 System.out.println("[INFO] - UploadBean: Week "+week+" - "+lbDayPart+" - "+lbCtp);
-                }    
-              }
+                }
               
               conn1.close();
     }
