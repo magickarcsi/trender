@@ -33,8 +33,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.w3c.dom.Document;
-
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+import java.io.File;
+import javax.servlet.ServletContext;
+import com.itextpdf.text.Chunk;
+import com.lowagie.text.Element;
 
 /**
  *
@@ -82,11 +89,11 @@ public class adminBean implements Serializable{
     public String lastname;
     private String first;
     private String last;
-    private String firstandlast;
+    private static String firstandlast;
     private int role = 1;
     private static Calendar sDateCalendar = new GregorianCalendar();
     private static int currentweek = sDateCalendar.get(Calendar.WEEK_OF_YEAR);
-    private int week = 0;
+    private static int week = 0;
     private int year = 2015;
     public int bonus;
     private String searchfield;
@@ -554,6 +561,17 @@ public class adminBean implements Serializable{
 
     public double getWeekly(){
         return weeklyaverage;
+    }
+    
+    
+    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+        Document pdf = (Document) document;
+        pdf.open();
+        pdf.setPageSize(PageSize.A4);
+        String string1 = "CTP Leaderboard - "+adminBean.firstandlast;
+        String string2 = "Week: "+adminBean.week;
+        pdf.add((Element) new Chunk(string1));
+        pdf.add((Element) new Chunk(string2));
     }
     
     public static class Ctp{
