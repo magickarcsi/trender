@@ -72,39 +72,41 @@
          <h:panelGrid columns="1">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
-            <h:dataTable id="leaderboard" value="#{adminbean.c}" var="item2" style="horizontal-align: center;"
+            <p:dataTable id="leaderboard" value="#{adminbean.c}" var="item2" style="horizontal-align: center;"
                          
                          styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
                          >
-                <h:outputLabel value="Week: #{item2.week} Year: #{item2.year}"/>
-                <h:column>
+                <p:row>
+                    <h:outputLabel value="Week: #{adminbean.week} Year: #{adminbean.year}"/>
+                </p:row>
+                
+                <p:column>
                     <f:facet name="header">Name</f:facet>
                     <h:outputLabel value="#{item2.name}"/>
                     
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">CTP</f:facet>
                     <h:outputLabel value="#{item2.ctp}"/>
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Deviation</f:facet>
                     <h:outputLabel value="#{item2.dev}"/>
-                </h:column>
+                </p:column>
                 
-                <h:column>
+                <p:column>
                     <f:facet name="header">Target</f:facet>
                     <h:outputLabel value="#{item2.target}"/>
-                </h:column>
+                </p:column>
                 
-            </h:dataTable>
-        </h:form>
+            </p:dataTable>
         <h:commandLink value="Export to PDF">
             <p:dataExporter type="pdf" target="leaderboard" fileName="leaderboard.week#{item2.week}.#{item2.year}" pageOnly="true" />
     </h:commandLink>
+        </h:form>
+        
         </h:panelGroup>
              </h:panelGrid>
  
