@@ -72,13 +72,15 @@
          <h:panelGrid columns="1">
     <h:panelGroup layout="block" id="ctplist">
         <h:form>
-            <p:dataTable id="leaderboard" value="#{adminbean.c}" var="item2" style="horizontal-align: center;"
+            <p:dataTable id="leaderbd" value="#{adminbean.c}" var="item2" style="horizontal-align: center;"
                          
                          styleClass="order-table"
                          >
-                <p:row>
-                    <h:outputLabel value="Week: #{adminbean.week} Year: #{adminbean.year}"/>
-                </p:row>
+                <f:facet name="{Exporters}">
+                    <h:commandLink value="Export to PDF">
+            <p:dataExporter type="pdf" target="leaderbd" fileName="leaderboard" />
+    </h:commandLink>
+                </f:facet>
                 
                 <p:column>
                     <f:facet name="header">Name</f:facet>
@@ -102,9 +104,7 @@
                 </p:column>
                 
             </p:dataTable>
-        <h:commandLink value="Export to PDF">
-            <p:dataExporter type="pdf" target="leaderboard" fileName="leaderboard" />
-    </h:commandLink>
+        
         </h:form>
         
         </h:panelGroup>
