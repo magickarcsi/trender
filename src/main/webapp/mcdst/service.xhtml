@@ -76,12 +76,7 @@
                          
                          styleClass="order-table"
                          >
-                <f:facet name="{Exporters}">
-                    <h:commandLink value="Export to PDF">
-            <p:dataExporter type="pdf" target="leaderbd" fileName="leaderboard" />
-    </h:commandLink>
-                </f:facet>
-                
+                                
                 <p:column>
                     <f:facet name="header">Name</f:facet>
                     <h:outputLabel value="#{item2.name}"/>
@@ -105,6 +100,10 @@
                 
             </p:dataTable>
         
+          <br/>
+          <h:commandLink value="Export to PDF">
+            <p:dataExporter type="pdf" target="leaderbd" fileName="leaderboard" />
+    </h:commandLink>
         </h:form>
         
         </h:panelGroup>
