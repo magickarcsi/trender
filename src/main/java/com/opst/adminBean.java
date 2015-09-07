@@ -41,7 +41,9 @@ import com.lowagie.text.PageSize;
 import java.io.File;
 import javax.servlet.ServletContext;
 import com.itextpdf.text.Chunk;
-import com.lowagie.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Element;
 
 /**
  *
@@ -568,10 +570,10 @@ public class adminBean implements Serializable{
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);
-        String string1 = "CTP Leaderboard - "+adminBean.firstandlast;
-        String string2 = "Week: "+adminBean.week;
-        pdf.add((Element) new Chunk(string1));
-        pdf.add((Element) new Chunk(string2));
+        
+        String string = "CTP Leaderboard - "+adminBean.firstandlast+" Week: "+adminBean.week;
+        pdf.addHeader("Header", string);
+        
     }
     
     public static class Ctp{
