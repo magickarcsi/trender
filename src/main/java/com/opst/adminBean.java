@@ -540,13 +540,13 @@ public class adminBean implements Serializable{
     public static class Ctp{
         private int id;
         private String name;
-        private int ctp;
+        private double ctp;
         private int dev;
         private int target;
         private int week;
         private int year;
         
-        public Ctp(int id, String name, int ctp, int dev, int target, int week, int year){
+        public Ctp(int id, String name, Double ctp, int dev, int target, int week, int year){
             this.id = id;
             this.name = name;
             this.ctp = ctp;
@@ -587,14 +587,14 @@ public class adminBean implements Serializable{
         /**
          * @return the ctp
          */
-        public int getCtp() {
+        public Double getCtp() {
             return ctp;
         }
 
         /**
          * @param ctp the ctp to set
          */
-        public void setCtp(int ctp) {
+        public void setCtp(Double ctp) {
             this.ctp = ctp;
         }
 
@@ -1559,7 +1559,7 @@ public class adminBean implements Serializable{
                     String firstname = rs1.getNString(2);
                     String lastname = rs1.getNString(1);
                     String name = firstname + " " + lastname.substring(0, 1);
-                    getC().add(new Ctp(rs.getInt(1),name,rs.getInt(3),rs.getInt(4),rs.getInt(5),getWeek(),getYear()));
+                    getC().add(new Ctp(rs.getInt(1),name,rs.getDouble(3),rs.getInt(4),rs.getInt(5),getWeek(),getYear()));
                 }
                 if (getC().isEmpty()){
                     setLeaderboardShouldBeCollapsed(true);

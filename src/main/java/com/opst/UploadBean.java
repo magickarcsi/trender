@@ -1124,7 +1124,7 @@ public class UploadBean {
                         lbCtp = entry.getValue();
                     }
                     Calendar cal = Calendar.getInstance();
-                      cal.setTime(first);
+                      cal.setTime(adminBean.addDays(first, 2));
                       int week = cal.get(Calendar.WEEK_OF_YEAR);
                       int year = cal.get(Calendar.YEAR);
 
