@@ -575,6 +575,7 @@ public class adminBean implements Serializable{
         pdf.add(new Chunk(string));
         pdf.add(Chunk.NEWLINE);
         pdf.add(Chunk.NEWLINE);
+        pdf.add(new Chunk(" "));
        
         
     }
