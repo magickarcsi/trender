@@ -76,7 +76,9 @@
                          
                          styleClass="order-table"
                          >
-                                
+                <f:facet name="header">
+                    <h:outputLabel value="CTP Leaderboard - #{adminbean.firstandlast} /n Week: #{adminbean.week} Year: #{adminbean.year}"/>
+                 </f:facet>                
                 <p:column>
                     <f:facet name="header">Name</f:facet>
                     <h:outputLabel value="#{item2.name}"/>
@@ -97,12 +99,14 @@
                     <f:facet name="header">Target</f:facet>
                     <h:outputLabel value="#{item2.target}"/>
                 </p:column>
-                
+                <f:facet name="footer">
+                    <h:outputLabel value="Weekly average: #{adminbean.weekly}"/>
+                 </f:facet>
             </p:dataTable>
         
           <br/>
           <p:commandLink value="Export to PDF" ajax="false">
-            <p:dataExporter type="pdf" target="leaderbd" fileName="leaderboard" />
+              <p:dataExporter type="pdf" target="leaderbd" fileName="leaderboard_week#{adminbean.week}_year#{adminbean.year}" />
     </p:commandLink>
         </h:form>
         

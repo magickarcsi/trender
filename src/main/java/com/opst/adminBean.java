@@ -549,6 +549,13 @@ public class adminBean implements Serializable{
     public void setManagernames(Map<Object,String> managernames) {
         this.managernames = managernames;
     }
+    
+    public static double weeklyaverage = 0.0;
+
+    public double getWeekly(){
+        return weeklyaverage;
+    }
+    
     public static class Ctp{
         private int id;
         private String name;

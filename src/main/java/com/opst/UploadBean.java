@@ -1067,10 +1067,15 @@ public class UploadBean {
                   leaderboard.put(rs.getInt(1), avg);
                   conn2.close();
               }
+              Double wavg = 0.0;
+              Double wsum = 0.0;
+              int i = 0;
               //creating the weekly average for the leaderboard
               for (Map.Entry<Integer,Double> entry : leaderboard.entrySet()){
                   int lbName = entry.getKey();
+                  i++;
                   Double lbCtp = entry.getValue();
+                  wsum += lbCtp;
                   Calendar cal = Calendar.getInstance();
                     cal.setTime(first);
                     int week = cal.get(Calendar.WEEK_OF_YEAR);
@@ -1086,9 +1091,11 @@ public class UploadBean {
               preparedStmt1.setInt(4, year);
               preparedStmt1.setInt(5, 48);
               preparedStmt1.execute();
+              
               System.out.println("[INFO] - UploadBean: Week "+week+" - "+adminBean.managernames.get(lbName)+"("+lbName+") - "+lbCtp);
               }
-              
+              wavg = wsum/i;
+              adminBean.weeklyaverage = wavg;
         //PoD weekly averages
               for (int dayPart = 1;dayPart<5;dayPart++)
               {
