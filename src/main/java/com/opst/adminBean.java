@@ -572,6 +572,7 @@ public class adminBean implements Serializable{
         pdf.setPageSize(PageSize.A4);
         String string = "CTP Leaderboard - "+adminBean.firstandlast+" Week: "+adminBean.week;
         pdf.add(new Chunk(string));
+        pdf.add(new Chunk(""));
        
         
     }
