@@ -131,6 +131,18 @@ public class adminBean implements Serializable{
         return twodecimal;
     }
     
+    public void checkDataFilesForWeek(int week, int year) {
+        
+    }
+    
+    public void checkManagersForWeek(int week, int year) {
+        
+    }
+    
+    public void checkLeaderboardForWeek(int week, int year) {
+        
+    }
+    
     public void service() {
     
     }

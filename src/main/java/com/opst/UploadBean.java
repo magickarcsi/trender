@@ -1052,7 +1052,7 @@ public class UploadBean {
                   while(rs2.next())
                   {
                       rowValues.add(rs2.getDouble(1));
-                      System.out.print("[INFO] - UploadBean: "+rs2.getDouble(1)+" ");
+                      System.out.println("[INFO] - UploadBean: "+rs2.getDouble(1)+" ");
                   }
                   Double[] ctp = rowValues.toArray(new Double[rowValues.size()]);
                   managerAndTheirCtp.put(rs.getInt(1), ctp);
