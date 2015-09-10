@@ -138,6 +138,22 @@
 	  <artifactId>itextpdf</artifactId>
 	  <version>5.5.6</version>
 	 </dependency>
+	 <dependency>
+	  <groupId>org.eclipse.persistence</groupId>
+	  <artifactId>eclipselink</artifactId>
+	  <version>2.5.2</version>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.eclipse.persistence</groupId>
+	  <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+	  <version>2.5.2</version>
+	  <scope>provided</scope>
+	 </dependency>
+	 <dependency>
+	  <groupId>unknown.binary</groupId>
+	  <artifactId>javax.ws.rs-api-2.0</artifactId>
+	  <version>SNAPSHOT</version>
+	 </dependency>
 	</dependencies>
 	<profiles>
 		<profile>
