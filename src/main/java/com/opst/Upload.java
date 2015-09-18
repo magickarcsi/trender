@@ -149,7 +149,7 @@ public class Upload extends HttpServlet {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         final String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         final PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -159,7 +159,7 @@ public class Upload extends HttpServlet {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -206,7 +206,7 @@ public class Upload extends HttpServlet {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 

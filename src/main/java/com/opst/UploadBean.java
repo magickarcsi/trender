@@ -163,7 +163,7 @@ public class UploadBean {
         //
         java.sql.Date sqldate = new java.sql.Date(ctpdate.getTime());
         int count = 0;
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqldate);
@@ -375,7 +375,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getMonday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -385,7 +385,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -408,7 +408,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -467,7 +467,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getTuesday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -477,7 +477,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -500,7 +500,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -557,7 +557,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getWednesday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -567,7 +567,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -590,7 +590,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -647,7 +647,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getThursday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -657,7 +657,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -680,7 +680,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -737,7 +737,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getFriday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -747,7 +747,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -770,7 +770,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -827,7 +827,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getSaturday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -837,7 +837,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -860,7 +860,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -918,7 +918,7 @@ public class UploadBean {
         java.sql.Date sqlDate = new java.sql.Date(getUdata().getSunday().getDate().getTime());
         
         //check if there is an entry to that date already
-        Connection connCheck = com.opst.MySqlDAOFactory.createConnection();
+        Connection connCheck = com.opst.MySqlDAOFactory.createConnection("00610");
         String queryCheck = "SELECT count(*) from `ctp_daily` WHERE date = ?";
         PreparedStatement psCheck = connCheck.prepareStatement(queryCheck);
         psCheck.setDate(1, sqlDate);
@@ -928,7 +928,7 @@ public class UploadBean {
         }
         if (count != 1)
         {
-                Connection conn = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt = null;
                 ResultSet rs = null;
 
@@ -951,7 +951,7 @@ public class UploadBean {
               conn.close();
 
               //PoD CTP
-              Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+              Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
                 Statement stmt1 = null;
                 ResultSet rs1 = null;
 
@@ -1033,7 +1033,7 @@ public class UploadBean {
         Date oneBefore = adminBean.addDays(first, -1);
         Date last = utolso;
         Date oneAfter = adminBean.addDays(last, 1);
-        Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+        Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
         Statement stmt1 = conn1.createStatement();
                 // get each name
               String query1 = "SELECT DISTINCT name FROM `ctp_pod` WHERE date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
@@ -1044,7 +1044,7 @@ public class UploadBean {
                   String name = adminBean.managernames.get(rs.getInt(1));
                   System.out.println("[INFO] - UploadBean: "+name+"("+rs.getInt(1)+")");
                   
-                  Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                  Connection conn2 = com.opst.MySqlDAOFactory.createConnection("00610");
                   Statement stmt2 = conn2.createStatement();
                   String query2 = "SELECT ctp FROM `ctp_pod` WHERE name = "+rs.getInt(1)+" AND date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";
                   ResultSet rs2 = stmt2.executeQuery(query2);
@@ -1099,7 +1099,7 @@ public class UploadBean {
         //PoD weekly averages
               for (int dayPart = 1;dayPart<5;dayPart++)
               {
-                Connection conn2 = com.opst.MySqlDAOFactory.createConnection();
+                Connection conn2 = com.opst.MySqlDAOFactory.createConnection("00610");
                     Statement stmt2 = null;
                     
                     String query2 = "SELECT ctp FROM `ctp_pod` WHERE daypart = "+dayPart+" AND date > '"+mysqldate.format(oneBefore)+"' AND date < '"+mysqldate.format(oneAfter)+"'";

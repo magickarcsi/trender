@@ -25,7 +25,7 @@ class MySqlDAOFactory {
     public static final String dbaddress = host+":"+port;
     
 
-  public static Connection createConnection() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+  public static Connection createConnection(String db) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
       try {
             // The newInstance() call is a work around for some
             // broken Java implementations
@@ -36,10 +36,10 @@ class MySqlDAOFactory {
             catch (InstantiationException ex) {System.out.println("[EXCEPTION] "+ex.toString()); }
             catch (IllegalAccessException ex) {System.out.println("[EXCEPTION] "+ex.toString()); }
         Connection conn = null;
-        
+        String database = db;
         try {
             conn =
-        DriverManager.getConnection("jdbc:mysql://"+dbaddress+"/00610?" +
+        DriverManager.getConnection("jdbc:mysql://"+dbaddress+"/"+database+"?" +
                                    "user="+dbuser+"&password="+dbpw);
         }
             catch (SQLException ex) {}

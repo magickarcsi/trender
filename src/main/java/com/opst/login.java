@@ -13,7 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.opst.CustomAuthenticator;
+import org.owasp.esapi.AccessController;
+import org.owasp.esapi.Authenticator;
 import org.owasp.esapi.ESAPI;
+import org.owasp.esapi.HTTPUtilities;
+import org.owasp.esapi.User;
 import org.owasp.esapi.errors.AuthenticationException;
 
 /**
@@ -34,7 +39,14 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, AuthenticationException {
-        ESAPI.authenticator().login(request, response);
+        HTTPUtilities httpUtil = ESAPI.httpUtilities();
+        httpUtil.setCurrentHTTP(request, response);
+        Authenticator auth = new CustomAuthenticator();
+        User user = auth.login();
+        user.addSession(request.getSession());
+        auth.setCurrentUser(user);
+        
+        AccessController contrl = ESAPI.accessController();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

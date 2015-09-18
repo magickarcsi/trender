@@ -44,6 +44,7 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.Element;
+import org.owasp.esapi.ESAPI;
 
 /**
  *
@@ -128,6 +129,8 @@ public class adminBean implements Serializable{
     private Boolean productionOn = true;
     private Boolean trainingOn = true;
     private Boolean messageBoardOn = false;
+    
+    private String currentuser = ESAPI.authenticator().getCurrentUser().getAccountName();
 
     public String dateToString(Date date){
         String datestring = ddmm.format(date);
@@ -579,7 +582,26 @@ public class adminBean implements Serializable{
        
         
     }
-    
+
+    /**
+     * @return the currentuser
+     */
+    public String getCurrentuser() {
+        return currentuser;
+    }
+    public static class Elements{
+        private String dayofweek;
+        private String date;
+        private String ovn;
+        private Double ovn_ctp;
+        private String opn;
+        private Double opn_ctp;
+        private String day;
+        private Double day_ctp;
+        private String evn;
+        private Double evn_ctp;
+        
+    }
     public static class Ctp{
         private int id;
         private String name;
@@ -717,6 +739,102 @@ public class adminBean implements Serializable{
             return null;
         }
         
+    }
+    public static class ctpData {
+        private String store;
+        private Date date;
+        private Day day = new Day();
+        private Double[] ctp = new Double[24];
+        private Double[] pod = new Double[4];
+        private double avg;
+        
+        public ctpData(){
+            
+        };
+
+        /**
+         * @return the store
+         */
+        public String getStore() {
+            return store;
+        }
+
+        /**
+         * @param store the store to set
+         */
+        public void setStore(String store) {
+            this.store = store;
+        }
+
+        /**
+         * @return the date
+         */
+        public Date getDate() {
+            return date;
+        }
+
+        /**
+         * @param date the date to set
+         */
+        public void setDate(Date date) {
+            this.date = date;
+        }
+
+        /**
+         * @return the day
+         */
+        public Day getDay() {
+            return day;
+        }
+
+        /**
+         * @param day the day to set
+         */
+        public void setDay(Day day) {
+            this.day = day;
+        }
+
+        /**
+         * @return the ctp
+         */
+        public Double[] getCtp() {
+            return ctp;
+        }
+
+        /**
+         * @param ctp the ctp to set
+         */
+        public void setCtp(Double[] ctp) {
+            this.ctp = ctp;
+        }
+
+        /**
+         * @return the pod
+         */
+        public Double[] getPod() {
+            return pod;
+        }
+
+        /**
+         * @param pod the pod to set
+         */
+        public void setPod(Double[] pod) {
+            this.pod = pod;
+        }
+
+        /**
+         * @return the avg
+         */
+        public double getAvg() {
+            return avg;
+        }
+
+        /**
+         * @param avg the avg to set
+         */
+        public void setAvg(double avg) {
+            this.avg = avg;
+        }
     }
     
     public static class uploadData {
@@ -1475,7 +1593,7 @@ public class adminBean implements Serializable{
         {
         try {
             setManagers(new LinkedHashMap<String,Object>());
-            Connection conn = com.opst.MySqlDAOFactory.createConnection();
+            Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
@@ -1585,8 +1703,8 @@ public class adminBean implements Serializable{
         setLast(sdf.format(lastDayOfWeekByWN(week).getTime()));
         setFirstandlast(getFirst()+" - "+getLast());
         getC().clear();
-        Connection conn = com.opst.MySqlDAOFactory.createConnection();
-        Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+        Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
+        Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
         Statement stmt = null;
         Statement stmt1 = null;
         ResultSet rs = null;
@@ -1620,8 +1738,8 @@ public class adminBean implements Serializable{
         int detailsId = id;
         setDetailsCollapsed(false);
         setPerson(null);
-        Connection conn = com.opst.MySqlDAOFactory.createConnection();
-        Connection conn1 = com.opst.MySqlDAOFactory.createConnection();
+        Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
+        Connection conn1 = com.opst.MySqlDAOFactory.createConnection("00610");
         Statement stmt = null;
         ResultSet rs = null;
         stmt = conn.createStatement();
@@ -1672,7 +1790,7 @@ public class adminBean implements Serializable{
     public void getNamesByRole(int role) throws Exception{
         this.setRole(role);
         p.clear();
-        Connection conn = com.opst.MySqlDAOFactory.createConnection();
+        Connection conn = com.opst.MySqlDAOFactory.createConnection("00610");
         Statement stmt = null;
         ResultSet rs = null;
         stmt = conn.createStatement();
