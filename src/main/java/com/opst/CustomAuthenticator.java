@@ -81,7 +81,6 @@ public class CustomAuthenticator extends AbstractAuthenticator {
         newUser.enable();
          
         Set<String> roles = new HashSet<String>();
-        roles.add(AccessControl.DATA_ENTRY_OPERATOR);
         newUser.addRoles(roles);
         newUser.setScreenName("John Smith");
          
