@@ -17,6 +17,7 @@ package com.opst;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -27,9 +28,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
+import org.owasp.esapi.User;
 import org.owasp.esapi.errors.AuthenticationException;
 
 public abstract class ESAPIFilter{
@@ -37,24 +40,42 @@ public abstract class ESAPIFilter{
 	private final Logger logger = ESAPI.getLogger("ESAPIFilter");
 
 	private static final String[] obfuscate = { "password" };
-
-	
-	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) resp;
-                try {
-                    ESAPI.authenticator().login(request, response);
-                    chain.doFilter(request, response);
-                }
-                catch( AuthenticationException e ){
-                ESAPI.authenticator().logout();
-                                request.setAttribute("message", "Authentication failed");
-                                RequestDispatcher dispatcher = request.getRequestDispatcher("login.xhtml");
-                                dispatcher.forward(request, response);
-                }
+        
+    public void init(FilterConfig fConfig) throws ServletException {
+    }
+ 
+    /**
+     * @see Filter#destroy()
+     */
+    public void destroy() {
+    }
+ 
+    /**
+     * @param request
+     * @param response
+     * @param chain
+     * @throws java.io.IOException
+     * @throws javax.servlet.ServletException
+     * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+     */
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
+        HttpSession session = req.getSession();
+        
+        String user = ESAPI.authenticator().getCurrentUser().getAccountName();
+            try {
+                ESAPI.authenticator().login(req, res);
                 chain.doFilter(request, response);
-
-                
-        }
-}
-		
+                        
+                        } catch (AuthenticationException ex) {
+                            
+                java.util.logging.Logger.getLogger(ESAPIFilter.class.getName()).log(Level.SEVERE, null, ex);
+                RequestDispatcher rd = req.getRequestDispatcher("/login.xhtml");
+                rd.forward(request, response);
+                return;
+            }
+         
+        
+    }
+}	
