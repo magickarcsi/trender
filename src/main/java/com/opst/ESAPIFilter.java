@@ -32,7 +32,7 @@ import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
 import org.owasp.esapi.errors.AuthenticationException;
 
-public class ESAPIFilter implements Filter {
+public abstract class ESAPIFilter implements Filter {
 
 	private final Logger logger = ESAPI.getLogger("ESAPIFilter");
 
@@ -56,11 +56,6 @@ public class ESAPIFilter implements Filter {
 
                 
         }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void destroy() {
