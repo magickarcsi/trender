@@ -32,19 +32,19 @@ import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
 import org.owasp.esapi.errors.AuthenticationException;
 
-public abstract class ESAPIFilter implements Filter {
+public abstract class ESAPIFilter{
 
 	private final Logger logger = ESAPI.getLogger("ESAPIFilter");
 
 	private static final String[] obfuscate = { "password" };
 
 	
-        @Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
                 try {
                     ESAPI.authenticator().login(request, response);
+                    chain.doFilter(request, response);
                 }
                 catch( AuthenticationException e ){
                 ESAPI.authenticator().logout();
@@ -56,10 +56,5 @@ public abstract class ESAPIFilter implements Filter {
 
                 
         }
-
-    @Override
-    public void destroy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
 		
