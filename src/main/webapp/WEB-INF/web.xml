@@ -47,6 +47,6 @@
     </welcome-file-list>
     <filter>
         <filter-name>Auth</filter-name>
-        <filter-class>com.opst.ESAPIFilter</filter-class>
+        <filter-class>SecurityWrapper</filter-class>
     </filter>
 </web-app>

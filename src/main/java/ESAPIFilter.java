@@ -13,7 +13,7 @@
  * @author karci
  * @created 2015
  */
-package com.opst;
+
 
 import java.io.IOException;
 import java.util.Arrays;
